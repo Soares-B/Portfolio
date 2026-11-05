@@ -44,7 +44,7 @@ export default function Home() {
     }, [text, index, remove])
 
     return(
-      <p className="">{text}</p>
+      <p className="font-typewritter">{text}</p>
     );
   }
 
@@ -54,7 +54,7 @@ export default function Home() {
       <p className="font-montserrat"></p>
     </nav>
     <header className={`${themes[currentTheme].background} w-full min-h-150 h-auto flex items-center`}>
-      <div className="ml-10 flex flex-col">
+      <div className="ml-10 flex flex-col h-[150px] max-w-[250px] w-auto gap-">
           <Name themes={themes} currentTheme={currentTheme}/>
           {write()}
       </div>

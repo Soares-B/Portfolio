@@ -35,7 +35,8 @@
   --color-Purity-4: #4A4E69;
   --color-Purity-5: #22223B;
 
-  --font-montserrat: var(--font-montserrat)
+  --font-montserrat: var(--font-montserrat);
+  --font-typewritter: var(--font-typewritter);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
