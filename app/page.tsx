@@ -1,14 +1,18 @@
 "use client"
 
 import { themes } from "@/config/themes";
-import { Name } from "@/components/animation/Name";
+import Name from "@/components/animation/Name";
+import Stack from "@/components/Stack";
+import ButtonTheme from "@/components/animation/Theme Button";
 
 import { useState, useEffect } from "react";
 import { p } from "motion/react-client";
 
+type ThemeName = keyof typeof themes;
+
 export default function Home() {
 
-  let currentTheme: keyof typeof themes = 'Calmness'
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('Calmness')
 
   function write(){
     const phrases = [
@@ -44,19 +48,23 @@ export default function Home() {
     }, [text, index, remove])
 
     return(
-      <p className="font-typewritter">{text}</p>
+      <p className={`font-typewritter ${themes[currentTheme].text} min-h-[24px]`}>{text}</p>
     );
   }
 
   return (
     <>
-    <nav className={`w-full min-h-10 h-auto bg-Calmness-4`}>
+    <nav className={`w-full min-h-10 h-auto `}>
       <p className="font-montserrat"></p>
     </nav>
-    <header className={`${themes[currentTheme].background} w-full min-h-150 h-auto flex items-center`}>
-      <div className="ml-10 flex flex-col h-[150px] max-w-[250px] w-auto gap-">
+    <header className={`${themes[currentTheme].background} w-full min-h-150 h-auto flex`}>
+      <div className="ml-5 mt-10 flex flex-col max-w-[250px] w-auto gap-1">
           <Name themes={themes} currentTheme={currentTheme}/>
           {write()}
+          <Stack themes={themes} currentTheme={currentTheme}/>
+          <div className="flex justify-center w-[210px]">
+            <ButtonTheme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
+          </div>
       </div>
     </header>
     </>

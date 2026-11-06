@@ -19,7 +19,7 @@ const Montserrat = localFont({
 })
 
 const TypeWritter = localFont({
-  src: "./fonts/Type Machine.ttf",
+  src: "./fonts/TypoSlab Irregular.otf",
   variable: '--font-typewritter'
 })
 
