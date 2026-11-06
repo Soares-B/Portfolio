@@ -1,19 +1,18 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { DotFilledIcon } from "@radix-ui/react-icons";
+import type { Theme } from "@/types/themes";
 
 export default function Theme({
   themes,
   currentTheme,
   setCurrentTheme,
-}: {
-  themes: any;
-  currentTheme: string;
+}: Theme & {
   setCurrentTheme: any;
 }) {
   return (
     <DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<button className={`w-[150px] h-12 mt-2 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].background_text} font-monteserrat font-bold text-2xl outline-none`} aria-label="Customise options">
+				<button className={`w-[150px] h-12 mt-2 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].background_text} font-monteserrat font-bold text-2xl outline-none hover:cursor-pointer ${themes[currentTheme].themeAnimation}`} aria-label="Customise options">
 					Themes
 				</button>
 			</DropdownMenu.Trigger>

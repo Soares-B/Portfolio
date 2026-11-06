@@ -5,6 +5,22 @@
   --foreground: #171717;
 }
 
+.theme-Calmness {
+  --selection_bg: #16425B;
+}
+
+.theme-Wisdom {
+  --selection_bg: #7161EF;
+}
+
+.theme-Creativity {
+  --selection_bg: #4F000B;
+}
+
+.theme-Purity {
+  --selection_bg: #22223B;
+}
+
 @theme inline {
 /* Calmness */
   --color-Calmness-1: #F7F9F9;
@@ -43,6 +59,47 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --animate-pulse-Calmness: pulse-Calmness 5s ease-in-out infinite;
+  --animate-pulse-Wisdom: pulse-Wisdom 5s ease-in-out infinite;
+  --animate-pulse-Creativity: pulse-Creativity 5s ease-in-out infinite;
+  --animate-pulse-Purity: pulse-Purity 5s ease-in-out infinite;
+
+  @keyframes pulse-Calmness {
+    0%, 100% {
+      background-color: #3A7CA5
+    }
+    50% {
+      background-color: #81C3D7
+    }
+  }
+
+  @keyframes pulse-Wisdom {
+    0%, 100% {
+      background-color: #B79CED
+    }
+    50% {
+      background-color: #DEC0F1
+    }
+  }
+
+  @keyframes pulse-Creativity {
+    0%, 100% {
+      background-color: #CE4257
+    }
+    50% {
+      background-color: #FF7F51
+    }
+  }
+
+  @keyframes pulse-Purity {
+    0%, 100% {
+      background-color: #9A8C98
+    }
+    50% {
+      background-color: #C9ADA7
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {

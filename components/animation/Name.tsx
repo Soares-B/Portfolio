@@ -1,14 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
+import type { Theme } from "@/types/themes";
 
 export default function Name({
   themes,
   currentTheme,
-}: {
-  themes: any;
-  currentTheme: string;
-}) {
+}: Theme) {
   const theme = themes[currentTheme];
 
   return (
