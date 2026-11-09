@@ -12,7 +12,7 @@ export default function Theme({
   return (
     <DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<button className={`w-[150px] h-12 mt-2 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].background_text} font-monteserrat font-bold text-2xl outline-none hover:cursor-pointer ${themes[currentTheme].themeAnimation}`} aria-label="Customise options">
+				<button className={`w-[150px] h-12 mt-2 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].background_text} font-monteserrat font-bold text-2xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer`} aria-label="Customise options">
 					Themes
 				</button>
 			</DropdownMenu.Trigger>
