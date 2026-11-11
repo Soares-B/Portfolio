@@ -5,50 +5,14 @@
   --foreground: #171717;
 }
 
-.theme-Calmness {
-  --selection_bg: #16425B;
-}
-
-.theme-Wisdom {
-  --selection_bg: #7161EF;
-}
-
-.theme-Creativity {
-  --selection_bg: #4F000B;
-}
-
-.theme-Purity {
-  --selection_bg: #22223B;
-}
-
 @theme inline {
-/* Calmness */
-  --color-Calmness-1: #F7F9F9;
-  --color-Calmness-2: #81C3D7;
-  --color-Calmness-3: #3A7CA5;
-  --color-Calmness-4: #2F6690;
-  --color-Calmness-5: #16425B;
-
-  /* Wisdom */
-  --color-Wisdom-1: #EDE5FA;
-  --color-Wisdom-2: #DEC0F1;
-  --color-Wisdom-3: #B79CED;
-  --color-Wisdom-4: #957FEF;
-  --color-Wisdom-5: #7161EF;
-
-  /* Creativity */
-  --color-Creativity-1: #FF9B54;
-  --color-Creativity-2: #FF7F51;
-  --color-Creativity-3: #CE4257;
-  --color-Creativity-4: #720026;
-  --color-Creativity-5: #4F000B;
-
-  /* Purity */
-  --color-Purity-1: #F2E9E4;
-  --color-Purity-2: #C9ADA7;
-  --color-Purity-3: #9A8C98;
-  --color-Purity-4: #4A4E69;
-  --color-Purity-5: #22223B;
+  /* Milk */
+  --color-Milk-1: #F2E9E4;
+  --color-Milk-2: #499792;
+  --color-Milk-3: #AC3231;
+  --color-Milk-4: #632630;
+  --color-Milk-5: #2F1B1E;
+  --color-Milk-6: #0D0E13;
 
   --color-transparent: #CCCCCC44;
 
@@ -60,46 +24,6 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --animate-pulse-Calmness: pulse-Calmness 5s ease-in-out infinite;
-  --animate-pulse-Wisdom: pulse-Wisdom 5s ease-in-out infinite;
-  --animate-pulse-Creativity: pulse-Creativity 5s ease-in-out infinite;
-  --animate-pulse-Purity: pulse-Purity 5s ease-in-out infinite;
-
-  @keyframes pulse-Calmness {
-    0%, 100% {
-      background-color: #3A7CA5
-    }
-    50% {
-      background-color: #81C3D7
-    }
-  }
-
-  @keyframes pulse-Wisdom {
-    0%, 100% {
-      background-color: #B79CED
-    }
-    50% {
-      background-color: #DEC0F1
-    }
-  }
-
-  @keyframes pulse-Creativity {
-    0%, 100% {
-      background-color: #CE4257
-    }
-    50% {
-      background-color: #FF7F51
-    }
-  }
-
-  @keyframes pulse-Purity {
-    0%, 100% {
-      background-color: #9A8C98
-    }
-    50% {
-      background-color: #C9ADA7
-    }
-  }
 }
 
 @media (prefers-color-scheme: dark) {

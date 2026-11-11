@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`h-full antialiased`}
     >
-      <body className={`${Montserrat.variable} ${TypeWritter.variable} min-h-full flex flex-col`}>{children}</body>
+      <body className={`${Montserrat.variable} ${TypeWritter.variable}`}>{children}</body>
     </html>
   );
 }

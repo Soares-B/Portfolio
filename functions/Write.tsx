@@ -38,6 +38,6 @@ export function write({
     }, [text, index, remove])
 
     return(
-      <p className={`font-typewritter ${themes[currentTheme].text} min-h-[24px]`}>{text}</p>
+      <p className={`font-typewritter ${themes[currentTheme].text} min-h-[24px] text-lg`}>{text}</p>
     );
   }

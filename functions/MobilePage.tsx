@@ -3,24 +3,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MobilePage(header: HTMLElement){
-    const htl = gsap.timeline({
-        scale: 0.5,
-        y: -250,
-        x: -200,
-        rotation: -45,
-
+export default function MobilePage(container: HTMLElement, header: HTMLElement, about: HTMLElement) {
+  
+    const animation = gsap.timeline({
         scrollTrigger: {
-            trigger: header,
-            start: 'top top',
-            end: "300px top",
+            trigger: container,
+            start: "top top",
+            end: "+=200%",
             scrub: true,
-            pin: true
+            pin: true,
+
         }
     })
 
-    htl.to(".header", {
-        opacity: 0
+    animation.to(header, {
+        opacity: 0,
+        duration: 1})
+    .to(about, {
+        opacity: 100,
+        duration: 1
+    },"<")
 
-    }, 0.5)
+  return () => {
+    animation.scrollTrigger?.kill();
+    animation.kill();
+  };
 }
