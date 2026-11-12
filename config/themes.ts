@@ -20,6 +20,7 @@ export const themes = {
   Config: {
     text: '',
     highlight_text: '',
+    highlight_text_shadow: '',
     selection: "",
     background: '',
     counterground: '',

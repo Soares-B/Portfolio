@@ -27,8 +27,8 @@
 
       mm.add("(max-width: 768px)", () => {
         
-        if (!container.current || !header.current || !about.current) return;
-        return MobilePage(container.current, header.current, about.current);
+        if (!container.current || !header.current || !about.current || !skills.current || !projects.current || !contact.current) return;
+        return MobilePage(container.current, header.current, about.current, skills.current, projects.current, contact.current);
       });
 
       return () => mm.revert();
@@ -49,20 +49,28 @@
 
 
           <div ref={about} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
-          absolute inset-0 opacity-0`}>
-
+          absolute inset-0 opacity-0 z-10`}>
+            <h1>About</h1>
           </div>
 
-          <div ref={skills} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about`}>
-
+          <div ref={skills} className={`${themes[currentTheme].background} w-screen h-screen flex shrink-0 about
+          absolute inset-0 opacity-0 z-20 items-center justify-center`}>
+            <div>
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Stack</h1>
+              <div></div>
+              <h1>Workflow</h1>
+              <div></div>
+            </div>
           </div>
 
-          <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about`}>
-
+          <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
+          absolute inset-0 opacity-0 z-30`}>
+            <h1>projects</h1>
           </div>
 
-          <div ref={contact} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about`}>
-
+          <div ref={contact} className={`${themes[currentTheme].background} w-screen h-screen flex shrink-0 about
+          absolute inset-0 opacity-0 z-40`}>
+            <h1 className="text-white">contact</h1>
           </div>
 
       </div>
