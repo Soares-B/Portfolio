@@ -1,4 +1,10 @@
-export default function TiltCard({ card, size, tech }: { card: React.ReactNode, size: string, tech: boolean }) {
+"use client"
+
+import type { Theme } from "@/types/themes";
+
+import { motion } from "motion/react";
+
+export default function TiltCard({ themes, currentTheme, card, size, tech, name, }: Theme & { card: React.ReactNode, size: string, tech: boolean, name: string, }) {
     function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
       const card = e.currentTarget;
       const rect = card.getBoundingClientRect();
@@ -25,12 +31,16 @@ export default function TiltCard({ card, size, tech }: { card: React.ReactNode, 
     }
 
     return (
-      <div
-        className={`tilt-card aspect-square ${size} flex items-center ${tech ? 'justify-center bg-white/66 backdrop-blur-xl border-1 border-white/33' : '' }  focus:outline-none rounded-[5px]`}
+      <motion.div
+        className={`tilt-card pt-2 pb-2 ${size} flex justify-center ${tech ? 'justify-center bg-white/5 backdrop-blur-xl border-1 border-white/33' : '' }  focus:outline-none rounded-[5px]`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        whileTap={{scale: 0.95}}
       >
-        {card}
-      </div>
+        <div className="flex items-center w-[50%]">
+          {card}
+          <p className={`w-fit ml-3 justify-center ${themes[currentTheme].highlight_text} font-montserrat font-bold `}> {name}</p>
+        </div>
+      </motion.div>
     );
   }

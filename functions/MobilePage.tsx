@@ -3,7 +3,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MobilePage(container: HTMLElement, header: HTMLElement, about: HTMLElement, skills: HTMLElement, projects: HTMLElement, contact: HTMLElement) {
+type Element = {
+    [key: string]: HTMLElement
+}
+
+export default function MobilePage({container, header, about, skills, projects, contact}: Element) {
   
     const animation = gsap.timeline({
         scrollTrigger: {

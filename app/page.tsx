@@ -4,6 +4,7 @@
   import Name from "@/components/animation/Name";
   import { write } from "@/functions/Write";
   import MobilePage from "@/functions/MobilePage";
+  import { TechCards, WorkflowCards } from "@/functions/Tech";
 
   import gsap from "gsap";
 
@@ -28,7 +29,14 @@
       mm.add("(max-width: 768px)", () => {
         
         if (!container.current || !header.current || !about.current || !skills.current || !projects.current || !contact.current) return;
-        return MobilePage(container.current, header.current, about.current, skills.current, projects.current, contact.current);
+        return MobilePage({
+      container: container.current,
+      header: header.current,
+      about: about.current,
+      skills: skills.current,
+      projects: projects.current,
+      contact: contact.current,
+    });
       });
 
       return () => mm.revert();
@@ -55,12 +63,14 @@
 
           <div ref={skills} className={`${themes[currentTheme].background} w-screen h-screen flex shrink-0 about
           absolute inset-0 opacity-0 z-20 items-center justify-center`}>
-            <div>
+
+            <div className="w-[300px] flex flex-col items-center gap-5">
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Stack</h1>
-              <div></div>
-              <h1>Workflow</h1>
-              <div></div>
+              {TechCards({themes, currentTheme})}
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Workflow</h1>
+              {WorkflowCards({themes, currentTheme})}
             </div>
+
           </div>
 
           <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
