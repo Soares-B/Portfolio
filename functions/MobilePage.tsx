@@ -27,33 +27,41 @@ export default function MobilePage({container, header, about, skills, projects, 
 
     animation.to(header, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5})
     .to(about, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     },"<")
     .to(about, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5
     })
     .to(skills, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     }, "<")
     .to(skills, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5
     })
     .to(projects, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     }, "<")
     .to(projects, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5
     })
     .to(contact, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     }, "<")
 

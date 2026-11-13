@@ -37,7 +37,7 @@ export default function TiltCard({ themes, currentTheme, card, size, tech, name,
         onMouseLeave={handleMouseLeave}
         whileTap={{scale: 0.95}}
       >
-        <div className="flex items-center w-[50%]">
+        <div className="flex items-center w-[55%]">
           {card}
           <p className={`w-fit ml-3 justify-center ${themes[currentTheme].highlight_text} font-montserrat font-bold `}> {name}</p>
         </div>
