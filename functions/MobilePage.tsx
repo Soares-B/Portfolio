@@ -3,7 +3,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MobilePage(container: HTMLElement, header: HTMLElement, about: HTMLElement, skills: HTMLElement, projects: HTMLElement, contact: HTMLElement) {
+type Element = {
+    [key: string]: HTMLElement
+}
+
+export default function MobilePage({container, header, about, skills, projects, contact}: Element) {
   
     const animation = gsap.timeline({
         scrollTrigger: {
@@ -23,33 +27,41 @@ export default function MobilePage(container: HTMLElement, header: HTMLElement, 
 
     animation.to(header, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5})
     .to(about, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     },"<")
     .to(about, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5
     })
     .to(skills, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     }, "<")
     .to(skills, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5
     })
     .to(projects, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     }, "<")
     .to(projects, {
         opacity: 0,
+        pointerEvents: "none",
         duration: 0.5
     })
     .to(contact, {
         opacity: 1,
+        pointerEvents: "auto",
         duration: 0.5
     }, "<")
 

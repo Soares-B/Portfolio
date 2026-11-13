@@ -21,6 +21,7 @@ export default function Name({
           scale: 0.95,
         }}
         transition={{ duration: 0.2 }}
+        
       >
         Bruno
       </motion.div>
