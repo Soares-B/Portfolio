@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import type { Theme } from "@/types/themes";
 
-export function write({
+export function pwrite({
   themes,
   currentTheme,
-}: Theme){
+  phrase
+}: Theme & {phrase: string}){
     const phrases = [
-      'Full-Stack Developer',
-      'Software Engineer Student',
-      'CyberSecurity Student',
-      'Tech enthusiast'
+      phrase
     ]
 
     const [text, setText] = useState('');
@@ -24,7 +22,7 @@ export function write({
           setText(phrase.substring(0, text.length + 1));
 
           if (text.length === phrase.length) {
-            setTimeout(() => setRemove(true), 1200)};
+            setTimeout(() => setRemove(false), 1200)};
         }else{
           setText(phrase.substring(0, text.length - 1))
 
@@ -33,11 +31,11 @@ export function write({
             setIndex((prev) => (prev + 1) % phrases.length);
           }
         }
-      }, remove ? 50 : 100);
+      }, remove ? 50 : 25);
       return () => clearTimeout(timeOut);
     }, [text, index, remove])
 
     return(
-      <p className={`font-typewritter ${themes[currentTheme].text} min-h-[24px] text-lg`}>{text}</p>
+      <p className={`font-montserrat font-semibold ${themes[currentTheme].background_text} ${themes[currentTheme].background_text_shadow} text-bold min-h-[24px] text-base text-justify p-5 min-h-[200px]`}>{text}</p>
     );
   }

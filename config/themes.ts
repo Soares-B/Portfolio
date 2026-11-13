@@ -8,10 +8,11 @@ export const themes = {
     
     background: "bg-Milk-6",
     counterground: 'bg-Milk-1',
-    background_text: "text-Milk-6",
+    background_text: "text-Milk-1",
+    background_text_shadow: "text-shadow-[2px_2px_1px] text-shadow-Milk-2",
     border: "border-Milk-5",
     icon: "text-Milk-4",
-    button: "bg-Milk-3",
+    button: "bg-Milk-1",
     selection: "bg-Milk-5",
 
     themeAnimation: "hover:animate-pulse-Purity",
@@ -23,9 +24,12 @@ export const themes = {
     highlight_text_shadow: '',
     selection: "",
     background: '',
+    background_text: "",
+    background_text_shadow: "",
     counterground: '',
     border: '',
     icon: '',
+    button: '',
     ThemeItem: 'p-2 font-montserrat font-semibold text-lg flex items-center outline-none cursor-pointer',
   }
 };
