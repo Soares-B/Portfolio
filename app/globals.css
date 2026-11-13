@@ -23,6 +23,46 @@
   --color-Milk-5: #2F1B1E;
   --color-Milk-6: #0D0E13;
 
+  /* Dreams */
+  --color-Dreams-1: #E4BDD2;
+  --color-Dreams-2: #5A3A63;
+  --color-Dreams-3: #851011;
+  --color-Dreams-4: #670D1A;
+  --color-Dreams-5: #4B0B0F;
+  --color-Dreams-6: #020001;
+
+  /* Vampire */
+  --color-Vampire-1: #FEF7F7;
+  --color-Vampire-2: #FDE0CE;
+  --color-Vampire-3: #E90A0A;
+  --color-Vampire-4: #A70304;
+  --color-Vampire-5: #7E0003;
+  --color-Vampire-6: #090200;
+
+  /* Genius */
+  --color-Genius-1: #FBFCFC;
+  --color-Genius-2: #57565C;
+  --color-Genius-3: #A5E3FC;
+  --color-Genius-4: #132B73;
+  --color-Genius-5: #101741;
+  --color-Genius-6: #040718;
+
+  /* Trial */
+  --color-Trial-1: #FFFFFF;
+  --color-Trial-2: #EBEBED;
+  --color-Trial-3: #F4AFCC;
+  --color-Trial-4: #E02D8C;
+  --color-Trial-5: #870045;
+  --color-Trial-6: #0C070B;
+
+  /* Silent */
+  --color-Silent-1: #FFFFFF;
+  --color-Silent-2: #FEFADB;
+  --color-Silent-3: #B8DA80;
+  --color-Silent-4: #81A568;
+  --color-Silent-5: #283325;
+  --color-Silent-6: #010203;
+
   --color-transparent: #CCCCCC44;
 
   --font-montserrat: var(--font-montserrat);

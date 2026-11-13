@@ -7,6 +7,7 @@ import { pwrite } from "@/functions/ProjectsWrite";
 import MobilePage from "@/functions/MobilePage";
 import { TechCards, WorkflowCards, ContactCards } from "@/components/Tech";
 import ProjectButton from "@/components/animation/ProjectButton";
+import Theme from "@/components/Theme Button";
 
 import gsap from "gsap";
 
@@ -17,7 +18,7 @@ type ThemeName = keyof typeof themes;
 
 export default function Home() {
 
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('Silent')
 
   const container = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLDivElement>(null);
@@ -74,7 +75,7 @@ export default function Home() {
           <div className="ml-5 mt-20 flex flex-col max-w-[250px] w-auto gap-1">
               <Name themes={themes} currentTheme={currentTheme}/>
               {hwrite({themes, currentTheme})}
-              
+              <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
           </div>
           <Image src='/Imagens/Mobile.png' width={391} height={298} alt='personality'
           className="w-full h-fit"></Image>
