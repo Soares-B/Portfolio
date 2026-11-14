@@ -4,6 +4,7 @@ import { themes } from "@/config/themes";
 import Name from "@/components/animation/Name";
 import { hwrite } from "@/functions/HeaderWrite";
 import { pwrite } from "@/functions/ProjectsWrite";
+import { awrite } from "@/functions/AboutWrite";
 import MobilePage from "@/functions/MobilePage";
 import { TechCards, WorkflowCards, ContactCards } from "@/components/Tech";
 import ProjectButton from "@/components/animation/ProjectButton";
@@ -25,7 +26,7 @@ export default function Home() {
     console.log(window.innerWidth)
   }, [])
 
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('Silent')
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
 
   const container = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLDivElement>(null);
@@ -90,9 +91,20 @@ export default function Home() {
         </div>
 
 
-        <div ref={about} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
+        <div ref={about} className={`${themes[currentTheme].counterground} w-screen h-screen flex items-end justify-center shrink-0 about
         absolute inset-0 opacity-0 z-10 pointer-events-none`}>
-          <h1>About</h1>
+          {windowWidth <= 768 ? 
+          
+          <div className="w-screen h-screen flex flex-col items-center justify-between ">
+            <div className="w-full h-[40%] flex flex-col items-center mt-5 gap-5">
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl`}>Who I am</h1>
+              {awrite({themes, currentTheme})}
+            </div>
+
+            <Image src={'/Imagens/Person Mobile.png'} width={768} height={1024} alt="me"
+            className="w-[90%] h-fit"></Image>
+          </div>
+          : ''}
         </div>
 
         <div ref={skills} className={`${themes[currentTheme].background} w-screen h-screen flex shrink-0 about

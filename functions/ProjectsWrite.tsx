@@ -5,35 +5,19 @@ export function pwrite({
   themes,
   currentTheme,
   phrase
-}: Theme & {phrase: string}){
-    const phrases = [
-      phrase
-    ]
+}: Theme & { phrase: string }) {
 
-    const [text, setText] = useState('');
-    const [index, setIndex] = useState(0);
-    const [remove, setRemove] = useState(false);
+  const [text, setText] = useState('');
 
-    useEffect(() => {
-      const phrase = phrases[index];
+  useEffect(() => {
+    if (text.length >= phrase.length) return;
 
-      const timeOut = setTimeout(() => {
-        if (!remove){
-          setText(phrase.substring(0, text.length + 1));
+    const timeout = setTimeout(() => {
+      setText(phrase.substring(0, text.length + 1));
+    }, 35);
 
-          if (text.length === phrase.length) {
-            setTimeout(() => setRemove(false), 1200)};
-        }else{
-          setText(phrase.substring(0, text.length - 1))
-
-          if (text.length === 0) {
-            setRemove(false);
-            setIndex((prev) => (prev + 1) % phrases.length);
-          }
-        }
-      }, remove ? 50 : 25);
-      return () => clearTimeout(timeOut);
-    }, [text, index, remove])
+    return () => clearTimeout(timeout);
+  }, [text, phrase]);
 
     return(
       <p className={`font-montserrat font-semibold ${themes[currentTheme].background_text} ${themes[currentTheme].background_text_shadow} text-bold min-h-[24px] text-base text-justify p-5 min-h-[200px] md:text-xl`}>{text}</p>

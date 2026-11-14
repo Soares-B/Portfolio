@@ -10,7 +10,11 @@ export const themes = {
     counterground: 'bg-Milk-1',
     background_text: "text-Milk-1",
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Milk-2",
-    border: "border-Milk-5",
+
+    div_background: 'bg-Milk-5',
+    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Milk-2',
+
+    border: "border-Milk-6",
     icon: "text-Milk-4",
     button: "bg-Milk-1",
     selection: "bg-Milk-5",
@@ -27,7 +31,11 @@ export const themes = {
     counterground: 'bg-Dreams-1',
     background_text: "text-Dreams-1",
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Dreams-2",
-    border: "border-Dreams-5",
+
+    div_background: 'bg-Dreams-5',
+    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Dreams-2',
+
+    border: "border-Dreams-6",
     icon: "text-Dreams-4",
     button: "bg-Dreams-1",
     selection: "bg-Dreams-5",
@@ -44,7 +52,11 @@ export const themes = {
     counterground: 'bg-Vampire-1',
     background_text: "text-Vampire-1",
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Vampire-2",
-    border: "border-Vampire-5",
+
+    div_background: 'bg-Vampire-5',
+    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Vampire-2',
+
+    border: "border-Vampire-6",
     icon: "text-Vampire-4",
     button: "bg-Vampire-1",
     selection: "bg-Vampire-5",
@@ -61,7 +73,11 @@ export const themes = {
     counterground: 'bg-Genius-1',
     background_text: "text-Genius-1",
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Genius-2",
-    border: "border-Genius-5",
+
+    div_background: 'bg-Genius-5',
+    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Genius-2',
+
+    border: "border-Genius-6",
     icon: "text-Genius-4",
     button: "bg-Genius-1",
     selection: "bg-Genius-5",
@@ -78,7 +94,11 @@ export const themes = {
     counterground: 'bg-Trial-1',
     background_text: "text-Trial-1",
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Trial-2",
-    border: "border-Trial-5",
+
+    div_background: 'bg-Trial-5',
+    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Trial-2',
+
+    border: "border-Trial-6",
     icon: "text-Trial-4",
     button: "bg-Trial-1",
     selection: "bg-Trial-5",
@@ -95,7 +115,11 @@ export const themes = {
     counterground: 'bg-Silent-1',
     background_text: "text-Silent-1",
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Silent-2",
-    border: "border-Silent-5",
+
+    div_background: 'bg-Silent-5',
+    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Silent-2',
+
+    border: "border-Silent-6",
     icon: "text-Silent-4",
     button: "bg-Silent-1",
     selection: "bg-Silent-5",
@@ -110,6 +134,8 @@ export const themes = {
     background_text: "",
     background_text_shadow: "",
     counterground: '',
+    div_background: '',
+    div_text_shadow: '',
     border: '',
     icon: '',
     button: '',
