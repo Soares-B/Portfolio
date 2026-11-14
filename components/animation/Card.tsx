@@ -40,9 +40,9 @@ export default function TiltCard({ themes, currentTheme, card, size, tech, name,
         onMouseLeave={handleMouseLeave}
         whileTap={{scale: 0.95}}
       >
-        <div className="flex items-center w-[55%]">
+        <div className="flex items-center w-fit h-fit">
           {card}
-          <p className={`w-fit ml-3 justify-center ${themes[currentTheme].highlight_text} font-montserrat font-bold `}> {name}</p>
+          <p className={`w-fit ml-3 justify-center ${themes[currentTheme].highlight_text} font-montserrat font-bold md:text-xl`}> {name}</p>
         </div>
       </motion.div>
       : <Link href={url} target="_blank" rel="nofollow">
@@ -52,9 +52,9 @@ export default function TiltCard({ themes, currentTheme, card, size, tech, name,
           onMouseLeave={handleMouseLeave}
           whileTap={{scale: 0.95}}
         >
-          <div className="flex items-center w-[55%]">
+          <div className="flex items-center w-fit h-fit">
             {card}
-            <p className={`w-fit ml-3 justify-center ${themes[currentTheme].highlight_text} font-montserrat font-bold `}> {name}</p>
+            <p className={`w-fit ml-3 justify-center ${themes[currentTheme].highlight_text} font-montserrat font-bold md:text-xl`}> {name}</p>
           </div>
         </motion.div>
       </Link>

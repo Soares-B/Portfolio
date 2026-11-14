@@ -13,7 +13,7 @@ export default function ProjectButton({
     
     return(
       <motion.div
-      className="w-1/2 mt-2 mb-5"
+      className="w-1/2 md:scale-125 mt-2 mb-5"
       whileTap={{scale: 0.95}}>
         <Link href={url} target="_blank" >
           <button className={`w-full p-3 font-montserrat font-semibold ${themes[currentTheme].button} ${themes[currentTheme].highlight_text}`}>Access</button>

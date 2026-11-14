@@ -113,6 +113,6 @@ export const themes = {
     border: '',
     icon: '',
     button: '',
-    ThemeItem: 'p-2 font-montserrat font-semibold text-lg flex items-center outline-none cursor-pointer',
+    ThemeItem: 'p-2 font-montserrat font-semibold text-lg md:text-2xl flex items-center outline-none cursor-pointer',
   }
 };

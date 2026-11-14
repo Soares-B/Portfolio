@@ -12,13 +12,13 @@ export default function Theme({
   return (
     <DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<button className={`max-w-[200px] h-12 mt-3 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} font-monteserrat font-bold text-2xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer`} aria-label="Customise options">
+				<button className={`max-w-[200px] md:max-w-[300px] h-12 md:h-16 mt-3 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} font-monteserrat font-bold text-2xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer`} aria-label="Customise options">
 					Themes
 				</button>
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Portal>
-				<DropdownMenu.Content className={`${themes[currentTheme].button} w-[200px] rounded-[5px] flex justify-center`} sideOffset={5}>
+				<DropdownMenu.Content className={`${themes[currentTheme].button} w-[200px] md:w-[300px] rounded-[5px] flex justify-center`} sideOffset={5}>
 					<DropdownMenu.RadioGroup value={currentTheme} onValueChange={setCurrentTheme}>
 						<DropdownMenu.RadioItem
 							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}

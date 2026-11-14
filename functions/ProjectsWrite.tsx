@@ -36,6 +36,6 @@ export function pwrite({
     }, [text, index, remove])
 
     return(
-      <p className={`font-montserrat font-semibold ${themes[currentTheme].background_text} ${themes[currentTheme].background_text_shadow} text-bold min-h-[24px] text-base text-justify p-5 min-h-[200px]`}>{text}</p>
+      <p className={`font-montserrat font-semibold ${themes[currentTheme].background_text} ${themes[currentTheme].background_text_shadow} text-bold min-h-[24px] text-base text-justify p-5 min-h-[200px] md:text-xl`}>{text}</p>
     );
   }
