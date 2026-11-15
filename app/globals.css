@@ -5,15 +5,6 @@
   --foreground: #171717;
 }
 
-.Milk {
-  --Milk-1: #F2E9E4;
-  --Milk-2: #499792;
-  --Milk-3: #AC3231;
-  --Milk-4: #632630;
-  --Milk-5: #2F1B1E;
-  --Milk-6: #0D0E13;
-}
-
 @theme inline {
   /* Milk */
   --color-Milk-1: #F2E9E4;

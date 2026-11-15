@@ -18,6 +18,10 @@ import gsap from "gsap";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
+import { DitheringBG, WarpBG, GhostBG, GrainBG, SimplexBG, PerlinBG } from "@/components/style/Background";
+
+
+
 type ThemeName = keyof typeof themes;
 
 export default function Home() {
@@ -26,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
-    console.log(window.innerWidth)
+    console.log(window.innerHeight)
   }, [])
 
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
@@ -109,58 +113,94 @@ export default function Home() {
       className={`w-full h-screen flex overflow-hidden ${themes[currentTheme].background}
       relative ${themes[currentTheme].selection_background} ${themes[currentTheme].selection_text}`}
     >
-        <div ref={header} className={`${themes[currentTheme].background} w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}>
-          <div className="ml-5 mt-20 lg:mt-10 flex flex-col max-w-[250px] md:max-w-[300px] w-auto gap-1">
-              <Name themes={themes} currentTheme={currentTheme}/>
-              {hwrite({themes, currentTheme})}
-              <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
+        <div ref={header} className={`w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}>
+          {/* ------------------------ Background ------------------------ */}
+          {currentTheme === 'Milk' ? <DitheringBG primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> :
+           currentTheme === 'Dreams' ? <WarpBG primaryColor={'#841012'} secondaryColor={'#020001'}/> : 
+           currentTheme === 'Vampire' ? <GhostBG primaryColor={'#E90A0A'} secondaryColor={'#090200'}/> : 
+           currentTheme === 'Genius' ? <GrainBG primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#040718'}/> : 
+           currentTheme === 'Trial' ? <SimplexBG primaryColor={'#FFFFFF'} secondaryColor={'#EBEBED'} thirdColor={'#F4AFCC'} fourthColor={'#E02D8C'} fifthColor={'#870045'} sixthColor={'#0C070B'}/> : 
+           currentTheme === 'Silent' ? <PerlinBG primaryColor={'#B8DA80'} secondaryColor={'#010203'}/> : ''}
+          {/* ------------------------ Background ------------------------ */}
+
+          <div className="z-10 w-screen h-screen flex flex-col justify-between shrink-0">
+            <div className="ml-5 mt-20 lg:mt-10 flex flex-col w-[80%] 2xl:w-[30%] h-[30%] lg:h-[40%] xl:h-1/2 gap-1">
+                <Name themes={themes} currentTheme={currentTheme}/>
+                {hwrite({themes, currentTheme})}
+                <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
+                
+            </div>
+            {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
+            className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
+            className="w-3/5 h-fit absolute right-0 bottom-0 select-none"></Image>}
           </div>
-          {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
-          className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
-          className="w-3/5 h-fit absolute right-0 bottom-0 select-none"></Image>}
         </div>
 
 
-        <div ref={about} className={`${themes[currentTheme].counterground} w-screen h-screen flex items-end justify-center shrink-0 about
-        absolute inset-0 opacity-0 z-10 pointer-events-none`}>
+        <div ref={about} className={` w-screen h-screen flex items-end justify-center shrink-0 about
+        absolute inset-0 opacity-0 pointer-events-none`}>
+          {/* ------------------------ Background ------------------------ */}
+          {currentTheme === 'Milk' ? <DitheringBG primaryColor={'#499792'} secondaryColor={'#F2E9E4'}/> :
+           currentTheme === 'Dreams' ? <WarpBG primaryColor={'#5A3A63'} secondaryColor={'#E4BDD2'}/> : 
+           currentTheme === 'Vampire' ? <GhostBG primaryColor={'#FDE0CE'} secondaryColor={'#FEF7F7'}/> : 
+           currentTheme === 'Genius' ? <GrainBG primaryColor={'#101741'} secondaryColor={'#57565C'} thirdColor={'#FBFCFC'}/> : 
+           currentTheme === 'Trial' ? <SimplexBG primaryColor={'#0C070B'} secondaryColor={'#870045'} thirdColor={'#E02D8C'} fourthColor={'#F4AFCC'} fifthColor={'#EBEBED'} sixthColor={'#FFFFFF'}/> : 
+           currentTheme === 'Silent' ? <PerlinBG primaryColor={'#283325'} secondaryColor={'#FFFFFF'}/> : ''}
+          {/* ------------------------ Background ------------------------ */}
+
           {windowWidth <= 768 ? 
           
-          <div className="w-screen h-screen flex flex-col items-center justify-between ">
-            <div className="w-full h-[40%] flex flex-col items-center mt-5 gap-5">
-              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl`}>Who I am</h1>
-              {awrite({themes, currentTheme})}
+          <div className="z-20">
+            <div className="w-screen h-screen flex flex-col items-center justify-between ">
+              <div className="w-full h-[40%] flex flex-col items-center mt-5 gap-5">
+                <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl`}>Who I am</h1>
+                {awrite({themes, currentTheme})}
+            
+              </div>
+              <Image src={'/Imagens/Person Mobile.png'} width={768} height={1024} alt="me"
+              className="w-[90%] sm:w-[50%] md:w-[55%] h-fit select-none"></Image>
             </div>
-
-            <Image src={'/Imagens/Person Mobile.png'} width={768} height={1024} alt="me"
-            className="w-[90%] sm:w-[50%] md:w-[55%] h-fit select-none"></Image>
           </div>
-          : <div className="w-screen h-screen flex items-end">
-            <div className="w-full h-full flex flex-col items-center justify-start gap-5">
-              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
-              {awrite({themes, currentTheme})}
-            </div>
 
-            <Person  themes={themes} currentTheme={currentTheme}/>
+          : 
+          <div className="z-20">
+            <div className="w-screen h-screen flex items-end">
+              <div className="w-full h-full flex flex-col items-center justify-start gap-5">
+                <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
+                {awrite({themes, currentTheme})}
+              </div>
+              <Person  themes={themes} currentTheme={currentTheme}/>
+            </div>
           </div>}
         </div>
 
-        <div ref={skills} className={`${themes[currentTheme].background} w-screen h-screen flex shrink-0 about
-        absolute inset-0 opacity-0 z-20 items-center justify-center pointer-events-none`}>
+        <div ref={skills} className={` w-screen h-screen flex shrink-0 about
+        absolute inset-0 opacity-0 items-center justify-center pointer-events-none`}>
+          {/* ------------------------ Background ------------------------ */}
+          {currentTheme === 'Milk' ? <DitheringBG primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> :
+           currentTheme === 'Dreams' ? <WarpBG primaryColor={'#841012'} secondaryColor={'#020001'}/> : 
+           currentTheme === 'Vampire' ? <GhostBG primaryColor={'#E90A0A'} secondaryColor={'#090200'}/> : 
+           currentTheme === 'Genius' ? <GrainBG primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#040718'}/> : 
+           currentTheme === 'Trial' ? <SimplexBG primaryColor={'#FFFFFF'} secondaryColor={'#EBEBED'} thirdColor={'#F4AFCC'} fourthColor={'#E02D8C'} fifthColor={'#870045'} sixthColor={'#0C070B'}/> : 
+           currentTheme === 'Silent' ? <PerlinBG primaryColor={'#B8DA80'} secondaryColor={'#010203'}/> : ''}
+          {/* ------------------------ Background ------------------------ */}
 
-          <div className="w-[300px] md:w-[400px] lg:w-[75%] flex flex-col items-center gap-2">
-            <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Stack</h1>
-            {TechCards({themes, currentTheme})}
-            <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3 lg:mt-5`}>Workflow</h1>
-            {WorkflowCards({themes, currentTheme})}
+          <div className="z-30 w-screen h-screen flex shrink-0 items-center justify-center">
+            <div className="w-[300px] md:w-[400px] lg:w-[75%] flex flex-col items-center gap-2">
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Stack</h1>
+              {TechCards({themes, currentTheme})}
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3 lg:mt-5`}>Workflow</h1>
+              {WorkflowCards({themes, currentTheme})}
+            </div>
           </div>
 
         </div>
 
         <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
-        absolute inset-0 opacity-0 z-30 pointer-events-none`}>
+        absolute inset-0 opacity-0 z-40 pointer-events-none`}>
           <div className={`relative w-full`} ref={PRcontainer}>
 
-            <div className="h-full w-full absolute inset-0 z-31 pointer-events-none flex items-end justify-center" ref={PRproject_1}>
+            <div className="h-full w-full absolute inset-0 z-41 pointer-events-none flex items-end justify-center" ref={PRproject_1}>
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
               <Image src={'/Imagens/Pokedex.png'} width={1920} height={1080} alt="Pokedex Web Application"
               className="absolute inset-0 w-full h-full object-cover z-0 select-none">
@@ -174,7 +214,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="h-full w-full absolute inset-0 z-32 opacity-0 pointer-events-none flex items-end" ref={PRproject_2}>
+            <div className="h-full w-full absolute inset-0 z-42 opacity-0 pointer-events-none flex items-end" ref={PRproject_2}>
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
               <Image src={'/Imagens/Larper.png'} width={1920} height={1080} alt="Larper"
               className="absolute inset-0 w-full h-full object-cover z-0 object-[7%_50%] select-none">
@@ -188,7 +228,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="h-full w-full absolute inset-0 z-33 opacity-0 pointer-events-none flex items-end" ref={PRproject_3}>
+            <div className="h-full w-full absolute inset-0 z-43 opacity-0 pointer-events-none flex items-end" ref={PRproject_3}>
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
               <Image src={'/Imagens/Livia Lace.png'} width={1920} height={1080} alt="Livia Lace"
               className="absolute inset-0 w-full h-full object-cover z-0 object-[5%_50%] select-none">
@@ -204,16 +244,26 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={contact} className={`${themes[currentTheme].background} w-screen h-screen flex flex-col items-center justify-between shrink-0 about
-        absolute inset-0 opacity-0 z-40 pointer-events-none`}>
-          <div className="w-[300px] md:w-[400px] flex flex-col gap-5 items-center mt-30">
-            <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Find me on</h1>
-            <ContactCards themes={themes} currentTheme={currentTheme}/>
-          </div>
+        <div ref={contact} className={` w-screen h-screen flex flex-col items-center justify-between shrink-0 about
+        absolute inset-0 opacity-0  pointer-events-none`}>
+          {/* ------------------------ Background ------------------------ */}
+          {currentTheme === 'Milk' ? <DitheringBG primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> :
+           currentTheme === 'Dreams' ? <WarpBG primaryColor={'#841012'} secondaryColor={'#020001'}/> : 
+           currentTheme === 'Vampire' ? <GhostBG primaryColor={'#E90A0A'} secondaryColor={'#090200'}/> : 
+           currentTheme === 'Genius' ? <GrainBG primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#040718'}/> : 
+           currentTheme === 'Trial' ? <SimplexBG primaryColor={'#FFFFFF'} secondaryColor={'#EBEBED'} thirdColor={'#F4AFCC'} fourthColor={'#E02D8C'} fifthColor={'#870045'} sixthColor={'#0C070B'}/> : 
+           currentTheme === 'Silent' ? <PerlinBG primaryColor={'#B8DA80'} secondaryColor={'#010203'}/> : ''}
+          {/* ------------------------ Background ------------------------ */}
 
-          {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
-          className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
-          className="w-3/5 h-fit xl:w-2/5 select-none"></Image>}
+          <div className="z-50 w-screen h-screen flex flex-col items-center justify-between shrink-0">
+            <div className="w-[300px] md:w-[400px] flex flex-col gap-5 items-center mt-30">
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Find me on</h1>
+              <ContactCards themes={themes} currentTheme={currentTheme}/>
+            </div>
+            {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
+            className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
+            className="w-3/5 h-fit xl:w-2/5 select-none"></Image>}
+          </div>
         </div>
 
     </div>

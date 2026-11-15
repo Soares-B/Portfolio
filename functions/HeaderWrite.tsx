@@ -38,6 +38,6 @@ export function hwrite({
     }, [text, index, remove])
 
     return(
-      <p className={`font-typewritter ${themes[currentTheme].text} h-[24px] text-lg md:text-2xl`}>{text}</p>
+      <p className={`w-full h-fit min-h-8 font-typewritter ${themes[currentTheme].text} h-[24px] text-lg md:text-2xl xl:text-3xl xl:min-h-9`}>{text}</p>
     );
   }
