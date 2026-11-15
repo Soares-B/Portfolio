@@ -17,7 +17,9 @@ export const themes = {
     border: "border-Milk-6",
     icon: "text-Milk-4",
     button: "bg-Milk-1",
-    selection: "bg-Milk-5",
+    selection_background: "selection:bg-Milk-3",
+    selection_text: "selection:text-Milk-2",
+    censor: "Person Desktop Censor Pixels.png",
   },
 
   Dreams: {
@@ -38,7 +40,9 @@ export const themes = {
     border: "border-Dreams-6",
     icon: "text-Dreams-4",
     button: "bg-Dreams-1",
-    selection: "bg-Dreams-5",
+    selection_background: "selection:bg-Dreams-3",
+    selection_text: "selection:text-Dreams-1",
+    censor: "Person Desktop Censor Blur.png",
   },
 
   Vampire: {
@@ -59,7 +63,9 @@ export const themes = {
     border: "border-Vampire-6",
     icon: "text-Vampire-4",
     button: "bg-Vampire-1",
-    selection: "bg-Vampire-5",
+    selection_background: "selection:bg-Vampire-3",
+    selection_text: "selection:text-Vampire-2",
+    censor: "Person Desktop Censor Glitch.png",
   },
 
   Genius: {
@@ -80,7 +86,9 @@ export const themes = {
     border: "border-Genius-6",
     icon: "text-Genius-4",
     button: "bg-Genius-1",
-    selection: "bg-Genius-5",
+    selection_background: "selection:bg-Genius-4",
+    selection_text: "selection:text-Genius-1",
+    censor: "Person Desktop Censor X.png",
   },
 
   Trial: {
@@ -101,7 +109,9 @@ export const themes = {
     border: "border-Trial-6",
     icon: "text-Trial-4",
     button: "bg-Trial-1",
-    selection: "bg-Trial-5",
+    selection_background: "selection:bg-Trial-3",
+    selection_text: "selection:text-Trial-2",
+    censor: "Person Desktop Censor Missing.png",
   },
 
   Silent: {
@@ -122,7 +132,9 @@ export const themes = {
     border: "border-Silent-6",
     icon: "text-Silent-4",
     button: "bg-Silent-1",
-    selection: "bg-Silent-5",
+    selection_background: "selection:bg-Silent-3",
+    selection_text: "selection:text-Silent-2",
+    censor: "Person Desktop Censor Comic.png",
   },
 
   Config: {
@@ -139,6 +151,8 @@ export const themes = {
     border: '',
     icon: '',
     button: '',
+    selection_background: "",
+    selection_text: '',
     ThemeItem: 'p-2 font-montserrat font-semibold text-lg md:text-2xl flex items-center outline-none cursor-pointer',
   }
 };

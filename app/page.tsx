@@ -1,14 +1,17 @@
 "use client"
 
 import { themes } from "@/config/themes";
-import Name from "@/components/animation/Name";
+import MobilePage from "@/functions/MobilePage";
+
 import { hwrite } from "@/functions/HeaderWrite";
 import { pwrite } from "@/functions/ProjectsWrite";
 import { awrite } from "@/functions/AboutWrite";
-import MobilePage from "@/functions/MobilePage";
+
+import Name from "@/components/animation/Name";
 import { TechCards, WorkflowCards, ContactCards } from "@/components/Tech";
 import ProjectButton from "@/components/animation/ProjectButton";
 import Theme from "@/components/Theme Button";
+import Person from "@/components/Person";
 
 import gsap from "gsap";
 
@@ -70,6 +73,33 @@ export default function Home() {
   });
     });
 
+  mm.add("(min-width: 769px)", () => {
+      
+      if (!container.current
+        || !header.current
+        || !about.current
+        || !skills.current
+        || !projects.current
+        || !contact.current
+        || !PRcontainer.current
+        || !PRproject_1.current
+        || !PRproject_2.current
+        || !PRproject_3.current) return;
+
+      return MobilePage({
+    container: container.current,
+    header: header.current,
+    about: about.current,
+    skills: skills.current,
+    projects: projects.current,
+    contact: contact.current,
+    PRcontainer: PRcontainer.current,
+    PRproject_1: PRproject_1.current,
+    PRproject_2: PRproject_2.current,
+    PRproject_3: PRproject_3.current,
+  });
+    });
+
     return () => mm.revert();
   }, []);
 
@@ -77,7 +107,7 @@ export default function Home() {
     <div
       ref={container}
       className={`w-full h-screen flex overflow-hidden ${themes[currentTheme].background}
-      relative`}
+      relative ${themes[currentTheme].selection_background} ${themes[currentTheme].selection_text}`}
     >
         <div ref={header} className={`${themes[currentTheme].background} w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}>
           <div className="ml-5 mt-20 lg:mt-10 flex flex-col max-w-[250px] md:max-w-[300px] w-auto gap-1">
@@ -86,8 +116,8 @@ export default function Home() {
               <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
           </div>
           {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
-          className="w-full h-fit"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
-          className="w-3/5 h-fit absolute right-0 bottom-0"></Image>}
+          className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
+          className="w-3/5 h-fit absolute right-0 bottom-0 select-none"></Image>}
         </div>
 
 
@@ -102,18 +132,25 @@ export default function Home() {
             </div>
 
             <Image src={'/Imagens/Person Mobile.png'} width={768} height={1024} alt="me"
-            className="w-[90%] h-fit"></Image>
+            className="w-[90%] sm:w-[50%] md:w-[55%] h-fit select-none"></Image>
           </div>
-          : ''}
+          : <div className="w-screen h-screen flex items-end">
+            <div className="w-full h-full flex flex-col items-center justify-start gap-5">
+              <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
+              {awrite({themes, currentTheme})}
+            </div>
+
+            <Person  themes={themes} currentTheme={currentTheme}/>
+          </div>}
         </div>
 
         <div ref={skills} className={`${themes[currentTheme].background} w-screen h-screen flex shrink-0 about
         absolute inset-0 opacity-0 z-20 items-center justify-center pointer-events-none`}>
 
-          <div className="w-[300px] md:w-[400px] flex flex-col items-center gap-2">
+          <div className="w-[300px] md:w-[400px] lg:w-[75%] flex flex-col items-center gap-2">
             <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Stack</h1>
             {TechCards({themes, currentTheme})}
-            <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3`}>Workflow</h1>
+            <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3 lg:mt-5`}>Workflow</h1>
             {WorkflowCards({themes, currentTheme})}
           </div>
 
@@ -126,7 +163,7 @@ export default function Home() {
             <div className="h-full w-full absolute inset-0 z-31 pointer-events-none flex items-end justify-center" ref={PRproject_1}>
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
               <Image src={'/Imagens/Pokedex.png'} width={1920} height={1080} alt="Pokedex Web Application"
-              className="absolute inset-0 w-full h-full object-cover z-0">
+              className="absolute inset-0 w-full h-full object-cover z-0 select-none">
 
               </Image>
               <div className="absolute inset-0 bg-black/66 backdrop-blur-[2px]" />
@@ -140,7 +177,7 @@ export default function Home() {
             <div className="h-full w-full absolute inset-0 z-32 opacity-0 pointer-events-none flex items-end" ref={PRproject_2}>
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
               <Image src={'/Imagens/Larper.png'} width={1920} height={1080} alt="Larper"
-              className="absolute inset-0 w-full h-full object-cover z-0 object-[7%_50%]">
+              className="absolute inset-0 w-full h-full object-cover z-0 object-[7%_50%] select-none">
 
               </Image>
               <div className="absolute inset-0 bg-black/66 backdrop-blur-[2px]" />
@@ -154,7 +191,7 @@ export default function Home() {
             <div className="h-full w-full absolute inset-0 z-33 opacity-0 pointer-events-none flex items-end" ref={PRproject_3}>
               <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
               <Image src={'/Imagens/Livia Lace.png'} width={1920} height={1080} alt="Livia Lace"
-              className="absolute inset-0 w-full h-full object-cover z-0 object-[5%_50%]">
+              className="absolute inset-0 w-full h-full object-cover z-0 object-[5%_50%] select-none">
 
               </Image>
               <div className="absolute inset-0 bg-black/66 backdrop-blur-[2px]" />
@@ -174,8 +211,9 @@ export default function Home() {
             <ContactCards themes={themes} currentTheme={currentTheme}/>
           </div>
 
-          <Image src='/Imagens/Mobile.png' width={391} height={298} alt='personality'
-          className="w-full h-fit"></Image>
+          {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
+          className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
+          className="w-3/5 h-fit xl:w-2/5 select-none"></Image>}
         </div>
 
     </div>
