@@ -35,7 +35,7 @@ export default function TiltCard({ themes, currentTheme, card, size, tech, name,
     return (
       <>
       {tech ? <motion.div
-        className={`tilt-card pt-2 pb-2 ${size} flex justify-center justify-center bg-white/5 backdrop-blur-xl border-1 border-white/33 focus:outline-none rounded-[5px]`}
+        className={`tilt-card pt-2 pb-2 ${size} flex justify-center justify-center bg-white/5 backdrop-blur-xl border-1 border-white/33 focus:outline-none rounded-[5px] hover:cursor-pointer`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         whileTap={{scale: 0.95}}
@@ -47,7 +47,7 @@ export default function TiltCard({ themes, currentTheme, card, size, tech, name,
       </motion.div>
       : <Link href={url} target="_blank" rel="nofollow">
         <motion.div
-          className={`tilt-card pt-2 pb-2 ${size} flex justify-center justify-center bg-white/5 backdrop-blur-xl border-1 border-white/33 focus:outline-none rounded-[5px]`}
+          className={`tilt-card pt-2 pb-2 ${size} flex justify-center justify-center bg-white/5 backdrop-blur-xl border-1 border-white/33 focus:outline-none rounded-[5px] hover:cursor-pointer`}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           whileTap={{scale: 0.95}}
