@@ -1,9 +1,13 @@
+
+
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Preloader from "@/components/Preload";
+
+import { LoadingProvider } from "@/config/context";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -39,9 +43,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={cn("h-full", "antialiased", "font-sans", "[scrollbar-width:none]", "[&::-webkit-scrollbar]:hidden", geist.variable)}
     >
-      <body className={`${Montserrat.variable} ${TypeWritter.variable}`}>
-        <Preloader />
-        {children}
+      <body className={`${Montserrat.variable} ${TypeWritter.variable} bg-black`}>
+        <LoadingProvider>
+          <Preloader />
+          {children}
+        </LoadingProvider>
         </body>
     </html>
   );
