@@ -1,7 +1,7 @@
 export const themes = {
   Milk: {
-    text: "text-Milk-4",
-    text_shadow: "text-shadow-[2px_2px_1px] text-shadow-Milk-5",
+    text: "text-Milk-2",
+    text_shadow: "text-shadow-[2px_2px_1px] text-shadow-Milk-3",
     
     highlight_text: "text-Milk-3",
     highlight_text_shadow: "text-shadow-[2px_2px_1px] text-shadow-Milk-4",
@@ -17,8 +17,8 @@ export const themes = {
     border: "border-Milk-6",
     icon: "text-Milk-4",
     button: "bg-Milk-1",
-    selection_background: "selection:bg-Milk-3",
-    selection_text: "selection:text-Milk-2",
+    selection_background: "selection:bg-Milk-2",
+    selection_text: "selection:text-Milk-1",
     censor: "Person Desktop Censor Pixels.png",
   },
 

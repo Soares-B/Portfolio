@@ -16,7 +16,7 @@ export default function ProjectButton({
       className="w-1/2 md:scale-125 w-2/5 mt-2 mb-5"
       whileTap={{scale: 0.95}}>
         <Link href={url} target="_blank" >
-          <button className={`w-full p-3 font-montserrat font-semibold ${themes[currentTheme].button} ${themes[currentTheme].highlight_text} select-none`}>Access</button>
+          <button className={`w-full p-3 font-montserrat font-semibold ${themes[currentTheme].button} ${themes[currentTheme].text} select-none`}>Access</button>
         </Link>
       </motion.div>
     );
