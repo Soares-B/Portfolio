@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Preloader from "@/components/Preload";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -36,9 +37,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", "font-sans", "[scrollbar-width:none]", "[&::-webkit-scrollbar]:hidden", geist.variable)}
     >
-      <body className={`${Montserrat.variable} ${TypeWritter.variable}`}>{children}</body>
+      <body className={`${Montserrat.variable} ${TypeWritter.variable}`}>
+        <Preloader />
+        {children}
+        </body>
     </html>
   );
 }
