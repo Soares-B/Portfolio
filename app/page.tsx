@@ -14,6 +14,7 @@ import ProjectButton from "@/components/animation/ProjectButton";
 import Theme from "@/components/Theme Button";
 import Person from "@/components/Person";
 import { Background, Counterground } from "@/functions/Background";
+import Sticker from "@/components/Sticker";
 
 import gsap from "gsap";
 
@@ -176,6 +177,24 @@ export default function Home() {
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3 lg:mt-5`}>Workflow</h1>
                 {WorkflowCards({themes, currentTheme})}
               </div>
+            </div>
+            <div className="absolute inset-0 w-full h-screen pointer-events-none">
+              <Sticker
+                  logo="/Imagens/Stack/Typescript.png"
+                  x={-800}
+                  y={-50}
+              />
+
+              <Sticker
+                  logo="/Imagens/Stack/Javascript.png"
+                  x={-600}
+                  y={-50}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/React.png"
+                  x={-400}
+                  y={-50}
+              />
             </div>
           </div>
           <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
