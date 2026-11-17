@@ -181,18 +181,54 @@ export default function Home() {
             <div className="absolute inset-0 w-full h-screen pointer-events-none">
               <Sticker
                   logo="/Imagens/Stack/Typescript.png"
-                  x={-800}
-                  y={-50}
+                  x={-795}
+                  y={250}
               />
 
               <Sticker
                   logo="/Imagens/Stack/Javascript.png"
-                  x={-600}
-                  y={-50}
+                  x={-663}
+                  y={-589}
               />
               <Sticker
                   logo="/Imagens/Stack/React.png"
-                  x={-400}
+                  x={-487}
+                  y={195}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/Next.png"
+                  x={-156}
+                  y={-144}
+              />
+              
+              <Sticker
+                  logo="/Imagens/Stack/Tailwind.png"
+                  x={365}
+                  y={-78}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/PostgreSQL.png"
+                  x={449}
+                  y={147}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/Prisma.png"
+                  x={695}
+                  y={10}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/Git.png"
+                  x={853}
+                  y={-5}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/Github.png"
+                  x={978}
+                  y={-75}
+              />
+              <Sticker
+                  logo="/Imagens/Stack/Vscode.png"
+                  x={1200}
                   y={-50}
               />
             </div>
@@ -202,7 +238,7 @@ export default function Home() {
             <div className={`relative w-full`} ref={PRcontainer}>
               <div className="h-full w-full absolute inset-0 z-41 pointer-events-none flex items-end justify-center" ref={PRproject_1}>
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
-                <Image src={'/Imagens/Pokedex.png'} width={1920} height={1080} alt="Pokedex Web Application"
+                <Image src={'/Imagens/Projects/Pokedex.png'} width={1920} height={1080} alt="Pokedex Web Application"
                 className="absolute inset-0 w-full h-full object-cover z-0 select-none">
                 </Image>
                 <div className="absolute inset-0 bg-black/66 backdrop-blur-[2px]" />
@@ -214,7 +250,7 @@ export default function Home() {
               </div>
               <div className="h-full w-full absolute inset-0 z-42 opacity-0 pointer-events-none flex items-end" ref={PRproject_2}>
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
-                <Image src={'/Imagens/Larper.png'} width={1920} height={1080} alt="Larper"
+                <Image src={'/Imagens/Projects/Larper.png'} width={1920} height={1080} alt="Larper"
                 className="absolute inset-0 w-full h-full object-cover z-0 object-[7%_50%] select-none">
                 </Image>
                 <div className="absolute inset-0 bg-black/66 backdrop-blur-[2px]" />
@@ -226,7 +262,7 @@ export default function Home() {
               </div>
               <div className="h-full w-full absolute inset-0 z-43 opacity-0 pointer-events-none flex items-end" ref={PRproject_3}>
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
-                <Image src={'/Imagens/Livia Lace.png'} width={1920} height={1080} alt="Livia Lace"
+                <Image src={'/Imagens/Projects/Livia Lace.png'} width={1920} height={1080} alt="Livia Lace"
                 className="absolute inset-0 w-full h-full object-cover z-0 object-[5%_50%] select-none">
                 </Image>
                 <div className="absolute inset-0 bg-black/66 backdrop-blur-[2px]" />
