@@ -8,13 +8,15 @@ import { hwrite } from "@/functions/HeaderWrite";
 import { pwrite } from "@/functions/ProjectsWrite";
 import { awrite } from "@/functions/AboutWrite";
 
-import Name from "@/components/animation/Name";
-import { TechCards, WorkflowCards, ContactCards } from "@/components/Tech";
-import ProjectButton from "@/components/animation/ProjectButton";
-import Theme from "@/components/Theme Button";
-import Person from "@/components/Person";
 import { Background, Counterground } from "@/functions/Background";
+import Name from "@/components/animation/Name";
+import Spark from "@/components/animation/Spark";
+import { Theme, Playground } from "@/components/Header buttons";
+import AboutCard from "@/components/animation/AboutCard";
+import Person from "@/components/Person";
+import { TechCards, WorkflowCards, ContactCards } from "@/components/Tech";
 import Sticker from "@/components/Sticker";
+import ProjectButton from "@/components/animation/ProjectButton";
 
 import gsap from "gsap";
 
@@ -34,6 +36,7 @@ export default function Home() {
   }, [])
 
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
+  const [playground, setPlayground] = useState(false)
 
   const container = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLDivElement>(null);
@@ -110,6 +113,8 @@ export default function Home() {
   }, [isLoaded]);
 
   return (
+    <Spark themes={themes} currentTheme={currentTheme} playground={playground} element={
+    
     <div
       ref={container}
       className={`w-full min-h-screen relative overflow-hidden
@@ -121,15 +126,29 @@ export default function Home() {
     isLoaded ? 'animate-intro' : 'opacity-0'
   }`}>
           <div ref={header} className={`w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}>
-            {/* ------------------------ Background ------------------------ */}
+            {/* ------------------------ Background ------------------------ */}            
             <Background currentTheme={currentTheme} display={windowWidth}/>
             {/* ------------------------ Background ------------------------ */}
+
             <div className="z-10 w-screen h-screen flex flex-col justify-between shrink-0">
-              <div className="ml-5 mt-20 lg:mt-10 flex flex-col w-[80%] 2xl:w-[30%] h-[30%] lg:h-[40%] xl:h-1/2 gap-1">
-                  <Name themes={themes} currentTheme={currentTheme}/>
+              <div className="w-full sm:w-4/5 xl:w-2/5 h-3/5 sm:h-full lg:h-1/2 xl:h-3/5 2xl:h-1/2 sm:-mb-5 lg:mb-0 p-3 flex flex-col gap-1">
+                  <Name themes={themes} currentTheme={currentTheme} windowWidth={windowWidth}/>
                   {hwrite({themes, currentTheme})}
-                  <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
-          
+                  <div className={`flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full lg:w-3/5 h-2/5 sm:h-1/2 lg:h-1/2 mt-3 gap-5 lg:gap-3`}>
+                    
+                    {windowWidth < 640 || (windowWidth > 768 && windowWidth < 1280) ? <>
+                      <Playground themes={themes} currentTheme={currentTheme} playground={playground} setPlayground={setPlayground} windowWidth={windowWidth}/> 
+                      <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth}/>
+                    </> 
+                    : 
+                    <>
+                      <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth}/>
+                      <Playground themes={themes} currentTheme={currentTheme} playground={playground} setPlayground={setPlayground} windowWidth={windowWidth}/> 
+                    </>}
+                    
+                    
+                  </div>
+
               </div>
               {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
               className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
@@ -139,8 +158,10 @@ export default function Home() {
           <div ref={about} className={` w-screen h-screen flex items-end justify-center shrink-0 about
           absolute inset-0 opacity-0 pointer-events-none`}>
             {/* ------------------------ Background ------------------------ */}
+
             <Counterground currentTheme={currentTheme} display={windowWidth}/>
             {/* ------------------------ Background ------------------------ */}
+
             {windowWidth <= 768 ?
           
             <div className="z-20">
@@ -159,7 +180,7 @@ export default function Home() {
               <div className="w-screen h-screen flex items-end">
                 <div className="w-full h-full flex flex-col items-center justify-start gap-5">
                   <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
-                  {awrite({themes, currentTheme})}
+                  <AboutCard card={awrite({themes, currentTheme})}/>
                 </div>
                 <Person  themes={themes} currentTheme={currentTheme}/>
               </div>
@@ -167,9 +188,10 @@ export default function Home() {
           </div>
           <div ref={skills} className={` w-screen h-screen flex shrink-0 about
           absolute inset-0 opacity-0 items-center justify-center pointer-events-none`}>
-            {/* ------------------------ Background ------------------------ */}
+            {/* ------------------------ Background ------------------------ */}            
             <Background currentTheme={currentTheme} display={windowWidth}/>
             {/* ------------------------ Background ------------------------ */}
+
             <div className="z-30 w-screen h-screen flex shrink-0 items-center justify-center">
               <div className="w-[300px] md:w-[400px] lg:w-[75%] flex flex-col items-center gap-2">
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Stack</h1>
@@ -178,60 +200,63 @@ export default function Home() {
                 {WorkflowCards({themes, currentTheme})}
               </div>
             </div>
-            <div className="absolute inset-0 w-full h-screen pointer-events-none">
+            {playground ?
+              <div className="absolute inset-0 w-full h-screen pointer-events-none">
               <Sticker
                   logo="/Imagens/Stack/Typescript.png"
-                  x={-795}
-                  y={250}
+                  x={-750}
+                  y={100}
               />
 
               <Sticker
                   logo="/Imagens/Stack/Javascript.png"
-                  x={-663}
-                  y={-589}
+                  x={-725}
+                  y={-150}
               />
               <Sticker
                   logo="/Imagens/Stack/React.png"
                   x={-487}
-                  y={195}
+                  y={300}
               />
               <Sticker
                   logo="/Imagens/Stack/Next.png"
-                  x={-156}
-                  y={-144}
+                  x={-306}
+                  y={-304}
               />
               
               <Sticker
                   logo="/Imagens/Stack/Tailwind.png"
-                  x={365}
-                  y={-78}
+                  x={222}
+                  y={-358}
               />
               <Sticker
                   logo="/Imagens/Stack/PostgreSQL.png"
-                  x={449}
-                  y={147}
+                  x={308}
+                  y={350}
               />
               <Sticker
                   logo="/Imagens/Stack/Prisma.png"
-                  x={695}
-                  y={10}
+                  x={550}
+                  y={-300}
               />
               <Sticker
                   logo="/Imagens/Stack/Git.png"
-                  x={853}
-                  y={-5}
+                  x={547}
+                  y={315}
               />
               <Sticker
                   logo="/Imagens/Stack/Github.png"
-                  x={978}
-                  y={-75}
+                  x={745}
+                  y={-154}
               />
               <Sticker
                   logo="/Imagens/Stack/Vscode.png"
-                  x={1200}
-                  y={-50}
+                  x={715}
+                  y={176}
               />
             </div>
+            :
+            <></>}
           </div>
           <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
           absolute inset-0 opacity-0 z-40 pointer-events-none`}>
@@ -276,9 +301,10 @@ export default function Home() {
           </div>
           <div ref={contact} className={` w-screen h-screen flex flex-col items-center justify-between shrink-0 about
           absolute inset-0 opacity-0  pointer-events-none`}>
-            {/* ------------------------ Background ------------------------ */}
+            {/* ------------------------ Background ------------------------ */}            
             <Background currentTheme={currentTheme} display={windowWidth}/>
             {/* ------------------------ Background ------------------------ */}
+
             <div className="z-50 w-screen h-screen flex flex-col items-center justify-between shrink-0">
               <div className="w-[300px] md:w-[400px] flex flex-col gap-5 items-center mt-30">
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl`}>Find me on</h1>
@@ -292,5 +318,6 @@ export default function Home() {
         </div>
 
     </div>
+    }/>
   );
 }

@@ -2,26 +2,34 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { DotFilledIcon } from "@radix-ui/react-icons";
 import type { Theme } from "@/types/themes";
 
-export default function Theme({
+import { Button } from "./ui/button";
+
+const itemHover = {
+		Milk: 'hover:bg-[#0D0E13] hover:text-[#F2E9E4]'
+}
+
+export function Theme({
   themes,
   currentTheme,
   setCurrentTheme,
+  windowWidth,
 }: Theme & {
   setCurrentTheme: any;
+  windowWidth: number;
 }) {
   return (
     <DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<button className={`max-w-[200px] md:max-w-[300px] h-1/5 xl:h-[15%] mt-3 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} font-monteserrat font-bold text-2xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer`} aria-label="Customise options">
+				<Button className={`${windowWidth <= 768 ? 'w-full sm:w-3/5 md:w-1/2 h-[30%] sm:h-full md:h-2/5 ' : 'w-1/2 xl:w-3/4 h-full lg:h-4/5 xl:h-full 2xl:h-3/4'} ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} font-monteserrat font-bold text-2xl lg:text-xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer outline-none`}>
 					Themes
-				</button>
+				</Button>
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Portal>
-				<DropdownMenu.Content className={`${themes[currentTheme].button} w-[200px] md:w-[300px] rounded-[5px] flex justify-center`} sideOffset={5}>
+				<DropdownMenu.Content className={`rounded-[5px] flex justify-center`} sideOffset={5}>
 					<DropdownMenu.RadioGroup value={currentTheme} onValueChange={setCurrentTheme}>
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover} flex justify-center w-[366px] sm:w-[293px] lg:w-[238px] xl:w-[220px] 2xl:w-[335px] rounded-[5px_5px_0px_0px]`}
 							value="Milk"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -34,7 +42,7 @@ export default function Theme({
 						</DropdownMenu.RadioItem>
 
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover}`}
 							value="Dreams"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -47,7 +55,7 @@ export default function Theme({
 						</DropdownMenu.RadioItem>
 
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover}`}
 							value="Vampire"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -60,7 +68,7 @@ export default function Theme({
 						</DropdownMenu.RadioItem>
 
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover}`}
 							value="Genius"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -73,7 +81,7 @@ export default function Theme({
 						</DropdownMenu.RadioItem>
 
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover}`}
 							value="Trial"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -86,7 +94,7 @@ export default function Theme({
 						</DropdownMenu.RadioItem>
 
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text}`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover} rounded-[0px_0px_5px_5px]`}
 							value="Silent"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -105,4 +113,14 @@ export default function Theme({
 			</DropdownMenu.Portal>
 		</DropdownMenu.Root>
   );
+}
+
+export function Playground({themes, currentTheme, playground, setPlayground, windowWidth}: Theme & {playground: boolean, setPlayground: any, windowWidth: number}){
+
+	return(
+		<Button className={`${windowWidth <= 768 ? 'w-full sm:w-3/5 md:w-1/2 h-[30%] sm:h-full md:h-2/5 ' : 'w-1/2 xl:w-3/4 h-full lg:h-4/5 xl:h-full 2xl:h-3/4'} ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover} font-monteserrat font-bold text-xl sm:text-2xl lg:text-xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer`}
+		onClick={() => setPlayground(!playground)}>
+			{playground ? 'Disable Playground' : 'Enable Playground'}
+		</Button>
+	);
 }

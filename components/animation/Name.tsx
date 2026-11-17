@@ -8,7 +8,8 @@ import { GemSmoke } from '@paper-design/shaders-react';
 export default function Name({
   themes,
   currentTheme,
-}: Theme) {
+  windowWidth
+}: Theme & { windowWidth: number, }) {
   const theme = themes[currentTheme];
 
   const primaryColor = (currentTheme === 'Milk' ? '#499792' :
@@ -30,7 +31,7 @@ export default function Name({
   <div className="flex flex-col items-start w-full flex-1">
 
     <motion.div
-      className="w-[190px] sm:w-[180px] md:w-[250px] lg:w-[330px] xl:w-[320px] 2xl:w-[450px] h-1/2 cursor-pointer select-none"
+      className="w-fit h-1/2 cursor-pointer select-none"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.2 }}
@@ -51,12 +52,16 @@ export default function Name({
         speed={2}
         scale={0.6}
         fit="cover"
-        width={"100%"}
+        width={windowWidth < 768 ? 325 : 
+               windowWidth < 1024 ? 375 : 380
+        }
+        height={windowWidth < 768 ? 128 : 148
+        }
       />
     </motion.div>
 
     <motion.div
-      className="w-[210px] sm:w-[200px] md:w-[270px] lg:w-[280px] lg:w-[360px] xl:w-[350px] 2xl:w-[490px] h-1/2 cursor-pointer select-none"
+      className="w-fit h-1/2 cursor-pointer select-none"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.2 }}
@@ -77,7 +82,10 @@ export default function Name({
         speed={2}
         scale={0.6}
         fit="cover"
-        width={"100%"}
+        width={windowWidth < 768 ? 360 : 420
+        }
+        height={windowWidth < 768 ? 128 : 148
+        }
       />
     </motion.div>
 

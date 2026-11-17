@@ -1,4 +1,4 @@
-import StickerPeel from './StickerPeel'
+import StickerPeel from './Bits/StickerPeel'
 
 export default function Sticker({ logo, x, y }: {logo: string, x: number, y: number}) {
     return (
@@ -8,9 +8,9 @@ export default function Sticker({ logo, x, y }: {logo: string, x: number, y: num
         >
             <StickerPeel
                 imageSrc={logo}
-                width={100}
+                width={75}
                 initialPosition={{ x, y }}
-                finish="matte"
+                finish="holo"
                 peelBackHoverPct={25}
                 peelBackActivePct={40}
                 rotate={0}
