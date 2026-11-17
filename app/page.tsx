@@ -206,53 +206,63 @@ export default function Home() {
                   logo="/Imagens/Stack/Typescript.png"
                   x={-750}
                   y={100}
+                  size={windowWidth}
               />
 
               <Sticker
                   logo="/Imagens/Stack/Javascript.png"
                   x={-725}
                   y={-150}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/React.png"
                   x={-487}
                   y={300}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/Next.png"
                   x={-306}
                   y={-304}
+                  size={windowWidth}
               />
               
               <Sticker
                   logo="/Imagens/Stack/Tailwind.png"
                   x={222}
                   y={-358}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/PostgreSQL.png"
                   x={308}
                   y={350}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/Prisma.png"
                   x={550}
                   y={-300}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/Git.png"
                   x={547}
                   y={315}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/Github.png"
                   x={745}
                   y={-154}
+                  size={windowWidth}
               />
               <Sticker
                   logo="/Imagens/Stack/Vscode.png"
                   x={715}
                   y={176}
+                  size={windowWidth}
               />
             </div>
             :

@@ -1,6 +1,6 @@
 import StickerPeel from './Bits/StickerPeel'
 
-export default function Sticker({ logo, x, y }: {logo: string, x: number, y: number}) {
+export default function Sticker({ logo, x, y, size }: {logo: string, x: number, y: number, size: number,}) {
     return (
         <div
             className="absolute inset-0 pointer-events-none"
@@ -8,7 +8,11 @@ export default function Sticker({ logo, x, y }: {logo: string, x: number, y: num
         >
             <StickerPeel
                 imageSrc={logo}
-                width={75}
+                width={size < 640 ? 50 :
+                       size < 768 ? 55 : 
+                       size < 1024 ? 65 : 
+                       size < 1280 ? 70 : 75
+                }
                 initialPosition={{ x, y }}
                 finish="holo"
                 peelBackHoverPct={25}
