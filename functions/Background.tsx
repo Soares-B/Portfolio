@@ -11,12 +11,21 @@ import {
     GrainientBits,
     WavesBits,
     TopographyBits,
+    ASCIIBits
 } from "@/components/background/Background";
 
-export function Background({currentTheme, display}: {currentTheme: string, display: number}){
+export function Background({currentTheme, display, type}: {currentTheme: string, display?: number, type?: string}){
 
     switch(true) {
-        case display <= 768:
+        case type === 'card':
+            return currentTheme === 'Milk' ? <ASCIIBits primaryColor={'#2F1B1E'} secondaryColor={'#632630'}/> :
+                   currentTheme === 'Dreams' ? <ASCIIBits primaryColor={'#4B0B0F'} secondaryColor={'#670D1A'}/> : 
+                   currentTheme === 'Vampire' ? <ASCIIBits primaryColor={'#7E0003'} secondaryColor={'#A70304'}/> : 
+                   currentTheme === 'Genius' ? <ASCIIBits primaryColor={'#101741'} secondaryColor={'#132B73'}/> : 
+                   currentTheme === 'Trial' ? <ASCIIBits primaryColor={'#870045'} secondaryColor={'#E02D8C'}/> : 
+                   currentTheme === 'Silent' ? <ASCIIBits primaryColor={'#283325'} secondaryColor={'#81A568'}/> : ''
+
+        case display! <= 768:
             return currentTheme === 'Milk' ? <DitheringBG primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> :
                    currentTheme === 'Dreams' ? <WarpBG primaryColor={'#841012'} secondaryColor={'#020001'}/> : 
                    currentTheme === 'Vampire' ? <GhostBG primaryColor={'#E90A0A'} secondaryColor={'#090200'}/> : 

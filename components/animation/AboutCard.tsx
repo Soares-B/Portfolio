@@ -9,12 +9,15 @@ import {
 
 import { forwardRef } from "react";
 
+import { Background } from "@/functions/Background";
+
 interface AboutCardProps {
   card: React.ReactNode;
+  currentTheme?: string
 }
 
 const AboutCard = forwardRef<HTMLDivElement, AboutCardProps>(
-  function AboutCard({ card }, ref) {
+  function AboutCard({ card, currentTheme }, ref) {
     const x = useMotionValue(0.5);
     const y = useMotionValue(0.5);
 
@@ -36,7 +39,7 @@ const AboutCard = forwardRef<HTMLDivElement, AboutCardProps>(
     return (
       <motion.div
         ref={ref}
-        className="tilt-card w-full h-full pt-2 flex justify-center items-center rounded-[5px] hover:cursor-pointer"
+        className="tilt-card w-full h-full flex justify-center items-center rounded-[5px] hover:cursor-pointer"
         style={{
           transformPerspective: 1000,
           rotateX,
@@ -46,6 +49,7 @@ const AboutCard = forwardRef<HTMLDivElement, AboutCardProps>(
         onMouseLeave={handleMouseLeave}
         whileTap={{ scale: 0.95 }}
       >
+        
         {card}
       </motion.div>
     );

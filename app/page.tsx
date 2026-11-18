@@ -200,7 +200,7 @@ export default function Home() {
                 <div className="w-full h-full flex flex-col items-center justify-start gap-5">
                   <h1 ref={aboutElements.aboutTitle} className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
                   <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">
-                    <AboutCard ref={aboutElements.aboutCard} card={awrite({themes, currentTheme})}/>
+                    <AboutCard ref={aboutElements.aboutCard} card={awrite({themes, currentTheme})} currentTheme={currentTheme}/>
                   </div>
                   
                 </div>
