@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useLoading } from "@/config/context";
 
-
 import DecryptedText from './animation/DecryptedText';
 import ShapeWaves from './background/ShapeWaves';
 
