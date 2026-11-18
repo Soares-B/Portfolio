@@ -18,19 +18,17 @@ type ThemeName = keyof typeof Colors;
 type SparkProps = Omit<Theme, 'currentTheme'> & {
     currentTheme: ThemeName;
     element: React.ReactNode;
-    playground: boolean;
 };
 
 export default function Spark({
     themes,
     currentTheme,
     element,
-    playground,
 }: SparkProps){
 
     return(
         <ClickSpark
-        sparkColor={playground ? Colors[currentTheme] : '#FFFFFF00'}
+        sparkColor={Colors[currentTheme]}
         shape="star"
         sparkCount={16}
         sparkSize={14}

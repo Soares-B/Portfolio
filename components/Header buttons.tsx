@@ -20,7 +20,7 @@ export function Theme({
   return (
     <DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<Button className={`${windowWidth <= 768 ? 'w-full sm:w-3/5 md:w-1/2 h-[30%] sm:h-full md:h-2/5 ' : 'w-1/2 xl:w-3/4 h-full lg:h-4/5 xl:h-full 2xl:h-3/4'} ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} font-monteserrat font-bold text-2xl lg:text-xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer outline-none`}>
+				<Button className={`mt-3 w-full h-1/6 sm:h-1/5 sm:w-3/5 lg:w-2/5 xl:w-1/4 ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} font-monteserrat font-bold text-2xl lg:text-xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer outline-none`}>
 					Themes
 				</Button>
 			</DropdownMenu.Trigger>
@@ -29,7 +29,7 @@ export function Theme({
 				<DropdownMenu.Content className={`rounded-[5px] flex justify-center`} sideOffset={5}>
 					<DropdownMenu.RadioGroup value={currentTheme} onValueChange={setCurrentTheme}>
 						<DropdownMenu.RadioItem
-							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover} flex justify-center w-[366px] sm:w-[293px] lg:w-[238px] xl:w-[220px] 2xl:w-[335px] rounded-[5px_5px_0px_0px]`}
+							className={`${themes.Config.ThemeItem} ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover} flex justify-center w-[366px] sm:w-[370px] md:w-[446px] lg:w-[400px] xl:w-[314px] 2xl:w-[474] rounded-[5px_5px_0px_0px]`}
 							value="Milk"
 						>
 							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -113,14 +113,4 @@ export function Theme({
 			</DropdownMenu.Portal>
 		</DropdownMenu.Root>
   );
-}
-
-export function Playground({themes, currentTheme, playground, setPlayground, windowWidth}: Theme & {playground: boolean, setPlayground: any, windowWidth: number}){
-
-	return(
-		<Button className={`${windowWidth <= 768 ? 'w-full sm:w-3/5 md:w-1/2 h-[30%] sm:h-full md:h-2/5 ' : 'w-1/2 xl:w-3/4 h-full lg:h-4/5 xl:h-full 2xl:h-3/4'} ${themes[currentTheme].button} rounded-[5px] ${themes[currentTheme].highlight_text} ${themes[currentTheme].items} ${themes[currentTheme].items_hover} font-monteserrat font-bold text-xl sm:text-2xl lg:text-xl outline-none ${themes[currentTheme].themeAnimation} hover:cursor-pointer`}
-		onClick={() => setPlayground(!playground)}>
-			{playground ? 'Disable Playground' : 'Enable Playground'}
-		</Button>
-	);
 }

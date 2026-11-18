@@ -12,7 +12,7 @@ import { gwrite } from "@/functions/Glitch Text";
 import { Background, Counterground } from "@/functions/Background";
 import Name from "@/components/animation/Name";
 import Spark from "@/components/animation/Spark";
-import { Theme, Playground } from "@/components/Header buttons";
+import { Theme } from "@/components/Header buttons";
 import AboutCard from "@/components/animation/AboutCard";
 import Person from "@/components/Person";
 import { TechCards, WorkflowCards, ContactCards } from "@/components/Tech";
@@ -37,7 +37,6 @@ export default function Home() {
   }, [])
 
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
-  const [playground, setPlayground] = useState(false)
 
   const progress = useRef<HTMLDivElement>(null);
 
@@ -141,7 +140,7 @@ export default function Home() {
 
   return (
     <div>
-      <Spark themes={themes} currentTheme={currentTheme} playground={playground} element={
+      <Spark themes={themes} currentTheme={currentTheme} element={
       
       <div
         ref={container}
@@ -160,23 +159,10 @@ export default function Home() {
               <Background currentTheme={currentTheme} display={windowWidth}/>
               {/* ------------------------ Background ------------------------ */}
               <div ref={headerContent} className="z-10 w-screen h-screen flex flex-col justify-between shrink-0">
-                <div className="w-full sm:w-4/5 xl:w-2/5 h-3/5 sm:h-full lg:h-1/2 xl:h-3/5 2xl:h-1/2 sm:-mb-5 lg:mb-0 p-3 flex flex-col gap-1 outline-none">
+                <div className="w-full h-2/5  p-3 flex flex-col gap-1 outline-none">
                     <Name themes={themes} currentTheme={currentTheme} windowWidth={windowWidth}/>
                     {hwrite({themes, currentTheme})}
-                    <div className={`flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full lg:w-3/5 h-2/5 sm:h-1/2 lg:h-1/2 mt-3 gap-5 lg:gap-3`}>
-      
-                      {windowWidth < 640 || (windowWidth > 768 && windowWidth < 1280) ? <>
-                        <Playground themes={themes} currentTheme={currentTheme} playground={playground} setPlayground={setPlayground} windowWidth={windowWidth}/>
-                        <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth}/>
-                      </>
-                      :
-                      <>
-                        <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth}/>
-                        <Playground themes={themes} currentTheme={currentTheme} playground={playground} setPlayground={setPlayground} windowWidth={windowWidth}/>
-                      </>}
-      
-      
-                    </div>
+                    <Theme themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth}/>                    
                 </div>
                 {windowWidth <= 768 ? <Image src='/Imagens/Mobile.png' width={768} height={1024} alt='personality'
                 className="w-full h-fit select-none"></Image> : <Image src='/Imagens/Desktop.png' width={1536} height={864} alt='personality'
@@ -232,8 +218,7 @@ export default function Home() {
                   <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3 lg:mt-5`}>Workflow</h1>
                   {WorkflowCards({themes, currentTheme})}
                 </div>
-              </div>
-              {playground ?
+              </div>             
                 <div className="absolute inset-0 w-full h-screen pointer-events-none">
                 <Sticker
                     logo="/Imagens/Stack/Typescript.png"
@@ -297,8 +282,6 @@ export default function Home() {
                     size={windowWidth}
                 />
               </div>
-              :
-              <></>}
             </div>
             <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
             absolute inset-0 opacity-0 z-40 pointer-events-none`}>
