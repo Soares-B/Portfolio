@@ -1,5 +1,7 @@
 'use client';
 
+import { themes } from '@/config/themes';
+
 import {
   useEffect,
   useLayoutEffect,

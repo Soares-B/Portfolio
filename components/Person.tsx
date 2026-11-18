@@ -12,7 +12,7 @@ export default function Person({
 
     return(
     <div
-    className="relative w-[60%] h-fit mr-5"
+    className="w-full h-fit "
     onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
 
