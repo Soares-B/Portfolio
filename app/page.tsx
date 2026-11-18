@@ -38,6 +38,8 @@ export default function Home() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
   const [playground, setPlayground] = useState(false)
 
+  const progress = useRef<HTMLDivElement>(null);
+
   const container = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLDivElement>(null);
   const about = useRef<HTMLDivElement>(null);
@@ -45,10 +47,18 @@ export default function Home() {
   const projects = useRef<HTMLDivElement>(null);
   const contact = useRef<HTMLDivElement>(null);
 
-  const PRcontainer = useRef<HTMLDivElement>(null);
-  const PRproject_1 = useRef<HTMLDivElement>(null);
-  const PRproject_2 = useRef<HTMLDivElement>(null);
-  const PRproject_3 = useRef<HTMLDivElement>(null);
+  const aboutElements = {
+    aboutTitle: useRef<HTMLHeadingElement>(null),
+    aboutCard: useRef<HTMLDivElement>(null),
+  }
+
+  const PRprojects = {
+    PRproject_1: useRef<HTMLDivElement>(null),
+    PRproject_2: useRef<HTMLDivElement>(null),
+    PRproject_3: useRef<HTMLDivElement>(null),
+  }
+
+  
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -63,10 +73,9 @@ export default function Home() {
         || !skills.current
         || !projects.current
         || !contact.current
-        || !PRcontainer.current
-        || !PRproject_1.current
-        || !PRproject_2.current
-        || !PRproject_3.current) return;
+        || !PRprojects.PRproject_1.current
+        || !PRprojects.PRproject_2.current
+        || !PRprojects.PRproject_3.current) return;
 
       return MobilePage({
     container: container.current,
@@ -75,38 +84,42 @@ export default function Home() {
     skills: skills.current,
     projects: projects.current,
     contact: contact.current,
-    PRcontainer: PRcontainer.current,
-    PRproject_1: PRproject_1.current,
-    PRproject_2: PRproject_2.current,
-    PRproject_3: PRproject_3.current,
+    PRproject_1: PRprojects.PRproject_1.current,
+    PRproject_2: PRprojects.PRproject_2.current,
+    PRproject_3: PRprojects.PRproject_3.current,
   });
     });
 
   mm.add("(min-width: 769px)", () => {
       
-      if (!container.current
+      if (
+           !progress.current
+        || !container.current
         || !header.current
         || !about.current
         || !skills.current
         || !projects.current
         || !contact.current
-        || !PRcontainer.current
-        || !PRproject_1.current
-        || !PRproject_2.current
-        || !PRproject_3.current) return;
+        || !PRprojects.PRproject_1.current
+        || !PRprojects.PRproject_2.current
+        || !PRprojects.PRproject_3.current
+        || !aboutElements.aboutTitle.current
+        || !aboutElements.aboutCard.current) return;
 
       return DesktopPage({
-    container: container.current,
-    header: header.current,
-    about: about.current,
-    skills: skills.current,
-    projects: projects.current,
-    contact: contact.current,
-    PRcontainer: PRcontainer.current,
-    PRproject_1: PRproject_1.current,
-    PRproject_2: PRproject_2.current,
-    PRproject_3: PRproject_3.current,
-  });
+        progress: progress.current,
+        container: container.current,
+        header: header.current,
+        about: about.current,
+        skills: skills.current,
+        projects: projects.current,
+        contact: contact.current,
+        PRproject_1: PRprojects.PRproject_1.current,
+        PRproject_2: PRprojects.PRproject_2.current,
+        PRproject_3: PRprojects.PRproject_3.current,
+        aboutTitle: aboutElements.aboutTitle.current,
+        aboutCard: aboutElements.aboutCard.current,
+      });
     });
 
     return () => mm.revert();
@@ -125,13 +138,17 @@ export default function Home() {
         <div className={`w-full min-h-screen flex ${
     isLoaded ? 'animate-intro' : 'opacity-0'
   }`}>
+          <div ref={progress} className={`fixed left-0 top-0 z-100 ${windowWidth <= 768 ? '' : themes[currentTheme].progress} w-full h-1`}>
+
+          </div>
+
           <div ref={header} className={`w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}>
             {/* ------------------------ Background ------------------------ */}            
             <Background currentTheme={currentTheme} display={windowWidth}/>
             {/* ------------------------ Background ------------------------ */}
 
             <div className="z-10 w-screen h-screen flex flex-col justify-between shrink-0">
-              <div className="w-full sm:w-4/5 xl:w-2/5 h-3/5 sm:h-full lg:h-1/2 xl:h-3/5 2xl:h-1/2 sm:-mb-5 lg:mb-0 p-3 flex flex-col gap-1">
+              <div className="w-full sm:w-4/5 xl:w-2/5 h-3/5 sm:h-full lg:h-1/2 xl:h-3/5 2xl:h-1/2 sm:-mb-5 lg:mb-0 p-3 flex flex-col gap-1 outline-none">
                   <Name themes={themes} currentTheme={currentTheme} windowWidth={windowWidth}/>
                   {hwrite({themes, currentTheme})}
                   <div className={`flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full lg:w-3/5 h-2/5 sm:h-1/2 lg:h-1/2 mt-3 gap-5 lg:gap-3`}>
@@ -175,13 +192,19 @@ export default function Home() {
                 className="w-[90%] sm:w-[50%] md:w-[55%] h-fit select-none"></Image>
               </div>
             </div>
+            
             :
+
             <div className="z-20">
               <div className="w-screen h-screen flex items-end">
                 <div className="w-full h-full flex flex-col items-center justify-start gap-5">
-                  <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
-                  <AboutCard card={awrite({themes, currentTheme})}/>
+                  <h1 ref={aboutElements.aboutTitle} className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl mt-5`}>Who I am</h1>
+                  <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">
+                    <AboutCard ref={aboutElements.aboutCard} card={awrite({themes, currentTheme})}/>
+                  </div>
+                  
                 </div>
+
                 <Person  themes={themes} currentTheme={currentTheme}/>
               </div>
             </div>}
@@ -270,8 +293,8 @@ export default function Home() {
           </div>
           <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
           absolute inset-0 opacity-0 z-40 pointer-events-none`}>
-            <div className={`relative w-full`} ref={PRcontainer}>
-              <div className="h-full w-full absolute inset-0 z-41 pointer-events-none flex items-end justify-center" ref={PRproject_1}>
+            <div className={`relative w-full`}>
+              <div className="h-full w-full absolute inset-0 z-41 pointer-events-none flex items-end justify-center" ref={PRprojects.PRproject_1}>
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
                 <Image src={'/Imagens/Projects/Pokedex.png'} width={1920} height={1080} alt="Pokedex Web Application"
                 className="absolute inset-0 w-full h-full object-cover z-0 select-none">
@@ -283,7 +306,7 @@ export default function Home() {
                   <ProjectButton themes={themes} currentTheme={currentTheme} url='https://soares-b.github.io/Pokedex-Web-Application/'/>
                 </div>
               </div>
-              <div className="h-full w-full absolute inset-0 z-42 opacity-0 pointer-events-none flex items-end" ref={PRproject_2}>
+              <div className="h-full w-full absolute inset-0 z-42 opacity-0 pointer-events-none flex items-end" ref={PRprojects.PRproject_2}>
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
                 <Image src={'/Imagens/Projects/Larper.png'} width={1920} height={1080} alt="Larper"
                 className="absolute inset-0 w-full h-full object-cover z-0 object-[7%_50%] select-none">
@@ -295,7 +318,7 @@ export default function Home() {
                   <ProjectButton themes={themes} currentTheme={currentTheme} url='https://larper-omega.vercel.app'/>
                 </div>
               </div>
-              <div className="h-full w-full absolute inset-0 z-43 opacity-0 pointer-events-none flex items-end" ref={PRproject_3}>
+              <div className="h-full w-full absolute inset-0 z-43 opacity-0 pointer-events-none flex items-end" ref={PRprojects.PRproject_3}>
                 <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl absolute z-2 top-7 left-[50%] translate-[-50%]`}>Projects</h1>
                 <Image src={'/Imagens/Projects/Livia Lace.png'} width={1920} height={1080} alt="Livia Lace"
                 className="absolute inset-0 w-full h-full object-cover z-0 object-[5%_50%] select-none">

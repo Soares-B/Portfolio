@@ -7,7 +7,7 @@ type Element = {
     [key: string]: HTMLElement
 }
 
-export default function MobilePage({container, header, about, skills, projects, contact, PRcontainer, PRproject_1, PRproject_2, PRproject_3}: Element) {
+export default function MobilePage({container, header, about, skills, projects, contact, PRproject_1, PRproject_2, PRproject_3}: Element) {
   
     const animation = gsap.timeline({
         scrollTrigger: {

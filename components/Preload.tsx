@@ -104,7 +104,7 @@ export default function Preloader() {
         loopDelay={2000}
         useOriginalCharsOnly={false}
         characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-        className="revealed "
+        className="revealed selection:bg-black"
         encryptedClassName="encrypted"
         clickMode="once"
       />

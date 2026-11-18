@@ -14,6 +14,8 @@ export const themes = {
     div_background: 'bg-Milk-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Milk-2',
 
+
+progress: 'bg-Milk-1/66',
     border: "border-Milk-6",
     icon: "text-Milk-4",
     button: "bg-Milk-1",
@@ -39,6 +41,7 @@ export const themes = {
     div_background: 'bg-Dreams-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Dreams-2',
 
+    progress: 'bg-Dreams-1/66',
     border: "border-Dreams-6",
     icon: "text-Dreams-4",
     button: "bg-Dreams-1",
@@ -64,6 +67,7 @@ export const themes = {
     div_background: 'bg-Vampire-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Vampire-2',
 
+    progress: 'bg-Vampire-1/66',
     border: "border-Vampire-6",
     icon: "text-Vampire-4",
     button: "bg-Vampire-1",
@@ -89,6 +93,7 @@ export const themes = {
     div_background: 'bg-Genius-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Genius-2',
 
+    progress: 'bg-Genius-1/66',
     border: "border-Genius-6",
     icon: "text-Genius-4",
     button: "bg-Genius-1",
@@ -114,6 +119,7 @@ export const themes = {
     div_background: 'bg-Trial-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Trial-2',
 
+    progress: 'bg-Trial-1/66',
     border: "border-Trial-6",
     icon: "text-Trial-4",
     button: "bg-Trial-1",
@@ -139,6 +145,7 @@ export const themes = {
     div_background: 'bg-Silent-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Silent-2',
 
+    progress: 'bg-Silent-1/66',
     border: "border-Silent-6",
     icon: "text-Silent-4",
     button: "bg-Silent-1",
@@ -154,17 +161,19 @@ export const themes = {
     highlight_text: '',
     highlight_text_shadow: '',
     selection: "",
+    selection_text: '',
     background: '',
     background_text: "",
     background_text_shadow: "",
     counterground: '',
     div_background: '',
     div_text_shadow: '',
+    progress: '',
     border: '',
     icon: '',
     button: '',
-    selection_background: "",
-    selection_text: '',
+    selection_background: '',
+    div_btion_text: '',
     ThemeItem: 'p-2 font-montserrat font-semibold text-lg md:text-2xl lg:text-xl flex items-center outline-none cursor-pointer flex justify-center 2xl:min-w-[320px]}',
   }
 };

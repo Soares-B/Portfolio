@@ -6,12 +6,25 @@ const code =
     name: 'Bruno Soares',
     area: 'Full-Stack',
     nationality: {
-        country: 'Brazil',
-        state: 'São Paulo'
+      country: 'Brazil',
+      state: 'São Paulo'
     },
     languages: ['Portuguese', 'English'],
-    interests: ['Medias', 'Create', 'Learn']
-}`;
+    interests: [
+    'Medias',   'Create', 
+    'Learn',   'Technology'
+    ],
+    Graduation: [
+      {
+        name: 'Software Engineer bachelor',
+        ongoing: true
+      },
+      {
+        name: 'Associate Degree in Cybersecurity',
+        ongoing: true
+      }
+    ]
+};`;
 
 export function awrite({themes, currentTheme}: Theme) {
   const [text, setText] = useState('');
@@ -26,7 +39,7 @@ export function awrite({themes, currentTheme}: Theme) {
       if (index > code.length) {
         clearInterval(interval);
       }
-    }, 80);
+    }, 60);
 
     return () => clearInterval(interval);
   }, []);
