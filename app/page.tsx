@@ -33,7 +33,6 @@ export default function Home() {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
-    console.log(window.innerHeight)
   }, [])
 
   const [currentTheme, setCurrentTheme] = useState<ThemeName>('Milk')
@@ -69,27 +68,45 @@ export default function Home() {
 
     mm.add("(max-width: 768px)", () => {
       
-      if (!container.current
+      if (
+           !progress.current
+        || !container.current
         || !header.current
         || !about.current
         || !skills.current
         || !projects.current
         || !contact.current
+
+        || !headerContent.current
+        || !aboutContent.current
+        || !skillsContent.current
+        || !contactContent.current
+
+
         || !PRprojects.PRproject_1.current
         || !PRprojects.PRproject_2.current
-        || !PRprojects.PRproject_3.current) return;
+        || !PRprojects.PRproject_3.current
+        || !aboutTitle.current) return;
 
       return MobilePage({
-    container: container.current,
-    header: header.current,
-    about: about.current,
-    skills: skills.current,
-    projects: projects.current,
-    contact: contact.current,
-    PRproject_1: PRprojects.PRproject_1.current,
-    PRproject_2: PRprojects.PRproject_2.current,
-    PRproject_3: PRprojects.PRproject_3.current,
-  });
+        progress: progress.current,
+        container: container.current,
+        header: header.current,
+        about: about.current,
+        skills: skills.current,
+        projects: projects.current,
+        contact: contact.current,
+
+        headerContent: headerContent.current,
+        aboutContent: aboutContent.current,
+        skillsContent: skillsContent.current,
+        contactContent: contactContent.current,
+
+        PRproject_1: PRprojects.PRproject_1.current,
+        PRproject_2: PRprojects.PRproject_2.current,
+        PRproject_3: PRprojects.PRproject_3.current,
+        aboutTitle: aboutTitle.current,
+      });
     });
 
   mm.add("(min-width: 769px)", () => {
@@ -178,9 +195,13 @@ export default function Home() {
       
               <div ref={aboutContent} className="z-20">
                 <div className="w-screen h-screen flex flex-col items-center justify-between ">
-                  <div className="w-full h-[40%] flex flex-col items-center mt-5 gap-5">
-                    <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-5xl`}>Who I am</h1>
-                    {awrite({themes, currentTheme})}
+                  <div className="w-full h-[40%] flex flex-col items-center mt-3 gap-5">
+                    <div ref={aboutTitle} className={`w-1/2 h-[48px] flex justify-center ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-4xl`}>
+                      {gwrite({css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`, scramble: `${themes[currentTheme].highlight_text}`, text: 'Who I am'})}
+                    </div>
+                    <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">
+                      <AboutCard card={awrite({themes, currentTheme, size: windowWidth})} currentTheme={currentTheme}/>
+                    </div>
       
                   </div>
                   <Image src={'/Imagens/Person Mobile.png'} width={768} height={1024} alt="me"
@@ -196,7 +217,7 @@ export default function Home() {
                       {gwrite({css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`, scramble: `${themes[currentTheme].highlight_text}`, text: 'Who I am'})}
                     </div>
                     <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">
-                      <AboutCard  card={awrite({themes, currentTheme})} currentTheme={currentTheme}/>
+                      <AboutCard card={awrite({themes, currentTheme, size: windowWidth})} currentTheme={currentTheme}/>
                     </div>
       
                   </div>
@@ -218,7 +239,6 @@ export default function Home() {
                   <h1 className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-bold text-3xl mt-3 lg:mt-5`}>Workflow</h1>
                   {WorkflowCards({themes, currentTheme})}
                 </div>
-              </div>             
                 <div className="absolute inset-0 w-full h-screen pointer-events-none">
                 <Sticker
                     logo="/Imagens/Stack/Typescript.png"
@@ -282,6 +302,7 @@ export default function Home() {
                     size={windowWidth}
                 />
               </div>
+              </div>             
             </div>
             <div ref={projects} className={`${themes[currentTheme].counterground} w-screen h-screen flex shrink-0 about
             absolute inset-0 opacity-0 z-40 pointer-events-none`}>

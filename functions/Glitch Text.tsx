@@ -2,7 +2,6 @@ import DecryptedText from '@/components/animation/DecryptedText';
 
 export function gwrite({css, scramble, text}: {css?: string, scramble?: string, text: string}){
 
-    console.log(text)
 
     return(
         <DecryptedText

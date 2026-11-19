@@ -9,7 +9,6 @@ import {
 
 import { forwardRef } from "react";
 
-import { Background } from "@/functions/Background";
 
 interface AboutCardProps {
   card: React.ReactNode;

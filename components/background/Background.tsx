@@ -343,7 +343,7 @@ export function ASCIIBits({primaryColor, secondaryColor}: Color){
           clickEffect="wave"
           intro
           lightMode={false}
-      />
+        />
     </div>
   );
 }

@@ -1,8 +1,13 @@
+'use client'
+
 import { useState, useEffect } from 'react';
 import type { Theme } from '@/types/themes';
 import { Background } from './Background';
 
-const code = 
+export function awrite({themes, currentTheme, size}: Theme & {size: number}) {
+  const [text, setText] = useState('');
+
+const code = size > 768 ?
 `const Dev = {
     name: 'Bruno Soares',
     area: 'Full-Stack',
@@ -25,10 +30,18 @@ const code =
         ongoing: true
       }
     ]
-};`;
-
-export function awrite({themes, currentTheme}: Theme) {
-  const [text, setText] = useState('');
+};` : 
+`const Dev = {
+    name: 'Bruno Soares',
+    area: 'Full-Stack',
+    nationality: {
+      country: 'Brazil',
+      state: 'São Paulo'
+    },
+    languages: ['Portuguese', 'English'],
+    interests: ['Medias', 'Create', 'Learn']
+};`
+;
 
   useEffect(() => {
     let index = 0;
@@ -43,7 +56,7 @@ export function awrite({themes, currentTheme}: Theme) {
     }, 60);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [code]);
 
   return (
     <div className={`${themes[currentTheme].div_background} div_background w-full h-full rounded-[5px] p-3 pl-5 pr-5 border-2 ${themes[currentTheme].border}`}>
