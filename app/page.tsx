@@ -134,7 +134,6 @@ export default function Home() {
         !Skills.skillsSpiral.current ||
         !Skills.skillsStack.current ||
         !Skills.skillsBadgeBox.current ||
-        !Skills.skillsStickers.current ||
         !PRprojects.PRproject_1.current ||
         !PRprojects.PRproject_2.current ||
         !PRprojects.PRproject_3.current ||
@@ -159,7 +158,6 @@ export default function Home() {
         skillsSpiral: Skills.skillsSpiral.current,
         skillsStack: Skills.skillsStack.current,
         skillsBadgeBox: Skills.skillsBadgeBox.current,
-        skillsStickers: Skills.skillsStickers.current,
 
         PRproject_1: PRprojects.PRproject_1.current,
         PRproject_2: PRprojects.PRproject_2.current,
@@ -410,75 +408,73 @@ export default function Home() {
                         Badges
                       </p>
                       <Background currentTheme={currentTheme} type="badge" />
-                    </div>
-
-                  {skillsActive && (
+                      {skillsActive && (
                     <div 
-                    ref={Skills.skillsStickers}
-                    className="absolute inset-0 w-full h-screen pointer-events-none">
+                    className="absolute inset-0 w-full h-full pointer-events-none">
                       <Sticker
                         logo="/Imagens/Stack/Typescript.png"
-                        x={-750}
-                        y={100}
+                        x={-40}
+                        y={35}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/Javascript.png"
-                        x={-725}
-                        y={-150}
+                        x={-25}
+                        y={35}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/React.png"
-                        x={-487}
-                        y={300}
+                        x={-10}
+                        y={35}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/Next.png"
-                        x={-306}
-                        y={-304}
+                        x={5}
+                        y={35}
                         size={windowWidth}
                       />
 
                       <Sticker
                         logo="/Imagens/Stack/Tailwind.png"
-                        x={222}
-                        y={-358}
+                        x={20}
+                        y={35}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/PostgreSQL.png"
-                        x={308}
-                        y={350}
+                        x={35}
+                        y={35}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/Prisma.png"
-                        x={550}
-                        y={-300}
+                        x={-40}
+                        y={20}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/Git.png"
-                        x={547}
-                        y={315}
+                        x={-25}
+                        y={20}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/Github.png"
-                        x={745}
-                        y={-154}
+                        x={-10}
+                        y={20}
                         size={windowWidth}
                       />
                       <Sticker
                         logo="/Imagens/Stack/Vscode.png"
-                        x={715}
-                        y={176}
+                        x={5}
+                        y={20}
                         size={windowWidth}
                       />
                     </div>
                   )}
+                    </div>
                 </div>
               </div>
 

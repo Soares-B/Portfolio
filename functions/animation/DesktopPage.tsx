@@ -20,7 +20,6 @@ type DesktopPageProps = {
     skillsSpiral: HTMLElement;
     skillsStack: HTMLElement;
     skillsBadgeBox: HTMLElement;
-    skillsStickers: HTMLElement;
 
     PRproject_1: HTMLElement;
     PRproject_2: HTMLElement;
@@ -50,7 +49,6 @@ export default function DesktopPage({
     skillsSpiral,
     skillsStack,
     skillsBadgeBox,
-    skillsStickers,
 
     PRproject_1,
     PRproject_2,
@@ -115,7 +113,6 @@ export default function DesktopPage({
 
     gsap.set(skillsStack, {opacity: 0});
     gsap.set(skillsBadgeBox, {opacity: 0});
-    gsap.set(skillsStickers, {opacity: 0});
 
     gsap.set(PRproject_2, {opacity: 0});
     gsap.set(PRproject_3, {opacity: 0});
@@ -206,6 +203,9 @@ export default function DesktopPage({
         filter: 'blur(0px)',
         duration: 0.25
     })
+
+    // --------
+
     .fromTo(skillsSpiral, {
         x: 0,
         filter: "blur(0px)",
@@ -214,10 +214,13 @@ export default function DesktopPage({
         ease: "power2.inOut",
         keyframes: [
             { x: -220, filter: "blur(0px)", duration: 0.10 },
-            { x: -330, filter: "blur(10px)", duration: 0.30 },
+            { x: -440, filter: "blur(10px)", duration: 0.30 },
             { x: -660, filter: "blur(0px)", duration: 0.10 },
         ]
     })
+
+    // --------
+
     .fromTo(skillsStack, {
         opacity: 0,
         filter: 'blur(10px)'
@@ -234,14 +237,43 @@ export default function DesktopPage({
         filter: 'blur(0px)',
         duration: 0.25
     }, "<")
-    .fromTo(skillsStickers, {
-        opacity: 0,
-        filter: 'blur(10px)'
-    }, {
+    
+    // --------
+
+    .fromTo(skillsStack, {
         opacity: 1,
-        filter: 'blur(0px)',
+        filter: 'blur(00px)'
+    }, {
+        opacity: 0,
+        filter: 'blur(10px)',
+        duration: 0.25
+    }, "+=0.5")
+    .fromTo(skillsBadgeBox, {
+        opacity: 1,
+        filter: 'blur(00px)'
+    }, {
+        opacity: 0,
+        filter: 'blur(10px)',
         duration: 0.25
     }, "<")
+    
+    // --------
+
+    .fromTo(skillsSpiral, {
+        x: -660,
+        filter: "blur(0px)",
+    }, {
+        duration: 0.5,
+        ease: "power2.inOut",
+        keyframes: [
+            { x: -440, filter: "blur(0px)", duration: 0.10 },
+            { x: -220, filter: "blur(10px)", duration: 0.30 },
+            { x: 0, filter: "blur(0px)", duration: 0.10 },
+        ]
+    },">")
+
+    // --------
+
     .fromTo(skillsContent, {
         opacity: 1,
         filter: 'blur(0px)'
@@ -249,12 +281,12 @@ export default function DesktopPage({
         opacity: 0,
         filter: 'blur(10px)',
         duration: 0.25
-    }, "+=0.5")
+    }, "+=0.25")
     .to(skills, {
         opacity: 0,
         pointerEvents: "none",
         duration: 0.25
-    }, ">")
+    }, "+=0.25")
     .addLabel("skillsEnd")
 
     // ------------------------------------------ Projects ------------------------------------------ //
