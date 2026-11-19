@@ -14,17 +14,17 @@ const images = [
 
 ];
 
-export default function StackSpiral(){
+export default function StackSpiral({size}: {size: number}){
 
     return(
-        <div className='w-[480px] h-full overflow-hidden'>
+        <div className='w-[340px] 2xl:w-[480px] h-full overflow-hidden'>
             <InfiniteSpiral
                 items={images}
                 animationMode="all"
                 speed={1}
                 radius={170}
-                cardWidth={80}
-                cardHeight={80}
+                cardWidth={size < 1280 ? 60 : size < 1920 ? 70 : 80}
+                cardHeight={size < 1280 ? 60 : size < 1920 ? 70 : 80}
                 verticalSpacing={60}
                 perspective={1000}
                 cardRadius={10}

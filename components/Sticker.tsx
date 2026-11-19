@@ -47,10 +47,7 @@ export default function Sticker({
         <StickerPeel
           imageSrc={logo}
           width={
-            size < 640 ? 50 :
-            size < 768 ? 55 :
-            size < 1024 ? 65 :
-            size < 1280 ? 70 : 75
+            size < 1280 ? 60 : size < 1920 ? 65 : 75
           }
           initialPosition={{
             x: positionX,

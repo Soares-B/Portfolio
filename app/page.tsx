@@ -111,6 +111,7 @@ export default function Home() {
 
     mm.add("(min-width: 769px)", () => {
       if (
+        !windowWidth ||
         !progress.current ||
         !container.current ||
         !header.current ||
@@ -133,6 +134,7 @@ export default function Home() {
         return;
 
       return DesktopPage({
+        size: windowWidth,
         progress: progress.current,
         container: container.current,
         header: header.current,

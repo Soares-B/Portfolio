@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 type DesktopPageProps = {
+    size: number
     progress: HTMLElement;
     container: HTMLElement;
     header: HTMLElement;
@@ -33,6 +34,7 @@ type DesktopPageProps = {
 }
 
 export default function DesktopPage({
+    size,
     progress, 
     container,
     header,
@@ -213,9 +215,9 @@ export default function DesktopPage({
         duration: 0.5,
         ease: "power2.inOut",
         keyframes: [
-            { x: -220, filter: "blur(0px)", duration: 0.10 },
-            { x: -440, filter: "blur(10px)", duration: 0.30 },
-            { x: -660, filter: "blur(0px)", duration: 0.10 },
+            { x: size < 1280 ? -110 : size < 1920 ? -140 : -220, filter: "blur(0px)", duration: 0.10 },
+            { x: size < 1280 ? -220 : size < 1920 ? -280 : -440, filter: "blur(10px)", duration: 0.30 },
+            { x: size < 1280 ? -330 : size < 1920 ? -420 : -660, filter: "blur(0px)", duration: 0.10 },
         ]
     })
 
@@ -260,15 +262,15 @@ export default function DesktopPage({
     // --------
 
     .fromTo(skillsSpiral, {
-        x: -660,
+        x: size < 1280 ? -330 : size < 1920 ? -420 : -660,
         filter: "blur(0px)",
     }, {
         duration: 0.5,
         ease: "power2.inOut",
         keyframes: [
-            { x: -440, filter: "blur(0px)", duration: 0.10 },
-            { x: -220, filter: "blur(10px)", duration: 0.30 },
-            { x: 0, filter: "blur(0px)", duration: 0.10 },
+            { x: size < 1280 ? -220 : size < 1920 ? -280 : -440, filter: "blur(0px)", duration: 0.10 },
+            { x: size < 1280 ? -110 : size < 1920 ? -140 : -220, filter: "blur(10px)", duration: 0.30 },
+            { x: size < 1280 ? 0 : size < 1920 ? 0 : 0, filter: "blur(0px)", duration: 0.10 },
         ]
     },">")
 
