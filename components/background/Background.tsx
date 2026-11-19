@@ -8,6 +8,7 @@ import Grainient from './Grainient';
 import Waves from './Waves';
 import Topography from './Topography';
 import GradientASCII from "./GradientASCII";
+import DotGrid from './DotGrid';
 
 type Color= {
     [key: string]: string
@@ -344,6 +345,35 @@ export function ASCIIBits({primaryColor, secondaryColor}: Color){
           intro
           lightMode={false}
         />
+    </div>
+  );
+}
+
+export function DotBits({primaryColor, background}: Color){
+  return(
+    <div className={`absolute inset-0 p-[2px] z-31`}>
+      <DotGrid
+        baseColor={background}
+        activeColor={primaryColor}
+        shape="circle"
+        dotSize={2}
+        gap={4}
+        proximity={80}
+        strength={1}
+        bounce={0.6}
+        tension={0.4}
+        returnDuration={0.8}
+        shockRadius={320}
+        shockStrength={5}
+        swell={0.8}
+        stretch={0.5}
+        glow={0.5}
+        fade={0}
+        intro
+        opacity={1}
+        mouseInteraction
+        clickShock
+      />
     </div>
   );
 }

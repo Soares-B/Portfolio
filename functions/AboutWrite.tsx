@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import type { Theme } from '@/types/themes';
 import { Background } from './Background';
 
-export function awrite({themes, currentTheme, size}: Theme & {size: number}) {
+export function awrite({themes, currentTheme, size, aboutActive}: Theme & {size: number, aboutActive: boolean}) {
   const [text, setText] = useState('');
 
 const code = size > 768 ?
@@ -63,7 +63,7 @@ const code = size > 768 ?
       <pre className="whitespace-pre-wrap font-montserrat font-semibold text-sm relative z-23">
         <p className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].div_text_shadow} font-montserrat font-semibold text-base md:text-2xl lg:text-base 2xl:text-xl`}>{text}<span className="animate-pulse">|</span></p>
       </pre>
-      <Background currentTheme={currentTheme ? currentTheme : ''} type='card'/>
+      {aboutActive && <Background currentTheme={currentTheme ? currentTheme : ''} type='card'/>}
     </div>
   );
 }

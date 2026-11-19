@@ -1,11 +1,36 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { start } from "repl";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Element = {
-    [key: string]: HTMLElement
+type DesktopPageProps = {
+    progress: HTMLElement;
+    container: HTMLElement;
+    header: HTMLElement;
+    about: HTMLElement;
+    skills: HTMLElement;
+    projects: HTMLElement;
+    contact: HTMLElement;
+
+    headerContent: HTMLElement;
+    aboutContent: HTMLElement;
+    skillsContent: HTMLElement;
+    contactContent: HTMLElement;
+
+    skillsSpiral: HTMLElement;
+    skillsStack: HTMLElement;
+    skillsBadgeBox: HTMLElement;
+    skillsStickers: HTMLElement;
+
+    PRproject_1: HTMLElement;
+    PRproject_2: HTMLElement;
+    PRproject_3: HTMLElement;
+    aboutTitle: HTMLElement;
+
+    setHeaderActive: React.Dispatch<React.SetStateAction<boolean>>;
+    setAboutActive: React.Dispatch<React.SetStateAction<boolean>>;
+    setSkillsActive: React.Dispatch<React.SetStateAction<boolean>>;
+    setContactActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function DesktopPage({
@@ -22,11 +47,21 @@ export default function DesktopPage({
     skillsContent,
     contactContent,
 
+    skillsSpiral,
+    skillsStack,
+    skillsBadgeBox,
+    skillsStickers,
+
     PRproject_1,
     PRproject_2,
     PRproject_3, 
     aboutTitle,
-}: Element) {
+
+    setHeaderActive,
+    setAboutActive,
+    setSkillsActive,
+    setContactActive,
+}: DesktopPageProps) { 
 
     gsap.set(progress, {
         scaleX: 0,
@@ -51,18 +86,44 @@ export default function DesktopPage({
             end: "+=800%",
             scrub: 0.5,
             pin: true,
-
         }
-    })
+    });
+
+    animation.eventCallback("onUpdate", () => {
+        const time = animation.time();
+
+        const isHeaderActive =
+            time < animation.labels.headerEnd;
+
+        const isAboutActive =
+            time >= animation.labels.aboutStart &&
+            time < animation.labels.aboutEnd;
+
+        const isSkillActive =
+            time >= animation.labels.skillsStart &&
+            time < animation.labels.skillsEnd;
+
+        setHeaderActive(isHeaderActive);
+        setAboutActive(isAboutActive);
+        setSkillsActive(isSkillActive);
+    });
 
     gsap.set(about, { opacity: 0 });
     gsap.set(skills, { opacity: 0 });
     gsap.set(projects, { opacity: 0 });
     gsap.set(contact, { opacity: 0 });
+
+    gsap.set(skillsStack, {opacity: 0});
+    gsap.set(skillsBadgeBox, {opacity: 0});
+    gsap.set(skillsStickers, {opacity: 0});
+
     gsap.set(PRproject_2, {opacity: 0});
     gsap.set(PRproject_3, {opacity: 0});
 
     animation
+
+    // ------------------------------------------ Header ------------------------------------------ //
+
     .fromTo(headerContent, {
         opacity: 1,
         filter: 'blur(0px)'
@@ -76,9 +137,11 @@ export default function DesktopPage({
         pointerEvents: "none",
         duration: 0.25
     }, ">")
+    .addLabel("headerEnd")
 
+    // ------------------------------------------ About ------------------------------------------ //
 
-
+    .addLabel("aboutStart")
     .to(about, {
         opacity: 1,
         pointerEvents: "auto",
@@ -125,8 +188,11 @@ export default function DesktopPage({
         pointerEvents: "none",
         duration: 0.25
     }, ">")
+    .addLabel("aboutEnd")
 
+    // ------------------------------------------ Skills ------------------------------------------ //
 
+    .addLabel("skillsStart")
     .to(skills, {
         opacity: 1,
         pointerEvents: "auto",
@@ -140,6 +206,42 @@ export default function DesktopPage({
         filter: 'blur(0px)',
         duration: 0.25
     })
+    .fromTo(skillsSpiral, {
+        x: 0,
+        filter: "blur(0px)",
+    }, {
+        duration: 0.5,
+        ease: "power2.inOut",
+        keyframes: [
+            { x: -220, filter: "blur(0px)", duration: 0.10 },
+            { x: -330, filter: "blur(10px)", duration: 0.30 },
+            { x: -660, filter: "blur(0px)", duration: 0.10 },
+        ]
+    })
+    .fromTo(skillsStack, {
+        opacity: 0,
+        filter: 'blur(10px)'
+    }, {
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 0.25
+    }, ">")
+    .fromTo(skillsBadgeBox, {
+        opacity: 0,
+        filter: 'blur(10px)'
+    }, {
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 0.25
+    }, "<")
+    .fromTo(skillsStickers, {
+        opacity: 0,
+        filter: 'blur(10px)'
+    }, {
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 0.25
+    }, "<")
     .fromTo(skillsContent, {
         opacity: 1,
         filter: 'blur(0px)'
@@ -153,8 +255,9 @@ export default function DesktopPage({
         pointerEvents: "none",
         duration: 0.25
     }, ">")
+    .addLabel("skillsEnd")
 
-
+    // ------------------------------------------ Projects ------------------------------------------ //
 
     .to(projects, {
         opacity: 1,
@@ -192,7 +295,9 @@ export default function DesktopPage({
         duration: 0.5
     })
 
+    // ------------------------------------------ Contact ------------------------------------------ //
 
+    .addLabel("contactStart")
     .to(contact, {
         opacity: 1,
         pointerEvents: "auto",

@@ -13,7 +13,7 @@ export function TechCards({
 }: Theme){
 
     return (
-        <div className="flex flex-col gap-5 lg:gap-3 flex-col lg:flex-row lg:flex-wrap w-full justify-center">
+        <div className={`flex flex-col gap-5 lg:gap-5 flex-col lg:flex-row lg:flex-wrap w-full justify-center`}>
             <TiltCard card={<SiTypescript className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full lg:w-[40%] h-auto" tech={true} name="TypeScript" url=''/>
             <TiltCard card={<SiJavascript className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full lg:w-[40%] h-auto" tech={true} name="JavaScript" url=''/>
             <TiltCard card={<SiReact className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full lg:w-[40%] h-auto" tech={true} name="React" url=''/>
@@ -31,7 +31,7 @@ export function WorkflowCards({
 }: Theme){
 
     return (
-        <div className="flex flex-col lg:flex-row gap-5 lg:gap-3 flex-wrap w-full justify-center">
+        <div className="flex flex-col lg:flex-row gap-5 lg:gap-5 flex-wrap w-full justify-center">
             <TiltCard card={<SiGit className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full lg:w-[40%] h-auto" tech={true} name="Git" url=''/>
             <TiltCard card={<SiGithub className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full lg:w-[40%] h-auto" tech={true} name="Github" url=''/>
             <TiltCard card={<VscVscode className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full lg:w-[40%] h-auto" tech={true} name="VSCode" url=''/>

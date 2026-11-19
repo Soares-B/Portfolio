@@ -11,7 +11,8 @@ import {
     GrainientBits,
     WavesBits,
     TopographyBits,
-    ASCIIBits
+    ASCIIBits,
+    DotBits
 } from "@/components/background/Background";
 
 export function Background({currentTheme, display, type}: {currentTheme: string, display?: number, type?: string}){
@@ -24,6 +25,14 @@ export function Background({currentTheme, display, type}: {currentTheme: string,
                    currentTheme === 'Genius' ? <ASCIIBits primaryColor={'#101741'} secondaryColor={'#132B73'}/> : 
                    currentTheme === 'Trial' ? <ASCIIBits primaryColor={'#870045'} secondaryColor={'#E02D8C'}/> : 
                    currentTheme === 'Silent' ? <ASCIIBits primaryColor={'#283325'} secondaryColor={'#81A568'}/> : ''
+
+        case type === 'badge':
+            return currentTheme === 'Milk' ? <DotBits primaryColor={'#499792'} background={'#F2E9E4'}/> :
+                   currentTheme === 'Dreams' ? <DotBits primaryColor={'#5A3A63'} background={'#E4BDD2'}/> : 
+                   currentTheme === 'Vampire' ? <DotBits primaryColor={'#FDE0CE'} background={'#FEF7F7'}/> : 
+                   currentTheme === 'Genius' ? <DotBits primaryColor={'#57565C'} background={'#FBFCFC'}/> : 
+                   currentTheme === 'Trial' ? <DotBits primaryColor={'#EBEBED'} background={'#FFFFFF'}/> : 
+                   currentTheme === 'Silent' ? <DotBits primaryColor={'#FEFADB'} background={'#FFFFFF'}/> : ''
 
         case display! <= 768:
             return currentTheme === 'Milk' ? <DitheringBG primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> :

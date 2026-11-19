@@ -8,8 +8,9 @@ import { GemSmoke } from '@paper-design/shaders-react';
 export default function Name({
   themes,
   currentTheme,
-  windowWidth
-}: Theme & { windowWidth: number, }) {
+  windowWidth,
+  headerActive
+}: Theme & { windowWidth: number, headerActive: boolean}) {
   const theme = themes[currentTheme];
 
   const primaryColor = (currentTheme === 'Milk' ? '#499792' :
@@ -28,67 +29,72 @@ export default function Name({
     '')
 
   return (
-  <div className="flex flex-col items-start w-full flex-1">
 
-    <motion.div
-      className="w-fit h-1/2 cursor-pointer select-none"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-    >
-      <GemSmoke
-        className="h-full flex items-start"
-        image="/Imagens/Bruno.png"
-        colors={[primaryColor, secondaryColor]}
-        colorBack="#00000000"
-        colorInner="#00000000"
-        innerDistortion={1}
-        outerDistortion={0.8}
-        outerGlow={0}
-        innerGlow={1}
-        offset={0}
-        angle={0}
-        size={1}
-        speed={2}
-        scale={0.6}
-        fit="cover"
-        width={windowWidth < 768 ? 325 : 
-               windowWidth < 1024 ? 375 : 380
-        }
-        height={windowWidth < 768 ? 128 : 148
-        }
-      />
-    </motion.div>
+  <div className="w-full flex-1">
+  { headerActive &&
+    <div className="flex flex-col items-start w-full h-full">
 
-    <motion.div
-      className="w-fit h-1/2 cursor-pointer select-none"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-    >
-      <GemSmoke
-        className="h-full flex items-start"
-        image="/Imagens/Soares.png"
-        colors={[primaryColor, secondaryColor]}
-        colorBack="#00000000"
-        colorInner="#00000000"
-        innerDistortion={1}
-        outerDistortion={0.8}
-        outerGlow={0}
-        innerGlow={1}
-        offset={0}
-        angle={0}
-        size={1}
-        speed={2}
-        scale={0.6}
-        fit="cover"
-        width={windowWidth < 768 ? 360 : 420
-        }
-        height={windowWidth < 768 ? 128 : 148
-        }
-      />
-    </motion.div>
+      <motion.div
+        className="w-fit h-1/2 cursor-pointer select-none"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+      >
+        <GemSmoke
+          className="h-full flex items-start"
+          image="/Imagens/Bruno.png"
+          colors={[primaryColor, secondaryColor]}
+          colorBack="#00000000"
+          colorInner="#00000000"
+          innerDistortion={1}
+          outerDistortion={0.8}
+          outerGlow={0}
+          innerGlow={1}
+          offset={0}
+          angle={0}
+          size={1}
+          speed={2}
+          scale={0.6}
+          fit="cover"
+          width={windowWidth < 768 ? 325 : 
+                windowWidth < 1024 ? 375 : 380
+          }
+          height={windowWidth < 768 ? 128 : 148
+          }
+        />
+      </motion.div>
 
-</div>
+      <motion.div
+        className="w-fit h-1/2 cursor-pointer select-none"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+      >
+        <GemSmoke
+          className="h-full flex items-start"
+          image="/Imagens/Soares.png"
+          colors={[primaryColor, secondaryColor]}
+          colorBack="#00000000"
+          colorInner="#00000000"
+          innerDistortion={1}
+          outerDistortion={0.8}
+          outerGlow={0}
+          innerGlow={1}
+          offset={0}
+          angle={0}
+          size={1}
+          speed={2}
+          scale={0.6}
+          fit="cover"
+          width={windowWidth < 768 ? 360 : 420
+          }
+          height={windowWidth < 768 ? 128 : 148
+          }
+        />
+      </motion.div>
+
+    </div>
+    }  
+  </div>
   );
 }
