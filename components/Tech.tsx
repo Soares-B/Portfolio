@@ -4,6 +4,8 @@ import { VscVscode } from "react-icons/vsc";
 
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
+import Magnet from '@/components/Bits/Magnet'
+
 import TiltCard from "@/components/animation/Card";
 import type { Theme } from "@/types/themes";
 
@@ -45,8 +47,13 @@ export function ContactCards({
 }: Theme){
     return(
         <div className="flex flex-col gap-5 flex-wrap w-full justify-center">
-            <TiltCard card={<FaGithub className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="Github" url={'https://github.com/Soares-B'}/>
-            <TiltCard card={<FaLinkedin className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="LinkedIn" url={'https://www.linkedin.com/in/bruno-soares-100498412/'}/>
+            <Magnet padding={100} magnetStrength={2}>
+                <TiltCard card={<FaGithub className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="Github" url={'https://github.com/Soares-B'}/>
+            </Magnet>
+
+            <Magnet padding={100} magnetStrength={2}>
+                <TiltCard card={<FaLinkedin className={`size-8 md:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="LinkedIn" url={'https://www.linkedin.com/in/bruno-soares-100498412/'}/>
+            </Magnet>                   
         </div>
     );
 }

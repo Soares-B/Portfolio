@@ -1,0 +1,70 @@
+import { hwrite } from "@/functions/HeaderWrite";
+import Name from "@/components/animation/Name";
+import { Theme } from "@/components/Header buttons";
+import { Background } from "@/functions/Background";
+
+import type { Theme as Temas } from "@/types/themes";
+
+import Image from "next/image";
+
+export default function Header({
+    themes, 
+    currentTheme,
+    setCurrentTheme,
+    windowWidth,
+    header,
+    headerContent,
+    headerActive,
+}: Temas & {setCurrentTheme: any, windowWidth: number, header: any, headerContent: any, headerActive: any}) {
+  return (
+    <div
+      ref={header}
+      className={`w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}
+    >
+      {/* ------------------------ Background ------------------------ */}
+      <Background
+        key={currentTheme}
+        currentTheme={currentTheme}
+        display={windowWidth}
+      />
+      {/* ------------------------ Background ------------------------ */}
+      <div
+        ref={headerContent}
+        className="z-10 w-screen h-screen flex flex-col justify-between shrink-0"
+      >
+        <div className="w-full h-2/5  p-3 flex flex-col gap-1 outline-none">
+          <Name
+            themes={themes}
+            currentTheme={currentTheme}
+            windowWidth={windowWidth}
+            headerActive={headerActive}
+          />
+          {hwrite({ themes, currentTheme })}
+          <Theme
+            themes={themes}
+            currentTheme={currentTheme}
+            setCurrentTheme={setCurrentTheme}
+            windowWidth={windowWidth}
+          />
+        </div>
+        {windowWidth <= 768 ? (
+          <Image
+            src="/Imagens/Mobile.png"
+            width={768}
+            height={1024}
+            alt="personality"
+            className="w-full h-fit select-none"
+          ></Image>
+        ) : (
+          <Image
+            src="/Imagens/Desktop.png"
+            width={1536}
+            height={864}
+            alt="personality"
+            className="w-2/5 h-fit absolute right-0 bottom-0 select-none"
+          ></Image>
+        )}
+      </div>
+    </div>
+  );
+}
