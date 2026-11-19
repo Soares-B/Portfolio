@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@animate-ui/react": "^2.4.6",
     "@base-ui/react": "^1.9.0",
     "@gsap/react": "^2.1.2",
     "@paper-design/shaders-react": "^0.0.82",
@@ -17,7 +18,7 @@
     "cn": "^0.5.2",
     "gsap": "^3.15.1",
     "lucide-react": "^1.73.0",
-    "motion": "^12.43.0",
+    "motion": "^14.14.0",
     "next": "16.4.5",
     "photo-particles": "^1.1.0",
     "radix-ui": "^1.8.1",
