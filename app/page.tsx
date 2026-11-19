@@ -162,7 +162,7 @@ export default function Home() {
         PRproject_1: PRprojects.PRproject_1.current,
         PRproject_2: PRprojects.PRproject_2.current,
         PRproject_3: PRprojects.PRproject_3.current,
-        
+
         aboutTitle: aboutTitle.current,
 
         setHeaderActive: setHeaderActive,
@@ -205,7 +205,11 @@ export default function Home() {
                 className={`w-screen h-screen flex flex-col justify-between shrink-0 header pointer-events-auto`}
               >
                 {/* ------------------------ Background ------------------------ */}
-                <Background currentTheme={currentTheme} display={windowWidth} />
+                <Background
+                  key={currentTheme}
+                  currentTheme={currentTheme}
+                  display={windowWidth}
+                />
                 {/* ------------------------ Background ------------------------ */}
                 <div
                   ref={headerContent}
@@ -255,6 +259,7 @@ export default function Home() {
               >
                 {/* ------------------------ Background ------------------------ */}
                 <Counterground
+                  key={currentTheme}
                   currentTheme={currentTheme}
                   display={windowWidth}
                 />
@@ -336,7 +341,11 @@ export default function Home() {
             absolute inset-0 opacity-0 items-center justify-center pointer-events-none`}
               >
                 {/* ------------------------ Background ------------------------ */}
-                <Background currentTheme={currentTheme} display={windowWidth} />
+                <Background
+                  key={currentTheme}
+                  currentTheme={currentTheme}
+                  display={windowWidth}
+                />
                 {/* ------------------------ Background ------------------------ */}
 
                 {/* <div ref={skillsContent} className="z-30 w-screen h-screen flex shrink-0 items-center justify-center">
@@ -368,113 +377,115 @@ export default function Home() {
                     <StackSpiral />
                   </div>
 
+                  <div
+                    ref={Skills.skillsStack}
+                    className="col-2 w-full h-full flex flex-col items-center justify-center gap-5"
+                  >
                     <div
-                      ref={Skills.skillsStack}
-                      className="col-2 w-full h-full flex flex-col items-center justify-center gap-5"
+                      className={`w-full h-[30px] flex justify-center font-montserrat font-bold text-3xl ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`}
                     >
-                      <div
-                        className={`w-full h-[30px] flex justify-center font-montserrat font-bold text-3xl ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`}
-                      >
-                        {gwrite({
-                          css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
-                          scramble: `${themes[currentTheme].highlight_text}`,
-                          text: "Stack",
-                        })}
-                      </div>
-
-                      {TechCards({ themes, currentTheme })}
-
-                      <div
-                        className={`w-full h-[30px] flex justify-center font-montserrat font-bold text-3xl ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`}
-                      >
-                        {gwrite({
-                          css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
-                          scramble: `${themes[currentTheme].highlight_text}`,
-                          text: "Workflow",
-                        })}
-                      </div>
-
-                      {WorkflowCards({ themes, currentTheme })}
+                      {gwrite({
+                        css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
+                        scramble: `${themes[currentTheme].highlight_text}`,
+                        text: "Stack",
+                      })}
                     </div>
 
+                    {TechCards({ themes, currentTheme })}
 
                     <div
+                      className={`w-full h-[30px] flex justify-center font-montserrat font-bold text-3xl ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`}
+                    >
+                      {gwrite({
+                        css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
+                        scramble: `${themes[currentTheme].highlight_text}`,
+                        text: "Workflow",
+                      })}
+                    </div>
+
+                    {WorkflowCards({ themes, currentTheme })}
+                  </div>
+
+                  <div
                     ref={Skills.skillsBadgeBox}
-                      className={`w-[95%] h-4/5 ${themes[currentTheme].counterground}/40 relative border-2 rounded-[5px]`}
+                    className={`w-[95%] h-4/5 ${themes[currentTheme].counterground}/40 relative border-2 rounded-[5px]`}
+                  >
+                    <p
+                      className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} text-4xl font-montserrat font-bold relative z-[32] mt-2 ml-2`}
                     >
-                      <p
-                        className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} text-4xl font-montserrat font-bold relative z-[32] mt-2 ml-2`}
-                      >
-                        Badges
-                      </p>
-                      <Background currentTheme={currentTheme} type="badge" />
-                      {skillsActive && (
-                    <div 
-                    className="absolute inset-0 w-full h-full pointer-events-none">
-                      <Sticker
-                        logo="/Imagens/Stack/Typescript.png"
-                        x={-40}
-                        y={35}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/Javascript.png"
-                        x={-25}
-                        y={35}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/React.png"
-                        x={-10}
-                        y={35}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/Next.png"
-                        x={5}
-                        y={35}
-                        size={windowWidth}
-                      />
+                      Badges
+                    </p>
+                    <Background
+                      key={currentTheme}
+                      currentTheme={currentTheme}
+                      type="badge"
+                    />
+                    {skillsActive && (
+                      <div className="absolute inset-0 w-full h-full pointer-events-none">
+                        <Sticker
+                          logo="/Imagens/Stack/Typescript.png"
+                          x={-40}
+                          y={35}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/Javascript.png"
+                          x={-25}
+                          y={35}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/React.png"
+                          x={-10}
+                          y={35}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/Next.png"
+                          x={5}
+                          y={35}
+                          size={windowWidth}
+                        />
 
-                      <Sticker
-                        logo="/Imagens/Stack/Tailwind.png"
-                        x={20}
-                        y={35}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/PostgreSQL.png"
-                        x={35}
-                        y={35}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/Prisma.png"
-                        x={-40}
-                        y={20}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/Git.png"
-                        x={-25}
-                        y={20}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/Github.png"
-                        x={-10}
-                        y={20}
-                        size={windowWidth}
-                      />
-                      <Sticker
-                        logo="/Imagens/Stack/Vscode.png"
-                        x={5}
-                        y={20}
-                        size={windowWidth}
-                      />
-                    </div>
-                  )}
-                    </div>
+                        <Sticker
+                          logo="/Imagens/Stack/Tailwind.png"
+                          x={20}
+                          y={35}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/PostgreSQL.png"
+                          x={35}
+                          y={35}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/Prisma.png"
+                          x={-40}
+                          y={20}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/Git.png"
+                          x={-25}
+                          y={20}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/Github.png"
+                          x={-10}
+                          y={20}
+                          size={windowWidth}
+                        />
+                        <Sticker
+                          logo="/Imagens/Stack/Vscode.png"
+                          x={5}
+                          y={20}
+                          size={windowWidth}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -590,7 +601,7 @@ export default function Home() {
                       <ProjectButton
                         themes={themes}
                         currentTheme={currentTheme}
-                        url="https://livia-lace-85cr.vercel.app/"
+                        url=""
                       />
                     </div>
                   </div>
@@ -605,7 +616,11 @@ export default function Home() {
             absolute inset-0 opacity-0  pointer-events-none`}
               >
                 {/* ------------------------ Background ------------------------ */}
-                <Background currentTheme={currentTheme} display={windowWidth} />
+                <Background
+                  key={currentTheme}
+                  currentTheme={currentTheme}
+                  display={windowWidth}
+                />
                 {/* ------------------------ Background ------------------------ */}
                 <div
                   ref={contactContent}
