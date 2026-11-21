@@ -14,8 +14,9 @@ export const themes = {
     div_background: 'bg-Milk-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Milk-2',
 
+    project_shadow: 'shadow-Milk-6',
 
-progress: 'bg-Milk-1/66',
+    progress: 'bg-Milk-1/66',
     border: "border-Milk-6",
     icon: "text-Milk-4",
     button: "bg-Milk-1",
@@ -40,6 +41,8 @@ progress: 'bg-Milk-1/66',
 
     div_background: 'bg-Dreams-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Dreams-2',
+
+    project_shadow: 'shadow-Dreams-6',
 
     progress: 'bg-Dreams-1/66',
     border: "border-Dreams-6",
@@ -67,6 +70,8 @@ progress: 'bg-Milk-1/66',
     div_background: 'bg-Vampire-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Vampire-2',
 
+    project_shadow: 'shadow-Vampire-6',
+
     progress: 'bg-Vampire-1/66',
     border: "border-Vampire-6",
     icon: "text-Vampire-4",
@@ -92,6 +97,8 @@ progress: 'bg-Milk-1/66',
 
     div_background: 'bg-Genius-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Genius-2',
+
+    project_shadow: 'shadow-Genius-6',
 
     progress: 'bg-Genius-1/66',
     border: "border-Genius-6",
@@ -119,6 +126,8 @@ progress: 'bg-Milk-1/66',
     div_background: 'bg-Trial-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Trial-2',
 
+    project_shadow: 'shadow-Trial-6',
+
     progress: 'bg-Trial-1/66',
     border: "border-Trial-6",
     icon: "text-Trial-4",
@@ -145,6 +154,8 @@ progress: 'bg-Milk-1/66',
     div_background: 'bg-Silent-5',
     div_text_shadow: 'text-shadow-[1px_1px_1px] text-Silent-2',
 
+    project_shadow: 'shadow-Silent-6',
+    
     progress: 'bg-Silent-1/66',
     border: "border-Silent-6",
     icon: "text-Silent-4",
@@ -168,6 +179,8 @@ progress: 'bg-Milk-1/66',
     counterground: '',
     div_background: '',
     div_text_shadow: '',
+
+    project_shadow: '',    
     progress: '',
     border: '',
     icon: '',

@@ -12,8 +12,9 @@ export default function Contact({
     windowWidth,
     contact,
     contactContent,
+    contactActive
 
-}: Temas & {windowWidth: number, contact: any, contactContent: any}) {
+}: Temas & {windowWidth: number, contact: any, contactContent: any, contactActive: boolean}) {
   return (
     <div
       ref={contact}
@@ -41,7 +42,7 @@ export default function Contact({
               text: "Find me on",
             })}
           </div>
-          <ContactCards themes={themes} currentTheme={currentTheme} />
+          {contactActive && <ContactCards themes={themes} currentTheme={currentTheme} />}
         </div>
         {windowWidth <= 768 ? (
           <Image

@@ -21,7 +21,7 @@ export default function About({
   return (
     <div
       ref={about}
-      className={` w-screen h-screen flex items-end justify-center shrink-0 about
+      className={` w-screen h-screen flex items-end justify-center shrink-0 projects
                     absolute inset-0 opacity-0 pointer-events-none`}
     >
       {/* ------------------------ Background ------------------------ */}

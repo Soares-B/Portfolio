@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import type { Theme } from "@/types/themes";
 
-export function pwrite({
+export function Pwrite({
   themes,
   currentTheme,
   phrase

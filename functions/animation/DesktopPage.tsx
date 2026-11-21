@@ -16,20 +16,32 @@ type DesktopPageProps = {
     headerContent: HTMLElement;
     aboutContent: HTMLElement;
     skillsContent: HTMLElement;
+    projectContent: HTMLElement;
     contactContent: HTMLElement;
 
     skillsSpiral: HTMLElement;
     skillsStack: HTMLElement;
     skillsBadgeBox: HTMLElement;
 
+    PRprojects_container: HTMLElement;
     PRproject_1: HTMLElement;
     PRproject_2: HTMLElement;
     PRproject_3: HTMLElement;
+    project_overlay1: HTMLElement;
+    project_overlay2: HTMLElement;
+    project_overlay3: HTMLElement;
+    aboutDark: HTMLElement;
+    aboutProject1: HTMLElement;
+    aboutProject2: HTMLElement;
+    aboutProject3: HTMLElement;
+    ProjectCards: HTMLElement;
+
     aboutTitle: HTMLElement;
 
     setHeaderActive: React.Dispatch<React.SetStateAction<boolean>>;
     setAboutActive: React.Dispatch<React.SetStateAction<boolean>>;
     setSkillsActive: React.Dispatch<React.SetStateAction<boolean>>;
+    setProjectsActive: React.Dispatch<React.SetStateAction<boolean>>;
     setContactActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -46,22 +58,36 @@ export default function DesktopPage({
     headerContent,
     aboutContent,
     skillsContent,
+    projectContent,
     contactContent,
 
     skillsSpiral,
     skillsStack,
     skillsBadgeBox,
 
+    PRprojects_container,
     PRproject_1,
     PRproject_2,
-    PRproject_3, 
+    PRproject_3,
+    project_overlay1,
+    project_overlay2,
+    project_overlay3,
+    aboutDark,
+    aboutProject1,
+    aboutProject2,
+    aboutProject3,
+    ProjectCards,
+
     aboutTitle,
 
     setHeaderActive,
     setAboutActive,
     setSkillsActive,
+    setProjectsActive,
     setContactActive,
 }: DesktopPageProps) { 
+
+    const projectSize = ((size / 3) + 20)
 
     gsap.set(progress, {
         scaleX: 0,
@@ -103,9 +129,18 @@ export default function DesktopPage({
             time >= animation.labels.skillsStart &&
             time < animation.labels.skillsEnd;
 
+        const isProjectsActive =
+            time >= animation.labels.projectsStart &&
+            time < animation.labels.projectsEnd;
+
+        const isContactActive =
+            time >= animation.labels.contactStart
+
         setHeaderActive(isHeaderActive);
         setAboutActive(isAboutActive);
         setSkillsActive(isSkillActive);
+        setProjectsActive(isProjectsActive);
+        setContactActive(isContactActive);
     });
 
     gsap.set(about, { opacity: 0 });
@@ -116,8 +151,14 @@ export default function DesktopPage({
     gsap.set(skillsStack, {opacity: 0});
     gsap.set(skillsBadgeBox, {opacity: 0});
 
-    gsap.set(PRproject_2, {opacity: 0});
-    gsap.set(PRproject_3, {opacity: 0});
+    gsap.set(
+        [aboutProject1, aboutProject2, aboutProject3],
+        { opacity: 0, }
+    );
+    gsap.set(aboutDark, { opacity: 0 });
+    gsap.set(ProjectCards, { opacity: 0, visibility: 'hidden' });
+
+    gsap.set(PRprojects_container, {x: (-(projectSize) - 30)})
 
     animation
 
@@ -129,12 +170,12 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.25
+        duration: 0.5
     }, "<")
     .to(header, {
         opacity: 0,
         pointerEvents: "none",
-        duration: 0.25
+        duration: 0.5
     }, ">")
     .addLabel("headerEnd")
 
@@ -152,7 +193,7 @@ export default function DesktopPage({
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.25
+        duration: 0.5
     })
     .fromTo(aboutTitle, {
         y: 25,
@@ -162,7 +203,7 @@ export default function DesktopPage({
         y: 0,
         opacity: 1,
         filter: "blur(0px)",
-        duration: 0.25,
+        duration: 0.5,
     },"-=0.25")
     .fromTo(aboutContent, {
         opacity: 1,
@@ -170,7 +211,7 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.25
+        duration: 0.5
     }, "+=0.5")
     .fromTo(aboutTitle, {
         y: 0,
@@ -180,12 +221,12 @@ export default function DesktopPage({
         y: 25,
         opacity: 0,
         filter: "blur(10px)",
-        duration: 0.25,
+        duration: 0.5,
     },"-=0.25")
     .to(about, {
         opacity: 0,
         pointerEvents: "none",
-        duration: 0.25
+        duration: 0.5
     }, ">")
     .addLabel("aboutEnd")
 
@@ -203,7 +244,7 @@ export default function DesktopPage({
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.25
+        duration: 0.5
     })
 
     // --------
@@ -229,7 +270,7 @@ export default function DesktopPage({
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.25
+        duration: 0.5
     }, ">")
     .fromTo(skillsBadgeBox, {
         opacity: 0,
@@ -237,7 +278,7 @@ export default function DesktopPage({
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.25
+        duration: 0.5
     }, "<")
     
     // --------
@@ -248,7 +289,7 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.25
+        duration: 0.5
     }, "+=0.5")
     .fromTo(skillsBadgeBox, {
         opacity: 1,
@@ -256,7 +297,7 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.25
+        duration: 0.5
     }, "<")
     
     // --------
@@ -282,52 +323,174 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.25
+        duration: 0.5
     }, "+=0.25")
     .to(skills, {
         opacity: 0,
         pointerEvents: "none",
-        duration: 0.25
-    }, "+=0.25")
+        duration: 0.5
+    }, ">")
     .addLabel("skillsEnd")
 
     // ------------------------------------------ Projects ------------------------------------------ //
 
+    .addLabel("projectsStart")
     .to(projects, {
         opacity: 1,
         pointerEvents: "auto",
         duration: 0.5
     }, "<")
-    .to(PRproject_1, {
+    .to(projectContent, {
         opacity: 1,
-        duration: 0.5,
-        pointerEvents: "auto",
-    }, "<")
-    .to(PRproject_1, {
-        opacity: 0,
-        duration: 0.5,
-        pointerEvents: "none",
+        duration: 0.5
     })
-    .to(PRproject_2, {
+
+    // --------
+
+    .to(PRprojects_container, {
+        x: (-(projectSize) * 2 - 20),
+    }, ">")
+
+    .to(project_overlay1, {
+        opacity: 1,
+        duration: 0,
+    }, ">+0.25")
+    .to(project_overlay1, {
+        scale: 3,
+        duration: 0.5
+    }, ">")
+    .to(aboutDark, {
+        opacity: 1,
+        duration: 0.5
+    }, ">")
+    .to(aboutProject1, {
         opacity: 1,
         duration: 0.5,
-        pointerEvents: "auto",
     }, "<")
-    .to(PRproject_2, {
+    .to(aboutDark, {
         opacity: 0,
-        duration: 0.5,
-        pointerEvents: "none",
-    })
-    .to(PRproject_3, {
+        duration: 0.5
+    }, ">+1")
+    .to(aboutProject1, {
+        opacity: 0,
+        duration: 0.5
+    }, "<")
+    .to(project_overlay1, {
+        scale: 1,
+        duration: 0.5
+    }, ">+0.5")
+    .to(project_overlay1, {
+        opacity: 0,
+        duration: 0,
+    }, ">")
+
+    .to(PRprojects_container, {
+        x: (-(projectSize) * 3 - 20),
+    }, ">+0.5")
+
+    .to(project_overlay2, {
+        opacity: 1,
+        duration: 0,
+    }, ">+0.25")
+    .to(project_overlay2, {
+        scale: 3,
+        duration: 0.5
+    }, ">")
+    .to(aboutDark, {
+        opacity: 1,
+        duration: 0.5
+    }, ">")
+    .to(aboutProject2, {
         opacity: 1,
         duration: 0.5,
-        pointerEvents: "auto",
     }, "<")
+    .to(aboutDark, {
+        opacity: 0,
+        duration: 0.5
+    }, ">+1")
+    .to(aboutProject2, {
+        opacity: 0,
+        duration: 0.5
+    }, "<")
+    .to(project_overlay2, {
+        scale: 1,
+        duration: 0.5
+    }, ">+0.5")
+    .to(project_overlay2, {
+        opacity: 0,
+        duration: 0,
+    }, ">")
+
+    .to(PRprojects_container, {
+        x: (-(projectSize) * 4 - 20),
+    }, ">+0.5")
+
+    .to(project_overlay3, {
+        opacity: 1,
+        duration: 0,
+    }, ">+0.25")
+    .to(project_overlay3, {
+        scale: 3,
+        duration: 0.5
+    }, ">")
+    .to(aboutDark, {
+        opacity: 1,
+        duration: 0.5
+    }, ">")
+    .to(aboutProject3, {
+        opacity: 1,
+        duration: 0.5,
+    }, "<")
+    .to(aboutDark, {
+        opacity: 0,
+        duration: 0.5
+    }, ">+1")
+    .to(aboutProject3, {
+        opacity: 0,
+        duration: 0.5
+    }, "<")
+    .to(project_overlay3, {
+        scale: 1,
+        duration: 0.5
+    }, ">+0.5")
+    .to(project_overlay3, {
+        opacity: 0,
+        duration: 0,
+    }, ">")
+    .to(PRprojects_container, {
+        opacity: 0,
+        duration: 0.5
+    }, ">+0.25")
+    .to(ProjectCards, {
+        visibility: 'visible',
+        duration: 0.5
+    }, ">")
+    .to(ProjectCards, {
+        opacity: 1,
+        duration: 0.5
+    }, ">")
+    .to(ProjectCards, {
+        opacity: 0,
+        duration: 0.5
+    }, ">0.5")
+    .to(ProjectCards, {
+        visibility: 'hidden',
+        duration: 0.5
+    }, ">")
+
+    // --------
+
+    .to(projectContent, {
+        opacity: 0,
+        duration: 0.5
+    }, ">+0.5")
+    
     .to(projects, {
         opacity: 0,
         pointerEvents: "none",
         duration: 0.5
-    })
+    }, ">")
+    .addLabel("projectsEnd")
 
     // ------------------------------------------ Contact ------------------------------------------ //
 
@@ -343,7 +506,7 @@ export default function DesktopPage({
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.25
+        duration: 0.5
     })
 
   return () => {
