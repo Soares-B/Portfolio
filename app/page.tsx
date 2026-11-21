@@ -10,6 +10,8 @@ import Skills from "@/Screens/Skills";
 import Projects from "@/Screens/Projects";
 import Contact from "@/Screens/Contact";
 
+import AudioPlayer from "@/components/AudioPlayer";
+
 import Spark from "@/components/animation/Spark";
 
 import gsap from "gsap";
@@ -226,6 +228,8 @@ export default function Home() {
                 ref={progress}
                 className={`fixed left-0 top-0 z-100 ${windowWidth <= 768 ? "" : themes[currentTheme].progress} w-full h-1`}
               ></div>
+
+              <AudioPlayer themes={themes} currentTheme={currentTheme} />
 
               {/* ------------------------------------------------------------------------ Header ------------------------------------------------------------------------ */}
 

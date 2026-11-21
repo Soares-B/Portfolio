@@ -17,6 +17,8 @@ export const themes = {
     project_shadow: 'shadow-Milk-6',
 
     progress: 'bg-Milk-1/66',
+    audioPlayer_name: 'text-Milk-1',
+    audioPlayer_media: 'text-Milk-2',
     border: "border-Milk-6",
     icon: "text-Milk-4",
     button: "bg-Milk-1",
@@ -45,6 +47,8 @@ export const themes = {
     project_shadow: 'shadow-Dreams-6',
 
     progress: 'bg-Dreams-1/66',
+    audioPlayer_name: 'text-Dreams-1',
+    audioPlayer_media: 'text-Dreams-2',
     border: "border-Dreams-6",
     icon: "text-Dreams-4",
     button: "bg-Dreams-1",
@@ -73,6 +77,8 @@ export const themes = {
     project_shadow: 'shadow-Vampire-6',
 
     progress: 'bg-Vampire-1/66',
+    audioPlayer_name: 'text-Vampire-1',
+    audioPlayer_media: 'text-Vampire-2',
     border: "border-Vampire-6",
     icon: "text-Vampire-4",
     button: "bg-Vampire-1",
@@ -101,6 +107,8 @@ export const themes = {
     project_shadow: 'shadow-Genius-6',
 
     progress: 'bg-Genius-1/66',
+    audioPlayer_name: 'text-Genius-1',
+    audioPlayer_media: 'text-Genius-2',
     border: "border-Genius-6",
     icon: "text-Genius-4",
     button: "bg-Genius-1",
@@ -129,6 +137,8 @@ export const themes = {
     project_shadow: 'shadow-Trial-6',
 
     progress: 'bg-Trial-1/66',
+    audioPlayer_name: 'text-Trial-1',
+    audioPlayer_media: 'text-Trial-2',
     border: "border-Trial-6",
     icon: "text-Trial-4",
     button: "bg-Trial-1",
@@ -157,6 +167,8 @@ export const themes = {
     project_shadow: 'shadow-Silent-6',
     
     progress: 'bg-Silent-1/66',
+    audioPlayer_name: 'text-Silent-1',
+    audioPlayer_media: 'text-Silent-2',
     border: "border-Silent-6",
     icon: "text-Silent-4",
     button: "bg-Silent-1",
@@ -182,6 +194,8 @@ export const themes = {
 
     project_shadow: '',    
     progress: '',
+    audioPlayer_name: '',
+    audioPlayer_media: '',
     border: '',
     icon: '',
     button: '',

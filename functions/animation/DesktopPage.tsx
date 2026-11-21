@@ -454,7 +454,7 @@ export default function DesktopPage({
         duration: 0.5
     }, ">")
     .to(aboutProject3, {
-        visibility: 'visiblegi',
+        visibility: 'visible',
         duration: 0,
     }, "<")
     .to(aboutProject3, {
