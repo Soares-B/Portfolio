@@ -153,7 +153,7 @@ export default function DesktopPage({
 
     gsap.set(
         [aboutProject1, aboutProject2, aboutProject3],
-        { opacity: 0, }
+        { opacity: 0, visibility: 'hidden' }
     );
     gsap.set(aboutDark, { opacity: 0 });
     gsap.set(ProjectCards, { opacity: 0, visibility: 'hidden' });
@@ -364,6 +364,10 @@ export default function DesktopPage({
         duration: 0.5
     }, ">")
     .to(aboutProject1, {
+        visibility: 'visible',
+        duration: 0,
+    }, "<")
+    .to(aboutProject1, {
         opacity: 1,
         duration: 0.5,
     }, "<")
@@ -374,6 +378,10 @@ export default function DesktopPage({
     .to(aboutProject1, {
         opacity: 0,
         duration: 0.5
+    }, "<")
+    .to(aboutProject1, {
+        visibility: 'hidden',
+        duration: 0,
     }, "<")
     .to(project_overlay1, {
         scale: 1,
@@ -401,6 +409,10 @@ export default function DesktopPage({
         duration: 0.5
     }, ">")
     .to(aboutProject2, {
+        visibility: 'visible',
+        duration: 0,
+    }, "<")
+    .to(aboutProject2, {
         opacity: 1,
         duration: 0.5,
     }, "<")
@@ -411,6 +423,10 @@ export default function DesktopPage({
     .to(aboutProject2, {
         opacity: 0,
         duration: 0.5
+    }, "<")
+    .to(aboutProject2, {
+        visibility: 'hidden',
+        duration: 0,
     }, "<")
     .to(project_overlay2, {
         scale: 1,
@@ -438,6 +454,10 @@ export default function DesktopPage({
         duration: 0.5
     }, ">")
     .to(aboutProject3, {
+        visibility: 'visiblegi',
+        duration: 0,
+    }, "<")
+    .to(aboutProject3, {
         opacity: 1,
         duration: 0.5,
     }, "<")
@@ -448,6 +468,10 @@ export default function DesktopPage({
     .to(aboutProject3, {
         opacity: 0,
         duration: 0.5
+    }, "<")
+    .to(aboutProject3, {
+        visibility: 'hidden',
+        duration: 0,
     }, "<")
     .to(project_overlay3, {
         scale: 1,

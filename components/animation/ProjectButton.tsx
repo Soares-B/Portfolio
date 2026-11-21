@@ -15,8 +15,10 @@ export default function ProjectButton({
       <motion.div
       className="w-1/2 md:scale-125 w-2/5 mt-2 mb-5 hover:cursor-pointer relative z-[10010] pointer-events-auto cursor-pointer"
       whileTap={{scale: 0.95}}>
-        <Link href={url} target="_blank" >
-          <button className={`w-full p-3 font-montserrat font-semibold ${themes[currentTheme].button} ${themes[currentTheme].text} select-none`}>Access</button>
+        <Link href={url} target="_blank" 
+        className={`block w-full p-3 text-center font-montserrat font-semibold ${themes[currentTheme].button} ${themes[currentTheme].text} select-none`}
+        >
+          Access
         </Link>
       </motion.div>
     );
