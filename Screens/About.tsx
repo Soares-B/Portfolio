@@ -7,7 +7,10 @@ import { gwrite } from "@/functions/Glitch Text";
 
 import Image from "next/image";
 
-import type { Theme as Temas } from "@/types/themes";
+type Temas = {
+    themes: any,
+    currentTheme: "Milk" | "Dreams" | "Vampire" | "Genius" | "Trial" | "Silent" | 'Config'
+}
 
 export default function About({
     themes, 
@@ -43,6 +46,7 @@ export default function About({
                   css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
                   scramble: `${themes[currentTheme].highlight_text}`,
                   text: "Who I am",
+                  scrambleColorShadow: `${currentTheme}`
                 })}
               </div>
               <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">
@@ -78,6 +82,7 @@ export default function About({
                   css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
                   scramble: `${themes[currentTheme].highlight_text}`,
                   text: "Who I am",
+                  scrambleColorShadow: `${currentTheme}`
                 })}
               </div>
               <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">

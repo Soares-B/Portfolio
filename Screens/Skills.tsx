@@ -4,7 +4,10 @@ import Sticker from "@/components/Sticker";
 import { Background } from "@/functions/Background";
 import { gwrite } from "@/functions/Glitch Text";
 
-import type { Theme as Temas } from "@/types/themes";
+type Temas = {
+    themes: any,
+    currentTheme: "Milk" | "Dreams" | "Vampire" | "Genius" | "Trial" | "Silent" | 'Config'
+}
 
 export default function Skills({
     themes, 
@@ -35,13 +38,13 @@ export default function Skills({
       <div ref={skillsContent} className="z-30 w-screen h-screen flex shrink-0 items-center justify-center">
             <div className="w-[300px] md:w-[400px] lg:w-[75%] flex flex-col items-center gap-2">
                 <div className={`w-full h-[30px] flex justify-center font-montserrat font-bold text-3xl ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`}>
-                {gwrite({css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`, scramble: `${themes[currentTheme].highlight_text}`, text: 'Stack'})}
+                {gwrite({css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`, scramble: `${themes[currentTheme].highlight_text}`, text: 'Stack', scrambleColorShadow: `${currentTheme}`})}
                 </div>
                 
                 {TechCards({themes, currentTheme})}
 
                 <div className={`w-full h-[30px] flex justify-center font-montserrat font-bold text-3xl ${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`}>
-                {gwrite({css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`, scramble: `${themes[currentTheme].highlight_text}`, text: 'Workflow'})}
+                {gwrite({css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`, scramble: `${themes[currentTheme].highlight_text}`, text: 'Workflow', scrambleColorShadow: `${currentTheme}`})}
                 </div>
 
                 {WorkflowCards({themes, currentTheme})}
@@ -70,6 +73,8 @@ export default function Skills({
               css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
               scramble: `${themes[currentTheme].highlight_text}`,
               text: "Stack",
+              scrambleColorShadow: `${currentTheme}`,
+              
             })}
           </div>
 

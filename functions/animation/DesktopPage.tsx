@@ -271,7 +271,7 @@ export default function DesktopPage({
         opacity: 1,
         filter: 'blur(0px)',
         duration: 0.5
-    }, ">")
+    }, "+=0.5")
     .fromTo(skillsBadgeBox, {
         opacity: 0,
         filter: 'blur(10px)'
@@ -279,7 +279,7 @@ export default function DesktopPage({
         opacity: 1,
         filter: 'blur(0px)',
         duration: 0.5
-    }, "<")
+    }, "<+0.25")
     
     // --------
 
@@ -298,7 +298,7 @@ export default function DesktopPage({
         opacity: 0,
         filter: 'blur(10px)',
         duration: 0.5
-    }, "<")
+    }, "<-0.25")
     
     // --------
 

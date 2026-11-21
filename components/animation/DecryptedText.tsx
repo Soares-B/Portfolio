@@ -37,6 +37,7 @@ interface DecryptedTextProps extends HTMLMotionProps<'span'> {
   loop?: boolean;
   loopDelay?: number;
   hoverRadius?: number;
+  scrambleColorShadow?: string;
 }
 
 interface Frame {
@@ -136,6 +137,7 @@ export default function DecryptedText({
   loop = false,
   loopDelay = 2000,
   hoverRadius = 0,
+  scrambleColorShadow = 'text-shadow-[5px_5px_1px] text-shadow-[#888888]',
   ...props
 }: DecryptedTextProps) {
   const chars = useMemo(() => Array.from(String(text ?? '')), [text]);
@@ -597,7 +599,7 @@ export default function DecryptedText({
   return (
     <motion.span
       ref={containerRef}
-      className={`inline-block absolute z-[10000] text-shadow-[5px_5px_1px] text-shadow-[#888888] whitespace-pre-wrap ${parentClassName}`}
+      className={`inline-block absolute z-[10000] ${scrambleColorShadow} whitespace-pre-wrap ${parentClassName}`}
       {...animateProps}
       {...props}
     >

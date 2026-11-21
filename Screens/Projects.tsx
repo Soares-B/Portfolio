@@ -191,6 +191,7 @@ export default function Projects({
               css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
               scramble: `${themes[currentTheme].highlight_text}`,
               text: "Projects",
+              scrambleColorShadow: `${currentTheme}`
             })}
           </div>
           <div

@@ -2,7 +2,10 @@ import { Background } from "@/functions/Background";
 import { ContactCards } from "@/components/Tech";
 import { gwrite } from "@/functions/Glitch Text";
 
-import type { Theme as Temas } from "@/types/themes";
+type Temas = {
+    themes: any,
+    currentTheme: "Milk" | "Dreams" | "Vampire" | "Genius" | "Trial" | "Silent" | 'Config'
+}
 
 import Image from "next/image";
 
@@ -40,6 +43,7 @@ export default function Contact({
               css: `${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow}`,
               scramble: `${themes[currentTheme].highlight_text}`,
               text: "Find me on",
+              scrambleColorShadow: `${currentTheme}`
             })}
           </div>
           {contactActive && <ContactCards themes={themes} currentTheme={currentTheme} />}
