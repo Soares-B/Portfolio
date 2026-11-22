@@ -1,5 +1,6 @@
 import { Counterground } from "@/functions/Background";
 import AboutCard from "@/components/animation/AboutCard";
+import AboutCardPC from "@/components/animation/AboutCardPC";
 import Person from "@/components/Person";
 import { awrite } from "@/functions/AboutWrite";
 
@@ -87,8 +88,9 @@ export default function About({
                   scrambleColorShadow: `${currentTheme}`
                 })}
               </div>
-              <div className="min-w-[95%] sm:min-w-[60%] 2xl:min-w-[50%] min-h-[80%] lg:min-h-[35%] outline-none">
-                <AboutCard
+              <div className="w-1/2 h-3/4 outline-none">
+                <AboutCardPC
+                themes={themes}
                   card={awrite({
                     themes,
                     currentTheme,
@@ -96,6 +98,8 @@ export default function About({
                     aboutActive,
                   })}
                   currentTheme={currentTheme}
+                  windowWidth={windowWidth}
+                  aboutActive={aboutActive}
                 />
               </div>
             </div>

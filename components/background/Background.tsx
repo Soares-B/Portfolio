@@ -9,6 +9,7 @@ import Waves from './Waves';
 import Topography from './Topography';
 import GradientASCII from "./GradientASCII";
 import DotGrid from './DotGrid';
+import Particles from './Particles';
 
 type Color= {
     [key: string]: string
@@ -321,7 +322,7 @@ export function TopographyBits({primaryColor, background, reference}: Color & {r
 
 export function ASCIIBits({primaryColor, secondaryColor}: Color){
   return(
-    <div className={`absolute inset-0 p-[2px] z-22`}>
+    <div className={`absolute inset-0`}>
         <GradientASCII
           colors={[primaryColor, secondaryColor]}
           shape="horizon"
@@ -374,6 +375,41 @@ export function DotBits({primaryColor, background}: Color){
         mouseInteraction
         clickShock
       />
+    </div>
+  );
+}
+
+export function ParticlesBits({primaryColor, secondaryColor, thirdColor}: Color){
+  return(
+    <div className={`absolute inset-0`}>
+        <Particles
+          particleColors={[primaryColor, secondaryColor, thirdColor]}
+          particleCount={2000}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={120}
+          glow={0.9}
+          twinkle={0.7}
+          moveParticlesOnHover
+          hoverEffect="parallax"
+          sizeRandomness={1}
+          shape="sparkle"
+          depthOfField={0}
+          connections={false}
+          connectionDistance={110}
+          particleHoverFactor={1}
+          hoverRadius={140}
+          drift="none"
+          driftSpeed={1}
+          alphaParticles={false}
+          disableRotation={false}
+          cameraDistance={20}
+          variation={0}
+          opacity={1}
+          clickBurst
+          intro
+          lightMode={false}
+        />
     </div>
   );
 }

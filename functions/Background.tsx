@@ -12,7 +12,8 @@ import {
     WavesBits,
     TopographyBits,
     ASCIIBits,
-    DotBits
+    DotBits,
+    ParticlesBits
 } from "@/components/background/Background";
 
 export function Background({currentTheme, display, type, section,}: {currentTheme: string, display?: number, type?: string, section?: any}){
@@ -25,6 +26,14 @@ export function Background({currentTheme, display, type, section,}: {currentThem
                    currentTheme === 'Genius' ? <ASCIIBits primaryColor={'#101741'} secondaryColor={'#132B73'}/> : 
                    currentTheme === 'Trial' ? <ASCIIBits primaryColor={'#870045'} secondaryColor={'#E02D8C'}/> : 
                    currentTheme === 'Silent' ? <ASCIIBits primaryColor={'#283325'} secondaryColor={'#81A568'}/> : ''
+
+        case type === 'backcard':
+            return currentTheme === 'Milk' ? <ParticlesBits primaryColor={'#AC3231'} secondaryColor={'#632630'} thirdColor={'#499792'}/> :
+                   currentTheme === 'Dreams' ? <ParticlesBits primaryColor={'#851011'} secondaryColor={'#670D1A'} thirdColor={'#5A3A63'}/> : 
+                   currentTheme === 'Vampire' ? <ParticlesBits primaryColor={'#E90A0A'} secondaryColor={'#A70304'} thirdColor={'#FDE0CE'}/> : 
+                   currentTheme === 'Genius' ? <ParticlesBits primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#57565C'}/> : 
+                   currentTheme === 'Trial' ? <ParticlesBits primaryColor={'#F4AFCC'} secondaryColor={'#E02D8C'} thirdColor={'#EBEBED'}/> : 
+                   currentTheme === 'Silent' ? <ParticlesBits primaryColor={'#B8DA80'} secondaryColor={'#81A568'} thirdColor={'#FEFADB'}/> : ''
 
         case type === 'badge':
             return currentTheme === 'Milk' ? <DotBits primaryColor={'#499792'} background={'#F2E9E4'}/> :
