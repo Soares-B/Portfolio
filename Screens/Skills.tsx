@@ -104,12 +104,12 @@ export default function Skills({
           >
             Badges
           </p>
-          <Background
+          {skillsActive && <Background
             section={skillsBG}
             key={currentTheme}
             currentTheme={currentTheme}
             type="badge"
-          />
+          />}
           {skillsActive && (
             <div className="absolute inset-0 w-full h-full pointer-events-none">
               <Sticker

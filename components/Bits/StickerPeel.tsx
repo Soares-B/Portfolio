@@ -321,29 +321,50 @@ const compile = (gl: WebGL2RenderingContext, type: number, source: string) => {
   return null;
 };
 
-const link = (gl: WebGL2RenderingContext, vertexSource: string, fragmentSource: string): Program | null => {
+
+const link = (
+  gl: WebGL2RenderingContext,
+  vertexSource: string,
+  fragmentSource: string
+): Program | null => {
   const vertex = compile(gl, gl.VERTEX_SHADER, vertexSource);
   const fragment = compile(gl, gl.FRAGMENT_SHADER, fragmentSource);
   const program = gl.createProgram();
-  if (!vertex || !fragment || !program) return null;
+
+  if (!vertex || !fragment || !program) {
+    if (vertex) gl.deleteShader(vertex);
+    if (fragment) gl.deleteShader(fragment);
+    if (program) gl.deleteProgram(program);
+    return null;
+  }
+
   gl.attachShader(program, vertex);
   gl.attachShader(program, fragment);
   gl.bindAttribLocation(program, 0, 'aGrid');
   gl.linkProgram(program);
+
   gl.deleteShader(vertex);
   gl.deleteShader(fragment);
+
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     gl.deleteProgram(program);
     return null;
   }
+
   const uniforms: Record<string, WebGLUniformLocation | null> = {};
   const count = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
+
   for (let i = 0; i < count; i++) {
     const info = gl.getActiveUniform(program, i);
-    if (info) uniforms[info.name] = gl.getUniformLocation(program, info.name);
+
+    if (info) {
+      uniforms[info.name] = gl.getUniformLocation(program, info.name);
+    }
   }
+
   return { program, uniforms };
 };
+
 
 const convexHull = (points: [number, number][]) => {
   const sorted = [...points].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
@@ -425,18 +446,32 @@ const StickerPeel = ({
     const canvas = canvasRef.current;
     const hit = hitRef.current;
     const parent = root?.parentElement;
-    const gl = canvas?.getContext('webgl2', {
+    if (!root || !canvas || !hit || !parent) return undefined;
+
+    const gl = canvas.getContext('webgl2', {
       alpha: true,
       premultipliedAlpha: true,
       antialias: true,
       depth: true,
       stencil: false
     });
-    if (!root || !canvas || !hit || !parent || !gl) return undefined;
+
+    if (!gl) return undefined;
 
     const program = link(gl, VERTEX, FRAGMENT);
+
+    if (!program) {
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      return undefined;
+    }
+
     const post = link(gl, POST_VERTEX, POST_FRAGMENT);
-    if (!program || !post) return undefined;
+
+    if (!post) {
+      gl.deleteProgram(program.program);
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      return undefined;
+    }
     const u = program.uniforms;
     const pu = post.uniforms;
     const targets: Target[] = [0, 1].map(() => {
@@ -1109,8 +1144,15 @@ const StickerPeel = ({
       gl.deleteBuffer(indexBuffer);
       gl.deleteVertexArray(vao);
       gl.deleteProgram(program.program);
-      if (!canvas.isConnected) gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      const release = () => {
+          if (!canvas.isConnected && !gl.isContextLost()) {
+            gl.getExtension('WEBGL_lose_context')?.loseContext();
+          }
+        };
+
+        if (canvas.isConnected) requestAnimationFrame(release);
+        else release();
+      };
   }, []);
 
   useEffect(() => {
