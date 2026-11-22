@@ -241,7 +241,7 @@ export default function Home() {
                 className={`fixed left-0 top-0 z-100 ${windowWidth <= 768 ? "" : themes[currentTheme].progress} w-full h-1`}
               ></div>
 
-              <AudioPlayer themes={themes} currentTheme={currentTheme} />
+              <AudioPlayer themes={themes} currentTheme={currentTheme} windowWidth={windowWidth}/>
 
               {/* ------------------------------------------------------------------------ Header ------------------------------------------------------------------------ */}
 

@@ -47,7 +47,7 @@ export default function Contact({
               scrambleColorShadow: `${currentTheme}`
             })}
           </div>
-          {contactActive && <ContactCards themes={themes} currentTheme={currentTheme} />}
+          {windowWidth <= 768 ? <ContactCards themes={themes} currentTheme={currentTheme} size={windowWidth}/> : contactActive && <ContactCards themes={themes} currentTheme={currentTheme} size={windowWidth}/>}
         </div>
         {windowWidth <= 768 ? (
           <Image

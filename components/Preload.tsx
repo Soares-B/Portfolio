@@ -9,7 +9,6 @@ import ShapeWaves from './background/ShapeWaves';
 
 export default function Preloader() {
   const container = useRef<HTMLDivElement>(null);
-  const title = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   const { setIsLoaded } = useLoading();
 
@@ -26,10 +25,6 @@ export default function Preloader() {
       );
 
       const loader = gsap.timeline();
-
-      loader.from(title, {
-
-      });
       
       loader.to(container.current, {
         yPercent: -100,
@@ -89,7 +84,6 @@ export default function Preloader() {
         paused={false}
       />
       <DecryptedText
-
         text="Bruno's Portfolio"
         animateOn="inViewHover"
         effect="scramble"

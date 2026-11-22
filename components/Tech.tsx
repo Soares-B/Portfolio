@@ -44,16 +44,28 @@ export function WorkflowCards({
 export function ContactCards({
   themes,
   currentTheme,
-}: Theme){
+  size
+}: Theme & {size: number}){
     return(
         <div className="flex flex-col gap-5 flex-wrap w-full justify-center">
+            {size <= 768 ?
+            <>
+            <TiltCard card={<FaGithub className={`size-8 md:size-10 lg:size-6 lg:size-8 2xl:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="Github" url={'https://github.com/Soares-B'}/>
+
+            <TiltCard card={<FaLinkedin className={`size-8 md:size-10 lg:size-6 lg:size-8 2xl:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="LinkedIn" url={'https://www.linkedin.com/in/bruno-soares-100498412/'}/>
+            </> 
+            :
+            <>
             <Magnet padding={100} magnetStrength={2}>
                 <TiltCard card={<FaGithub className={`size-8 md:size-10 lg:size-6 lg:size-8 2xl:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="Github" url={'https://github.com/Soares-B'}/>
             </Magnet>
 
             <Magnet padding={100} magnetStrength={2}>
                 <TiltCard card={<FaLinkedin className={`size-8 md:size-10 lg:size-6 lg:size-8 2xl:size-10 h-auto ${themes[currentTheme].highlight_text}`}/>} themes={themes} currentTheme={currentTheme} size="w-full h-auto" tech={false} name="LinkedIn" url={'https://www.linkedin.com/in/bruno-soares-100498412/'}/>
-            </Magnet>                   
+            </Magnet>
+            </>
+            }
+                          
         </div>
     );
 }
