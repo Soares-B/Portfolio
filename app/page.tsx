@@ -19,6 +19,11 @@ import gsap from "gsap";
 import { useState, useEffect, useRef } from "react";
 import { useLoading } from "@/config/context";
 
+import { installWebGLGuard } from "@/lib/webglGuard";
+import { useReleaseOnLeave } from "@/lib/useReleaseOnLeave";
+
+installWebGLGuard();
+
 type ThemeName = keyof typeof themes;
 
 export default function Home() {
@@ -217,6 +222,12 @@ export default function Home() {
 
     return () => mm.revert();
   }, [isLoaded]);
+
+useReleaseOnLeave(headerActive, headerContent);
+useReleaseOnLeave(aboutActive, aboutContent);
+useReleaseOnLeave(skillsActive, skillsContent);
+useReleaseOnLeave(projectsActive, projectContent);
+useReleaseOnLeave(contactActive, contactContent);
 
   return (
     <div>
