@@ -77,7 +77,7 @@ allToLearn.forEach((item) => {
       if (index > code.length) {
         clearInterval(interval);
       }
-    }, 10);
+    }, 60);
 
     return () => clearInterval(interval);
   }, [code]);

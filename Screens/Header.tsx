@@ -35,12 +35,13 @@ export default function Header({
         className="z-10 w-screen h-screen flex flex-col justify-between shrink-0"
       >
         <div className="w-full h-2/5  p-3 flex flex-col gap-1 outline-none">
-          <Name
+          {headerActive && <Name
             themes={themes}
             currentTheme={currentTheme}
             windowWidth={windowWidth}
             headerActive={headerActive}
           />
+          }
           {hwrite({ themes, currentTheme })}
           <Theme
             themes={themes}

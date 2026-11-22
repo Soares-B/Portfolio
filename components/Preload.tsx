@@ -11,6 +11,7 @@ export default function Preloader() {
   const container = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   const { setIsLoaded } = useLoading();
+  const [loadingActive, setLoadingActive] = useState(true);
 
   useEffect(() => {
     const start = performance.now();
@@ -33,6 +34,7 @@ export default function Preloader() {
         onComplete: () => {
           setVisible(false);
           setIsLoaded(true);
+          setLoadingActive(false)
         },
         
       }, '+=1');
@@ -56,6 +58,7 @@ export default function Preloader() {
       ref={container}
       className="w-screen h-screen fixed z-[9999] flex items-center justify-center bg-white text-white text-5xl sm:text-7xl md:text-8xl 2xl:text-9xl"
     >
+      {loadingActive && <>
       <ShapeWaves
         className="absolute inset-0 z-[1]"
         text="</>"
@@ -101,6 +104,7 @@ export default function Preloader() {
         encryptedClassName="encrypted"
         clickMode="once"
       />
+      </>}
     </div>
   );
 }

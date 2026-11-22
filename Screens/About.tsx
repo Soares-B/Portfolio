@@ -89,7 +89,7 @@ export default function About({
                 })}
               </div>
               <div className="w-1/2 h-3/4 outline-none">
-                <AboutCardPC
+                {aboutActive && <AboutCardPC
                 themes={themes}
                   card={awrite({
                     themes,
@@ -100,7 +100,7 @@ export default function About({
                   currentTheme={currentTheme}
                   windowWidth={windowWidth}
                   aboutActive={aboutActive}
-                />
+                />}
               </div>
             </div>
             <div className="relative w-[60%] mr-5">
