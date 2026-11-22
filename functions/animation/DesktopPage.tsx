@@ -202,7 +202,6 @@ export default function DesktopPage({
 
     // ------------------------------------------ About ------------------------------------------ //
 
-    .addLabel("aboutStart")
     .to(about, {
         opacity: 1,
         pointerEvents: "auto",
@@ -215,6 +214,7 @@ export default function DesktopPage({
             setAboutBG(scale.value);
         },
     }, ">0.5")
+    .addLabel("aboutStart")
     .fromTo(aboutContent, {
         opacity: 0,
         filter: 'blur(10px)'
@@ -267,7 +267,6 @@ export default function DesktopPage({
 
     // ------------------------------------------ Skills ------------------------------------------ //
 
-    .addLabel("skillsStart")
     .to(skills, {
         opacity: 1,
         pointerEvents: "auto",
@@ -280,6 +279,7 @@ export default function DesktopPage({
             setSkillsBG(scale.value);
         },
     }, ">0.5")
+    .addLabel("skillsStart")
     .fromTo(skillsContent, {
         opacity: 0,
         filter: 'blur(10px)'
@@ -383,7 +383,6 @@ export default function DesktopPage({
 
     // ------------------------------------------ Projects ------------------------------------------ //
 
-    .addLabel("projectsStart")
     .to(projects, {
         opacity: 1,
         pointerEvents: "auto",
@@ -396,6 +395,7 @@ export default function DesktopPage({
             setProjectsBG(scale.value);
         },
     }, ">0.5")
+    .addLabel("projectsStart")
     .fromTo(projectContent, {
         opacity: 0,
         filter: 'blur(10px)'
@@ -592,7 +592,6 @@ export default function DesktopPage({
 
     // ------------------------------------------ Contact ------------------------------------------ //
 
-    .addLabel("contactStart")
     .to(contact, {
         opacity: 1,
         pointerEvents: "auto",
@@ -605,6 +604,7 @@ export default function DesktopPage({
             setContactBG(scale.value);
         },
     }, ">0.5")
+    .addLabel("contactStart")
     .fromTo(contactContent, {
         opacity: 0,
         filter: 'blur(10px)'
