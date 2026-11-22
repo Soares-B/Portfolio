@@ -36,6 +36,7 @@ type DesktopPageProps = {
     aboutProject3: HTMLElement;
     ProjectCards: HTMLElement;
 
+
     aboutTitle: HTMLElement;
 
     setHeaderActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,6 +44,12 @@ type DesktopPageProps = {
     setSkillsActive: React.Dispatch<React.SetStateAction<boolean>>;
     setProjectsActive: React.Dispatch<React.SetStateAction<boolean>>;
     setContactActive: React.Dispatch<React.SetStateAction<boolean>>;
+
+    setHeaderBG: React.Dispatch<React.SetStateAction<number>>;
+    setAboutBG: React.Dispatch<React.SetStateAction<number>>;
+    setSkillsBG: React.Dispatch<React.SetStateAction<number>>;
+    setProjectsBG: React.Dispatch<React.SetStateAction<number>>;
+    setContactBG: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function DesktopPage({
@@ -85,9 +92,16 @@ export default function DesktopPage({
     setSkillsActive,
     setProjectsActive,
     setContactActive,
+
+    setHeaderBG,
+    setAboutBG,
+    setSkillsBG,
+    setProjectsBG,
+    setContactBG,
 }: DesktopPageProps) { 
 
     const projectSize = ((size / 3) + 20)
+    const scale = { value: 1 };
 
     gsap.set(progress, {
         scaleX: 0,
@@ -170,12 +184,19 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.5
+        duration: 1
     }, "<")
+    .to(scale, {
+        value: 2,
+        duration: 2,
+        onUpdate: () => {
+            setHeaderBG(scale.value);
+        },
+    }, ">0.5")
     .to(header, {
         opacity: 0,
         pointerEvents: "none",
-        duration: 0.5
+        duration: 0.5,
     }, ">")
     .addLabel("headerEnd")
 
@@ -187,13 +208,20 @@ export default function DesktopPage({
         pointerEvents: "auto",
         duration: 0.5
     },"<")
+    .to(scale, {
+        value: 1,
+        duration: 2,
+        onUpdate: () => {
+            setAboutBG(scale.value);
+        },
+    }, ">0.5")
     .fromTo(aboutContent, {
         opacity: 0,
         filter: 'blur(10px)'
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.5
+        duration: 1
     })
     .fromTo(aboutTitle, {
         y: 25,
@@ -211,8 +239,8 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.5
-    }, "+=0.5")
+        duration: 1
+    }, "+=2")
     .fromTo(aboutTitle, {
         y: 0,
         opacity: 1,
@@ -223,6 +251,13 @@ export default function DesktopPage({
         filter: "blur(10px)",
         duration: 0.5,
     },"-=0.25")
+    .to(scale, {
+        value: 0.5,
+        duration: 2,
+        onUpdate: () => {
+            setAboutBG(scale.value);
+        },
+    }, ">0.5")
     .to(about, {
         opacity: 0,
         pointerEvents: "none",
@@ -238,13 +273,20 @@ export default function DesktopPage({
         pointerEvents: "auto",
         duration: 0.5
     },"<")
+    .to(scale, {
+        value: 1,
+        duration: 2,
+        onUpdate: () => {
+            setSkillsBG(scale.value);
+        },
+    }, ">0.5")
     .fromTo(skillsContent, {
         opacity: 0,
         filter: 'blur(10px)'
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.5
+        duration: 1
     })
 
     // --------
@@ -253,12 +295,12 @@ export default function DesktopPage({
         x: 0,
         filter: "blur(0px)",
     }, {
-        duration: 0.5,
+        duration: 2,
         ease: "power2.inOut",
         keyframes: [
-            { x: size < 1280 ? -110 : size < 1920 ? -140 : -220, filter: "blur(0px)", duration: 0.10 },
-            { x: size < 1280 ? -220 : size < 1920 ? -280 : -440, filter: "blur(10px)", duration: 0.30 },
-            { x: size < 1280 ? -330 : size < 1920 ? -420 : -660, filter: "blur(0px)", duration: 0.10 },
+            { x: size < 1280 ? -110 : size < 1920 ? -140 : -220, filter: "blur(0px)", duration: 0.50 },
+            { x: size < 1280 ? -220 : size < 1920 ? -280 : -440, filter: "blur(10px)", duration: 1 },
+            { x: size < 1280 ? -330 : size < 1920 ? -420 : -660, filter: "blur(0px)", duration: 0.50 },
         ]
     })
 
@@ -290,7 +332,7 @@ export default function DesktopPage({
         opacity: 0,
         filter: 'blur(10px)',
         duration: 0.5
-    }, "+=0.5")
+    }, "+=3")
     .fromTo(skillsBadgeBox, {
         opacity: 1,
         filter: 'blur(00px)'
@@ -306,12 +348,12 @@ export default function DesktopPage({
         x: size < 1280 ? -330 : size < 1920 ? -420 : -660,
         filter: "blur(0px)",
     }, {
-        duration: 0.5,
+        duration: 2,
         ease: "power2.inOut",
         keyframes: [
-            { x: size < 1280 ? -220 : size < 1920 ? -280 : -440, filter: "blur(0px)", duration: 0.10 },
-            { x: size < 1280 ? -110 : size < 1920 ? -140 : -220, filter: "blur(10px)", duration: 0.30 },
-            { x: size < 1280 ? 0 : size < 1920 ? 0 : 0, filter: "blur(0px)", duration: 0.10 },
+            { x: size < 1280 ? -220 : size < 1920 ? -280 : -440, filter: "blur(0px)", duration: 0.5 },
+            { x: size < 1280 ? -110 : size < 1920 ? -140 : -220, filter: "blur(10px)", duration: 1 },
+            { x: size < 1280 ? 0 : size < 1920 ? 0 : 0, filter: "blur(0px)", duration: 0.5 },
         ]
     },">")
 
@@ -323,8 +365,15 @@ export default function DesktopPage({
     }, {
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 0.5
+        duration: 1
     }, "+=0.25")
+    .to(scale, {
+        value: 2,
+        duration: 2,
+        onUpdate: () => {
+            setSkillsBG(scale.value);
+        },
+    }, ">0.5")
     .to(skills, {
         opacity: 0,
         pointerEvents: "none",
@@ -340,28 +389,40 @@ export default function DesktopPage({
         pointerEvents: "auto",
         duration: 0.5
     }, "<")
-    .to(projectContent, {
+    .to(scale, {
+        value: 1,
+        duration: 2,
+        onUpdate: () => {
+            setProjectsBG(scale.value);
+        },
+    }, ">0.5")
+    .fromTo(projectContent, {
+        opacity: 0,
+        filter: 'blur(10px)'
+    }, {
         opacity: 1,
-        duration: 0.5
+        filter: 'blur(0px)',
+        duration: 1
     })
 
     // --------
 
     .to(PRprojects_container, {
         x: (-(projectSize) * 2 - 20),
+        duration: 3,
     }, ">")
 
     .to(project_overlay1, {
         opacity: 1,
         duration: 0,
-    }, ">+0.25")
+    }, ">+0.5")
     .to(project_overlay1, {
         scale: 3,
-        duration: 0.5
+        duration: 1
     }, ">")
     .to(aboutDark, {
         opacity: 1,
-        duration: 0.5
+        duration: 1
     }, ">")
     .to(aboutProject1, {
         visibility: 'visible',
@@ -369,15 +430,15 @@ export default function DesktopPage({
     }, "<")
     .to(aboutProject1, {
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
     }, "<")
     .to(aboutDark, {
         opacity: 0,
-        duration: 0.5
-    }, ">+1")
+        duration: 1
+    }, "+=2")
     .to(aboutProject1, {
         opacity: 0,
-        duration: 0.5
+        duration: 1
     }, "<")
     .to(aboutProject1, {
         visibility: 'hidden',
@@ -385,7 +446,7 @@ export default function DesktopPage({
     }, "<")
     .to(project_overlay1, {
         scale: 1,
-        duration: 0.5
+        duration: 1
     }, ">+0.5")
     .to(project_overlay1, {
         opacity: 0,
@@ -394,6 +455,7 @@ export default function DesktopPage({
 
     .to(PRprojects_container, {
         x: (-(projectSize) * 3 - 20),
+        duration: 3,
     }, ">+0.5")
 
     .to(project_overlay2, {
@@ -402,11 +464,11 @@ export default function DesktopPage({
     }, ">+0.25")
     .to(project_overlay2, {
         scale: 3,
-        duration: 0.5
+        duration: 1
     }, ">")
     .to(aboutDark, {
         opacity: 1,
-        duration: 0.5
+        duration: 1
     }, ">")
     .to(aboutProject2, {
         visibility: 'visible',
@@ -414,15 +476,15 @@ export default function DesktopPage({
     }, "<")
     .to(aboutProject2, {
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
     }, "<")
     .to(aboutDark, {
         opacity: 0,
-        duration: 0.5
-    }, ">+1")
+        duration: 1
+    }, "+=2")
     .to(aboutProject2, {
         opacity: 0,
-        duration: 0.5
+        duration: 1
     }, "<")
     .to(aboutProject2, {
         visibility: 'hidden',
@@ -430,7 +492,7 @@ export default function DesktopPage({
     }, "<")
     .to(project_overlay2, {
         scale: 1,
-        duration: 0.5
+        duration: 1
     }, ">+0.5")
     .to(project_overlay2, {
         opacity: 0,
@@ -439,19 +501,20 @@ export default function DesktopPage({
 
     .to(PRprojects_container, {
         x: (-(projectSize) * 4 - 20),
+        duration: 3,
     }, ">+0.5")
 
     .to(project_overlay3, {
         opacity: 1,
         duration: 0,
-    }, ">+0.25")
+    }, ">+0.5")
     .to(project_overlay3, {
         scale: 3,
-        duration: 0.5
+        duration: 1
     }, ">")
     .to(aboutDark, {
         opacity: 1,
-        duration: 0.5
+        duration: 1
     }, ">")
     .to(aboutProject3, {
         visibility: 'visible',
@@ -459,15 +522,15 @@ export default function DesktopPage({
     }, "<")
     .to(aboutProject3, {
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
     }, "<")
     .to(aboutDark, {
         opacity: 0,
-        duration: 0.5
-    }, ">+1")
+        duration: 1
+    }, "+=2")
     .to(aboutProject3, {
         opacity: 0,
-        duration: 0.5
+        duration: 1
     }, "<")
     .to(aboutProject3, {
         visibility: 'hidden',
@@ -475,7 +538,7 @@ export default function DesktopPage({
     }, "<")
     .to(project_overlay3, {
         scale: 1,
-        duration: 0.5
+        duration: 1 
     }, ">+0.5")
     .to(project_overlay3, {
         opacity: 0,
@@ -483,8 +546,8 @@ export default function DesktopPage({
     }, ">")
     .to(PRprojects_container, {
         opacity: 0,
-        duration: 0.5
-    }, ">+0.25")
+        duration: 1
+    }, "+=1")
     .to(ProjectCards, {
         visibility: 'visible',
         duration: 0.5
@@ -496,19 +559,30 @@ export default function DesktopPage({
     .to(ProjectCards, {
         opacity: 0,
         duration: 0.5
-    }, ">0.5")
+    }, "+=2")
     .to(ProjectCards, {
         visibility: 'hidden',
-        duration: 0.5
+        duration: 0
     }, ">")
 
     // --------
 
-    .to(projectContent, {
+    .fromTo(projectContent, {
+        opacity: 1,
+        filter: 'blur(0px)'
+    }, {
         opacity: 0,
-        duration: 0.5
-    }, ">+0.5")
+        filter: 'blur(10px)',
+        duration: 1
+    })
     
+    .to(scale, {
+        value: 0.5,
+        duration: 2,
+        onUpdate: () => {
+            setProjectsBG(scale.value);
+        },
+    }, ">0.5")
     .to(projects, {
         opacity: 0,
         pointerEvents: "none",
@@ -524,13 +598,20 @@ export default function DesktopPage({
         pointerEvents: "auto",
         duration: 0.5
     },"<")
+    .to(scale, {
+        value: 1,
+        duration: 2,
+        onUpdate: () => {
+            setContactBG(scale.value);
+        },
+    }, ">0.5")
     .fromTo(contactContent, {
         opacity: 0,
         filter: 'blur(10px)'
     }, {
         opacity: 1,
         filter: 'blur(0px)',
-        duration: 0.5
+        duration: 1
     })
 
   return () => {

@@ -19,7 +19,8 @@ export default function Skills({
     skillsSpiral,
     skillsStack,
     skillsBadgeBox,
-}: Temas & {windowWidth: number, skills: any, skillsContent: any, skillsActive: any, skillsSpiral: any, skillsStack: any, skillsBadgeBox: any}) {
+    skillsBG
+}: Temas & {windowWidth: number, skills: any, skillsContent: any, skillsActive: any, skillsSpiral: any, skillsStack: any, skillsBadgeBox: any, skillsBG: any}) {
   return (
     <div
       ref={skills}
@@ -28,6 +29,7 @@ export default function Skills({
     >
       {/* ------------------------ Background ------------------------ */}
       <Background
+      section={skillsBG}
         key={currentTheme}
         currentTheme={currentTheme}
         display={windowWidth}
@@ -103,6 +105,7 @@ export default function Skills({
             Badges
           </p>
           <Background
+            section={skillsBG}
             key={currentTheme}
             currentTheme={currentTheme}
             type="badge"

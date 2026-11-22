@@ -124,7 +124,7 @@ export function PerlinBG({primaryColor, secondaryColor}: Color) {
   );
 }
 
-export function DitherBits({primaryColor, secondaryColor}: Color){
+export function DitherBits({primaryColor, secondaryColor, reference}: Color & {reference?: any}){
   return(
     <div className="w-screen h-screen absolute inset-0 z-0">
         <Dither
@@ -139,7 +139,7 @@ export function DitherBits({primaryColor, secondaryColor}: Color){
           mouseEffect="reveal"
           mouseRadius={0.25}
           palette={[]}
-          scale={1}
+          scale={reference}
           contrast={1}
           brightness={0}
           mouseStrength={1}
@@ -153,7 +153,7 @@ export function DitherBits({primaryColor, secondaryColor}: Color){
   );
 }
 
-export function GhostBits({primaryColor, secondaryColor, background}: Color){
+export function GhostBits({primaryColor, secondaryColor, background, reference}: Color & {reference?: any}){
   return(
     <div className={`w-screen h-screen ${background} absolute inset-0 z-0`}>
         <GhostFibers
@@ -172,7 +172,7 @@ export function GhostBits({primaryColor, secondaryColor, background}: Color){
           waves={1.25}
           volume={0.7}
           spread={2.5}
-          scale={0.5}
+          scale={reference}
           rotation={18}
           perspective={0.65}
           density={1}
@@ -197,7 +197,7 @@ export function GhostBits({primaryColor, secondaryColor, background}: Color){
   );
 }
 
-export function FluxBits({primaryColor, secondaryColor, thirdColor, background}: Color){
+export function FluxBits({primaryColor, secondaryColor, thirdColor, background, reference}: Color & {reference?: any}){
   return(
     <div className={`w-screen h-screen ${background} absolute inset-0 z-0`}>
         <FluxLines
@@ -209,7 +209,7 @@ export function FluxBits({primaryColor, secondaryColor, thirdColor, background}:
           mouseInteraction
           clickSwirl
           speed={0.5}
-          scale={1.6}
+          scale={reference}
           turbulence={1}
           fluidity={0.1}
           sharpness={2.5}
@@ -223,7 +223,7 @@ export function FluxBits({primaryColor, secondaryColor, thirdColor, background}:
   );
 }
 
-export function GrainientBits({primaryColor, secondaryColor, thirdColor, fourthColor}: Color){
+export function GrainientBits({primaryColor, secondaryColor, thirdColor, fourthColor, reference}: Color & {reference?: any}){
   return(
     <div className={`w-screen h-screen absolute inset-0 z-0`}>
         <Grainient
@@ -235,7 +235,7 @@ export function GrainientBits({primaryColor, secondaryColor, thirdColor, fourthC
           type="linear"
           bands={2}
           softness={1}
-          scale={1}
+          scale={reference}
           speed={1}
           grainSize={1.2}
           grainAnimated
@@ -252,7 +252,7 @@ export function GrainientBits({primaryColor, secondaryColor, thirdColor, fourthC
   );
 }
 
-export function WavesBits({primaryColor, secondaryColor, background}: Color){
+export function WavesBits({primaryColor, secondaryColor, background, reference}: Color & {reference?: any}){
   return(
     <div className={`w-screen h-screen ${background} absolute inset-0 z-0`}>
         <Waves
@@ -267,7 +267,7 @@ export function WavesBits({primaryColor, secondaryColor, background}: Color){
           lineStyle="solid"
           lineWidth={0.75}
           rotation={0}
-          scale={1.3}
+          scale={reference}
           variation={0}
           bounce={0.5}
           returnDuration={2}
@@ -282,7 +282,7 @@ export function WavesBits({primaryColor, secondaryColor, background}: Color){
   );
 }
 
-export function TopographyBits({primaryColor, background}: Color){
+export function TopographyBits({primaryColor, background, reference}: Color & {reference?: any}){
   return(
     <div className={`w-screen h-screen ${background} absolute inset-0 z-0`}>
         <Topography
@@ -300,7 +300,7 @@ export function TopographyBits({primaryColor, background}: Color){
           hoverEffect="lift"
           clickEffect="pulse"
           majorLines={false}
-          scale={1}
+          scale={reference}
           detail={0.35}
           morph={0.2}
           brightness={1.1}

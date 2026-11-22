@@ -15,7 +15,7 @@ import {
     DotBits
 } from "@/components/background/Background";
 
-export function Background({currentTheme, display, type}: {currentTheme: string, display?: number, type?: string}){
+export function Background({currentTheme, display, type, section,}: {currentTheme: string, display?: number, type?: string, section?: any}){
 
     switch(true) {
         case type === 'card':
@@ -43,17 +43,17 @@ export function Background({currentTheme, display, type}: {currentTheme: string,
                    currentTheme === 'Silent' ? <PerlinBG primaryColor={'#B8DA80'} secondaryColor={'#010203'}/> : ''
             ;
         default :
-            return currentTheme === 'Milk' ? <DitherBits primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> : 
-                   currentTheme === 'Dreams' ? <GhostBits primaryColor={'#851011'} secondaryColor={'#670D1A'} background={'bg-[#020001]'}/> :
-                   currentTheme === 'Vampire' ? <FluxBits primaryColor={'#E90A0A'} secondaryColor={'#A70304'} thirdColor={'#7E0003'} background={'bg-[#090200]'}/> :
-                   currentTheme === 'Genius' ? <GrainientBits primaryColor={'#040718'} secondaryColor={'#101741'} thirdColor={'#132B73'} fourthColor={'#A5E3FC'}/> :
-                   currentTheme === 'Trial' ? <WavesBits primaryColor={'#F4AFCC'} secondaryColor={'#E02D8C'} background={'bg-[#0C070B]'} /> :
-                   currentTheme === 'Silent' ? <TopographyBits primaryColor={'#B8DA80'} background={'bg-[#010203]'} /> : '' 
+            return currentTheme === 'Milk' ? <DitherBits reference={section} primaryColor={'#AC3231'} secondaryColor={'#0D0E13'}/> : 
+                   currentTheme === 'Dreams' ? <GhostBits reference={section} primaryColor={'#851011'} secondaryColor={'#670D1A'} background={'bg-[#020001]'}/> :
+                   currentTheme === 'Vampire' ? <FluxBits reference={section} primaryColor={'#E90A0A'} secondaryColor={'#A70304'} thirdColor={'#7E0003'} background={'bg-[#090200]'}/> :
+                   currentTheme === 'Genius' ? <GrainientBits reference={section} primaryColor={'#040718'} secondaryColor={'#101741'} thirdColor={'#132B73'} fourthColor={'#A5E3FC'}/> :
+                   currentTheme === 'Trial' ? <WavesBits reference={section} primaryColor={'#F4AFCC'} secondaryColor={'#E02D8C'} background={'bg-[#0C070B]'} /> :
+                   currentTheme === 'Silent' ? <TopographyBits reference={section} primaryColor={'#B8DA80'} background={'bg-[#010203]'} /> : '' 
     }
 
 }
 
-export function Counterground({currentTheme, display}: {currentTheme: string, display: number}){
+export function Counterground({currentTheme, display, section}: {currentTheme: string, display: number, section?: any}){
 
     switch(true) {
         case display <= 768:
@@ -65,12 +65,12 @@ export function Counterground({currentTheme, display}: {currentTheme: string, di
                    currentTheme === 'Silent' ? <PerlinBG primaryColor={'#283325'} secondaryColor={'#FFFFFF'}/> : ''
             ;
         default :
-            return currentTheme === 'Milk' ? <DitherBits primaryColor={'#F2E9E4'} secondaryColor={'#499792'}/> :
-                   currentTheme === 'Dreams' ? <GhostBits primaryColor={'#851011'} secondaryColor={'#670D1A'} background={'bg-[#E4BDD2]'}/> :
-                   currentTheme === 'Vampire' ? <FluxBits primaryColor={'#FDE0CE'} secondaryColor={'#E90A0A'} thirdColor={'#A70304'} background={'bg-[#FEF7F7]'}/> : 
-                   currentTheme === 'Genius' ? <GrainientBits primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#57565C'} fourthColor={'#FBFCFC'}/> :
-                   currentTheme === 'Trial' ? <WavesBits primaryColor={'#E02D8C'} secondaryColor={'#F4AFCC'} background={'bg-[#FFFFFF]'} /> :
-                   currentTheme === 'Silent' ? <TopographyBits primaryColor={'#81A568'} background={'bg-[#FFFFFF]'} /> : ''
+            return currentTheme === 'Milk' ? <DitherBits reference={section} primaryColor={'#F2E9E4'} secondaryColor={'#499792'}/> :
+                   currentTheme === 'Dreams' ? <GhostBits reference={section} primaryColor={'#851011'} secondaryColor={'#670D1A'} background={'bg-[#E4BDD2]'}/> :
+                   currentTheme === 'Vampire' ? <FluxBits reference={section} primaryColor={'#FDE0CE'} secondaryColor={'#E90A0A'} thirdColor={'#A70304'} background={'bg-[#FEF7F7]'}/> : 
+                   currentTheme === 'Genius' ? <GrainientBits reference={section} primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#57565C'} fourthColor={'#FBFCFC'}/> :
+                   currentTheme === 'Trial' ? <WavesBits reference={section} primaryColor={'#E02D8C'} secondaryColor={'#F4AFCC'} background={'bg-[#FFFFFF]'} /> :
+                   currentTheme === 'Silent' ? <TopographyBits reference={section} primaryColor={'#81A568'} background={'bg-[#FFFFFF]'} /> : ''
     }
         
     

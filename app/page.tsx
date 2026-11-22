@@ -31,6 +31,12 @@ export default function Home() {
   const [projectsActive, setProjectsActive] = useState(true);
   const [contactActive, setContactActive] = useState(false);
 
+  const [headerBG, setHeaderBG] = useState(1);
+  const [aboutBG, setAboutBG] = useState(2);
+  const [skillsBG, setSkillsBG] = useState(0.5);
+  const [projectsBG, setProjectsBG] = useState(2);
+  const [contactBG, setContactBG] = useState(0.5);
+
   useEffect(() => {
     setWindowWidth(window.innerWidth);
   }, []);
@@ -200,6 +206,12 @@ export default function Home() {
         setSkillsActive: setSkillsActive,
         setProjectsActive: setProjectsActive,
         setContactActive: setContactActive,
+
+        setHeaderBG: setHeaderBG,
+        setAboutBG: setAboutBG,
+        setSkillsBG: setSkillsBG,
+        setProjectsBG: setProjectsBG,
+        setContactBG: setContactBG,
       });
     });
 
@@ -233,23 +245,23 @@ export default function Home() {
 
               {/* ------------------------------------------------------------------------ Header ------------------------------------------------------------------------ */}
 
-              <Header themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth} header={header} headerContent={headerContent} headerActive={headerActive}/>
+              <Header themes={themes} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} windowWidth={windowWidth} header={header} headerContent={headerContent} headerActive={headerActive} headerBG={headerBG}/>
 
               {/* ------------------------------------------------------------------------ About ------------------------------------------------------------------------ */}
 
-              <About themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} about={about} aboutContent={aboutContent} aboutActive={aboutActive} aboutTitle={aboutTitle}/>
+              <About themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} about={about} aboutContent={aboutContent} aboutActive={aboutActive} aboutTitle={aboutTitle} aboutBG={aboutBG}/>
 
               {/* ------------------------------------------------------------------------ Skills ------------------------------------------------------------------------ */}
 
-              <Skills themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} skills={skills} skillsContent={skillsContent} skillsActive={skillsActive} skillsSpiral={SkillsElements.skillsSpiral} skillsStack={SkillsElements.skillsStack} skillsBadgeBox={SkillsElements.skillsBadgeBox}/>
+              <Skills themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} skills={skills} skillsContent={skillsContent} skillsActive={skillsActive} skillsSpiral={SkillsElements.skillsSpiral} skillsStack={SkillsElements.skillsStack} skillsBadgeBox={SkillsElements.skillsBadgeBox} skillsBG={skillsBG}/>
 
               {/* ------------------------------------------------------------------------ Projects ------------------------------------------------------------------------ */}
 
-              <Projects themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} projects={projects} projectContent={projectContent} PRproject_1={PRprojects.PRproject_1} PRproject_2={PRprojects.PRproject_2} PRproject_3={PRprojects.PRproject_3} PRproject_container={PRprojects.PRproject_container} project_overlay1={PRprojects.project_overlay1} project_overlay2={PRprojects.project_overlay2} project_overlay3={PRprojects.project_overlay3} aboutProject1={PRprojects.aboutProject1} aboutProject2={PRprojects.aboutProject2} aboutProject3={PRprojects.aboutProject3} aboutDark={PRprojects.aboutDark} ProjectCards={PRprojects.ProjectCards} projectsActive={projectsActive}/>
+              <Projects themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} projects={projects} projectContent={projectContent} PRproject_1={PRprojects.PRproject_1} PRproject_2={PRprojects.PRproject_2} PRproject_3={PRprojects.PRproject_3} PRproject_container={PRprojects.PRproject_container} project_overlay1={PRprojects.project_overlay1} project_overlay2={PRprojects.project_overlay2} project_overlay3={PRprojects.project_overlay3} aboutProject1={PRprojects.aboutProject1} aboutProject2={PRprojects.aboutProject2} aboutProject3={PRprojects.aboutProject3} aboutDark={PRprojects.aboutDark} ProjectCards={PRprojects.ProjectCards} projectsActive={projectsActive} projectsBG={projectsBG}/>
 
               {/* ------------------------------------------------------------------------ Contact ------------------------------------------------------------------------ */}
 
-              <Contact themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} contact={contact} contactContent={contactContent} contactActive={contactActive}/>
+              <Contact themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} contact={contact} contactContent={contactContent} contactActive={contactActive} contactBG={contactBG}/>
               
             </div>
           </div>

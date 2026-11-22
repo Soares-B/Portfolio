@@ -34,7 +34,8 @@ export default function Projects({
   aboutProject3,
 
   ProjectCards,
-  projectsActive
+  projectsActive,
+  projectsBG
 }: Temas & {
   windowWidth: number;
 
@@ -56,7 +57,9 @@ export default function Projects({
   aboutProject3: any;
 
   ProjectCards: any;
-  projectsActive: boolean
+  projectsActive: boolean;
+
+  projectsBG: any;
 }) {
   return (
     <div
@@ -66,6 +69,7 @@ export default function Projects({
     >
       {/* ------------------------ Background ------------------------ */}
       <Counterground
+        section={projectsBG}
         key={currentTheme}
         currentTheme={currentTheme}
         display={windowWidth}

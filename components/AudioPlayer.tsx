@@ -170,7 +170,7 @@ export default function AudioPlayer({themes, currentTheme}: Temas){
 
                 <div className="w-full h-full row-4 col-1 ml-5 pr-5">
                     <div className="w-full h-full flex items-center justify-center gap-10">
-                        <Magnet padding={100} magnetStrength={2}>
+                        <Magnet padding={100} magnetStrength={2.5}>
                             <motion.button className="w-fit h-full hover:cursor-pointer outline-none"
                             whileTap={{scale: 0.8}}
                             onClick={() => {
@@ -184,7 +184,7 @@ export default function AudioPlayer({themes, currentTheme}: Temas){
                                 <TbPlayerSkipBackFilled  className="text-white size-6"/>
                             </motion.button>
                         </Magnet>
-                        <Magnet padding={100} magnetStrength={2}>
+                        <Magnet padding={100} magnetStrength={2.5}>
                             <motion.button
                                 className="w-fit h-full hover:cursor-pointer outline-none"
                                 whileTap={{ scale: 0.8 }}
@@ -206,7 +206,7 @@ export default function AudioPlayer({themes, currentTheme}: Temas){
                                 }
                             </motion.button>
                         </Magnet>
-                        <Magnet padding={100} magnetStrength={2}>
+                        <Magnet padding={100} magnetStrength={2.5}>
                             <motion.button className="w-fit h-full hover:cursor-pointer outline-none"
                             whileTap={{scale: 0.8}}
                             onClick={() => {

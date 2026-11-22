@@ -15,9 +15,9 @@ export default function Contact({
     windowWidth,
     contact,
     contactContent,
-    contactActive
-
-}: Temas & {windowWidth: number, contact: any, contactContent: any, contactActive: boolean}) {
+    contactActive,
+    contactBG
+}: Temas & {windowWidth: number, contact: any, contactContent: any, contactActive: boolean, contactBG: any}) {
   return (
     <div
       ref={contact}
@@ -26,6 +26,7 @@ export default function Contact({
     >
       {/* ------------------------ Background ------------------------ */}
       <Background
+        section={contactBG}
         key={currentTheme}
         currentTheme={currentTheme}
         display={windowWidth}

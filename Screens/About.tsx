@@ -19,8 +19,9 @@ export default function About({
     about,
     aboutContent,
     aboutActive,
-    aboutTitle
-}: Temas & {windowWidth: number, about: any, aboutContent: any, aboutActive: any, aboutTitle: any}) {
+    aboutTitle,
+    aboutBG
+}: Temas & {windowWidth: number, about: any, aboutContent: any, aboutActive: any, aboutTitle: any, aboutBG: any}) {
   return (
     <div
       ref={about}
@@ -29,6 +30,7 @@ export default function About({
     >
       {/* ------------------------ Background ------------------------ */}
       <Counterground
+        section={aboutBG}
         key={currentTheme}
         currentTheme={currentTheme}
         display={windowWidth}

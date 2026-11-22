@@ -15,7 +15,8 @@ export default function Header({
     header,
     headerContent,
     headerActive,
-}: Temas & {setCurrentTheme: any, windowWidth: number, header: any, headerContent: any, headerActive: any}) {
+    headerBG
+}: Temas & {setCurrentTheme: any, windowWidth: number, header: any, headerContent: any, headerActive: any, headerBG: any}) {
   return (
     <div
       ref={header}
@@ -23,6 +24,7 @@ export default function Header({
     >
       {/* ------------------------ Background ------------------------ */}
       <Background
+        section={headerBG}
         key={currentTheme}
         currentTheme={currentTheme}
         display={windowWidth}
