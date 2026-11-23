@@ -1,6 +1,7 @@
 import { Background } from "@/functions/Background";
 import { ContactCards } from "@/components/Tech";
 import { gwrite } from "@/functions/Glitch Text";
+import { DitherLogo } from "@/functions/Dither Effect";
 
 type Temas = {
     themes: any,
@@ -58,13 +59,27 @@ export default function Contact({
             className="w-full h-fit select-none"
           ></Image>
         ) : (
-          <Image
-            src="/Imagens/Desktop.png"
-            width={1536}
-            height={864}
-            alt="personality"
-            className="w-3/5 h-fit xl:w-2/5 select-none"
-          ></Image>
+          <div className="w-3/5 h-fit xl:w-2/5 select-none grid grid-cols-1 grid-rows-1">
+            <Image
+              src="/Imagens/Desktop.png"
+              width={1536}
+              height={864}
+              alt="personality"
+              className="w-full h-auto col-start-1 row-start-1"
+            >              
+            </Image>
+
+            {contactActive && <DitherLogo
+              image="/Imagens/Desktop.png"
+              label="personality"
+              spacing={3}
+              dotScale={0.5}
+              radius={90}
+              strength={1}
+              assemble
+              className="w-full h-full col-start-1 row-start-1 z-10"
+            />}
+          </div>
         )}
       </div>
     </div>

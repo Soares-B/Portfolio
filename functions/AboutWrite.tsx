@@ -83,9 +83,9 @@ allToLearn.forEach((item) => {
   }, [code]);
 
   return (
-    <div className={`${themes[currentTheme].div_background} div_background w-full h-full rounded-[5px] ${type === 'back' ? 'pt-5' : 'p-3'} ${type === 'back' ? 'pl-10 ' : 'pl-5'} pr-5 `}>
+    <div className={`${themes[currentTheme].div_background} div_background w-full h-full rounded-[5px] ${size >= 769 ? 'pt-5 ' : 'pt-3'} ${size >= 769 ? 'pl-10 ' : 'pl-5'} pr-5 `}>
       <pre className="whitespace-pre-wrap font-montserrat font-semibold text-sm relative z-23">
-        <p className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].div_text_shadow} font-montserrat font-semibold ${type === 'back' ? 'text-xl' : 'text-base md:text-2xl lg:text-base 2xl:text-xl'}`}>{text}<span className="animate-pulse">|</span></p>
+        <p className={`${themes[currentTheme].highlight_text} ${themes[currentTheme].highlight_text_shadow} font-montserrat font-semibold ${size <= 769 ? 'text-base md:text-xl ' : 'text-xl lg:text-base 2xl:text-xl'}`}>{text}<span className="animate-pulse">|</span></p>
       </pre>
       {aboutActive && type === 'back' ? <Background currentTheme={currentTheme ? currentTheme : ''} type='backcard'/> : <Background currentTheme={currentTheme ? currentTheme : ''} type='card'/>}
     </div>

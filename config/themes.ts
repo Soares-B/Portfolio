@@ -12,7 +12,6 @@ export const themes = {
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Milk-2",
 
     div_background: 'bg-Milk-5',
-    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Milk-2',
 
     project_shadow: 'shadow-Milk-6',
 
@@ -42,7 +41,6 @@ export const themes = {
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Dreams-2",
 
     div_background: 'bg-Dreams-5',
-    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Dreams-2',
 
     project_shadow: 'shadow-Dreams-6',
 
@@ -72,7 +70,6 @@ export const themes = {
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Vampire-2",
 
     div_background: 'bg-Vampire-5',
-    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Vampire-2',
 
     project_shadow: 'shadow-Vampire-6',
 
@@ -102,7 +99,6 @@ export const themes = {
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Genius-2",
 
     div_background: 'bg-Genius-5',
-    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Genius-2',
 
     project_shadow: 'shadow-Genius-6',
 
@@ -132,7 +128,6 @@ export const themes = {
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Trial-2",
 
     div_background: 'bg-Trial-5',
-    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Trial-2',
 
     project_shadow: 'shadow-Trial-6',
 
@@ -162,7 +157,6 @@ export const themes = {
     background_text_shadow: "text-shadow-[1px_1px_1px] text-shadow-Silent-2",
 
     div_background: 'bg-Silent-5',
-    div_text_shadow: 'text-shadow-[1px_1px_1px] text-Silent-2',
 
     project_shadow: 'shadow-Silent-6',
     
@@ -190,9 +184,6 @@ export const themes = {
     background_text_shadow: "",
     counterground: '',
     div_background: '',
-    div_text_shadow: '',
-
-    project_shadow: '',    
     progress: '',
     audioPlayer_name: '',
     audioPlayer_media: '',

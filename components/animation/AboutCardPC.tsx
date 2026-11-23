@@ -22,12 +22,29 @@ const AboutCardPC = forwardRef<HTMLDivElement, AboutCardProps>(
     return (
       <FlipCard
         front={
+          <HoloCard
+            preset="bursts"
+            foilColor="#e2e6ec"
+            intensity={0.25}
+            scale={1}
+            edgeSparkle={0.8}
+            frame={4}
+            glare={0}
+            tiltMax={0}
+            hoverScale={1}
+            radius={14}
+            width={320}
+            idle
+            shadow
+            className="w-full h-full"
+          >
           <div
             ref={ref}
             className="tilt-card w-full h-full flex justify-center items-center rounded-[5px] hover:cursor-pointer"
           >
             {card}
           </div>
+          </HoloCard>
         }
         back={
           <HoloCard

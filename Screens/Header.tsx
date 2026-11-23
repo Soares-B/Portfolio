@@ -3,6 +3,8 @@ import Name from "@/components/animation/Name";
 import { Theme } from "@/components/Header buttons";
 import { Background } from "@/functions/Background";
 
+import { DitherLogo } from "@/functions/Dither Effect";
+
 import type { Theme as Temas } from "@/types/themes";
 
 import Image from "next/image";
@@ -59,13 +61,28 @@ export default function Header({
             className="w-full h-fit select-none"
           ></Image>
         ) : (
-          <Image
-            src="/Imagens/Desktop.png"
-            width={1536}
-            height={864}
-            alt="personality"
-            className="w-2/5 h-fit absolute right-0 bottom-0 select-none"
-          ></Image>
+          <div className="w-2/5 absolute right-0 bottom-0 select-none grid grid-cols-1 grid-rows-1">
+
+            <Image
+              src="/Imagens/Desktop.png"
+              width={1536}
+              height={864}
+              alt="personality"
+              className="w-full h-auto col-start-1 row-start-1"
+            />
+
+            {headerActive && <DitherLogo
+              image="/Imagens/Desktop.png"
+              label="personality"
+              spacing={3}
+              dotScale={0.5}
+              radius={90}
+              strength={1}
+              assemble
+              className="w-full h-full col-start-1 row-start-1 z-10"
+            />}
+
+          </div>
         )}
       </div>
     </div>

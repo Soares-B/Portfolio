@@ -88,7 +88,7 @@ export default function About({
                   scrambleColorShadow: `${currentTheme}`
                 })}
               </div>
-              <div className="w-1/2 h-3/4 outline-none">
+              <div className="w-3/4 xl:w-3/5 2xl:w-1/2 h-4/5 xl:h-[85%] 2xl:h-3/4 outline-none">
                 {aboutActive && <AboutCardPC
                 themes={themes}
                   card={awrite({
