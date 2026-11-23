@@ -10,6 +10,7 @@ import Topography from './Topography';
 import GradientASCII from "./GradientASCII";
 import DotGrid from './DotGrid';
 import Particles from './Particles';
+import { DitherField } from "@/components/ui/dither-field"
 
 type Color= {
     [key: string]: string
@@ -411,5 +412,13 @@ export function ParticlesBits({primaryColor, secondaryColor, thirdColor}: Color)
           lightMode={false}
         />
     </div>
+  );
+}
+
+export function DitherF({primaryColor, secondaryColor, thirdColor}: Color){
+  return(
+    <DitherField className={`absolute inset-0`} 
+    pattern="waves"
+    color={[primaryColor, secondaryColor, thirdColor]}/>
   );
 }

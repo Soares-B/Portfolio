@@ -13,19 +13,20 @@ import {
     TopographyBits,
     ASCIIBits,
     DotBits,
-    ParticlesBits
+    ParticlesBits,
+    DitherF
 } from "@/components/background/Background";
 
 export function Background({currentTheme, display, type, section,}: {currentTheme: string, display?: number, type?: string, section?: any}){
 
     switch(true) {
         case type === 'card':
-            return currentTheme === 'Milk' ? <ASCIIBits primaryColor={'#2F1B1E'} secondaryColor={'#632630'}/> :
-                   currentTheme === 'Dreams' ? <ASCIIBits primaryColor={'#4B0B0F'} secondaryColor={'#670D1A'}/> : 
-                   currentTheme === 'Vampire' ? <ASCIIBits primaryColor={'#7E0003'} secondaryColor={'#A70304'}/> : 
-                   currentTheme === 'Genius' ? <ASCIIBits primaryColor={'#101741'} secondaryColor={'#132B73'}/> : 
-                   currentTheme === 'Trial' ? <ASCIIBits primaryColor={'#870045'} secondaryColor={'#E02D8C'}/> : 
-                   currentTheme === 'Silent' ? <ASCIIBits primaryColor={'#283325'} secondaryColor={'#81A568'}/> : ''
+            return currentTheme === 'Milk' ? <DitherF primaryColor={'#AC3231'} secondaryColor={'#632630'} thirdColor={'#499792'}/> :
+                   currentTheme === 'Dreams' ? <DitherF primaryColor={'#851011'} secondaryColor={'#670D1A'} thirdColor={'#5A3A63'}/> : 
+                   currentTheme === 'Vampire' ? <DitherF primaryColor={'#E90A0A'} secondaryColor={'#A70304'} thirdColor={'#FDE0CE'}/> : 
+                   currentTheme === 'Genius' ? <DitherF primaryColor={'#A5E3FC'} secondaryColor={'#132B73'} thirdColor={'#57565C'}/> : 
+                   currentTheme === 'Trial' ? <DitherF primaryColor={'#F4AFCC'} secondaryColor={'#E02D8C'} thirdColor={'#EBEBED'}/> : 
+                   currentTheme === 'Silent' ? <DitherF primaryColor={'#B8DA80'} secondaryColor={'#81A568'} thirdColor={'#FEFADB'}/> : ''
 
         case type === 'backcard':
             return currentTheme === 'Milk' ? <ParticlesBits primaryColor={'#AC3231'} secondaryColor={'#632630'} thirdColor={'#499792'}/> :
