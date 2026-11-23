@@ -1,11 +1,15 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Draggable } from "gsap/Draggable";
+import InertiaPlugin from "gsap/InertiaPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, Draggable, InertiaPlugin);
 
 type DesktopPageProps = {
     size: number
     progress: HTMLElement;
+    player: HTMLElement;
+    playerContainer: HTMLElement;
     container: HTMLElement;
     header: HTMLElement;
     about: HTMLElement;
@@ -54,7 +58,9 @@ type DesktopPageProps = {
 
 export default function DesktopPage({
     size,
-    progress, 
+    progress,
+    player,
+    playerContainer,
     container,
     header,
     about,
@@ -118,6 +124,13 @@ export default function DesktopPage({
             scrub: true,
         },
     });
+
+    Draggable.create(player, {
+        bounds: playerContainer,
+        inertia: true,
+        cursor: 'grab',
+        activeCursor: 'grabbing',
+    })
   
     const animation = gsap.timeline({
         scrollTrigger: {

@@ -49,6 +49,8 @@ export default function Home() {
   const [currentTheme, setCurrentTheme] = useState<ThemeName>("Milk");
 
   const progress = useRef<HTMLDivElement>(null);
+  const player = useRef<HTMLDivElement>(null);
+  const playerContainer = useRef<HTMLDivElement>(null);
 
   const container = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLDivElement>(null);
@@ -141,6 +143,8 @@ export default function Home() {
       if (
         !windowWidth ||
         !progress.current ||
+        !player.current ||
+        !playerContainer.current ||
         !container.current ||
         !header.current ||
         !about.current ||
@@ -174,6 +178,8 @@ export default function Home() {
       return DesktopPage({
         size: windowWidth,
         progress: progress.current,
+        player: player.current,
+        playerContainer: playerContainer.current,
         container: container.current,
         header: header.current,
         about: about.current,
@@ -252,7 +258,7 @@ useReleaseOnLeave(contactActive, contactContent);
                 className={`fixed left-0 top-0 z-100 ${windowWidth <= 768 ? "" : themes[currentTheme].progress} w-full h-1`}
               ></div>
 
-              <AudioPlayer themes={themes} currentTheme={currentTheme} windowWidth={windowWidth}/>
+              <AudioPlayer themes={themes} currentTheme={currentTheme} windowWidth={windowWidth} player={player} playerContainer={playerContainer}/>
 
               {/* ------------------------------------------------------------------------ Header ------------------------------------------------------------------------ */}
 

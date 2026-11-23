@@ -69,7 +69,7 @@ type Temas = {
     currentTheme: "Milk" | "Dreams" | "Vampire" | "Genius" | "Trial" | "Silent" | 'Config'
 }
 
-export default function AudioPlayer({themes, currentTheme, windowWidth}: Temas & {windowWidth : number}){
+export default function AudioPlayer({themes, currentTheme, windowWidth, player, playerContainer}: Temas & {windowWidth : number, player: any, playerContainer: any}){
     const [song, setSong] = useState(0);
     const [pause, setPause] = useState(true);
     const audioRef = useRef<HTMLAudioElement | null>(null);    
@@ -106,8 +106,8 @@ export default function AudioPlayer({themes, currentTheme, windowWidth}: Temas &
     }
 
     return (
-        <div className={`absolute inset-0 z-[99999] w-full h-full flex items-end pointer-events-none ${windowWidth <= 768 ? 'hidden' : ''}`}>
-            <div className="xl:w-1/4 2xl:w-1/5 xl:h-1/6 2xl:h-1/8 relative mb-3 grid grid-rows-4 grid-cols-[0.4fr_0.6fr] xl:grid-cols-[1fr_0.3fr] 2xl:grid-cols-[1fr_0.2fr] items-center 2xl:ml-3 xl:pr-5 2xl:pr-0 pointer-events-auto">
+        <div ref={playerContainer} className={`absolute inset-0 z-[99999] w-full h-full flex items-end pointer-events-none ${windowWidth <= 768 ? 'hidden' : ''}`}>
+            <div ref={player} className="bg-white/5 rounded-[5px] backdrop-blur-xs border-1 border-white/12 xl:w-1/4 2xl:w-1/5 xl:h-1/6 2xl:h-1/8 relative mb-3 grid grid-rows-4 grid-cols-[0.4fr_0.6fr] xl:grid-cols-[1fr_0.3fr] 2xl:grid-cols-[1fr_0.2fr] items-center 2xl:ml-3 xl:pr-5 2xl:pr-0 pointer-events-auto">
                 <div className="w-9/10 h-fit flex flex-col row-span-2 col-1 ml-5">
                     <p className={`${themes[currentTheme].audioPlayer_name} font-montserrat font-semibold text-sm`}>Now playing: {songs[song].name}</p>
                     <p className={`${themes[currentTheme].audioPlayer_media} font-montserrat font-semibold text-sm`}>{songs[song].media}</p>
